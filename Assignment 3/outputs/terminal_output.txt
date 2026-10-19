@@ -1,0 +1,32 @@
+==============================================================================
+NLP LABORATORY ASSIGNMENT 3 - HMM PART-OF-SPEECH TAGGING
+==============================================================================
+[resources] All required NLTK resources are available.
+[corpus] Raw PTB sentences: 3,914; raw tokens: 100,676
+[corpus] Trace (-NONE-) tokens removed: 6,592
+[corpus] Exact duplicate sentences removed: 11
+[corpus] Sentences after cleaning: 3,903
+[split] Seed=42, test_size=0.20 -> 3,122 train / 781 test sentences
+[split] 75,349 train tokens / 18,678 test tokens; train vocabulary=10,625; test OOV=1,467 (7.85%)
+[split] Sentence overlap between train and test: 0
+[custom] Loaded 25 manually written test sentences.
+[train] Training the HMM ...
+[train] HMM tags=12, vocabulary=10,625, emission pairs=11,271
+[train] OOV suffix model built from 8,929 rare-word occurrences; numeric rare tokens=747
+[predict] Decoding the held-out test set with Viterbi ...
+------------------------------------------------------------------------------
+Baseline accuracy          : 0.932594
+Baseline macro / weighted F1: 0.856378 / 0.931416
+HMM accuracy               : 0.953475
+HMM macro / weighted F1     : 0.916128 / 0.953004
+HMM OOV accuracy           : 0.755965 on 1,467 OOV tokens
+HMM known-token accuracy   : 0.970310 on 17,211 known tokens
+Total HMM token errors     : 869
+Pipeline time              : 2.36 seconds
+------------------------------------------------------------------------------
+[workbook] Created: /home/shravanikurkute/BTech/4th Year/NLP/Assignment 3/POS_Tagging_Results.xlsx
+[report] Created: /home/shravanikurkute/BTech/4th Year/NLP/Assignment 3/POS_Tagging_Assignment_03_Report.docx
+==============================================================================
+All core artefacts have been generated in:
+/home/shravanikurkute/BTech/4th Year/NLP/Assignment 3
+==============================================================================

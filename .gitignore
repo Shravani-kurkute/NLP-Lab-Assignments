@@ -1,0 +1,21 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache and temporary files
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.benchmarks/
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# LibreOffice lock files
+.~lock.*#
+
+# Operating system files
+.DS_Store
+Thumbs.db

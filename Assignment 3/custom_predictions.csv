@@ -1,0 +1,254 @@
+sentence_id,sentence,token_index,token,hmm_predicted_tag,baseline_predicted_tag
+1,The quick brown fox jumps over the lazy dog.,0,The,DET,DET
+1,The quick brown fox jumps over the lazy dog.,1,quick,ADJ,ADJ
+1,The quick brown fox jumps over the lazy dog.,2,brown,NOUN,NOUN
+1,The quick brown fox jumps over the lazy dog.,3,fox,ADP,NOUN
+1,The quick brown fox jumps over the lazy dog.,4,jumps,NOUN,NOUN
+1,The quick brown fox jumps over the lazy dog.,5,over,ADP,ADP
+1,The quick brown fox jumps over the lazy dog.,6,the,DET,DET
+1,The quick brown fox jumps over the lazy dog.,7,lazy,ADJ,NOUN
+1,The quick brown fox jumps over the lazy dog.,8,dog,NOUN,NOUN
+1,The quick brown fox jumps over the lazy dog.,9,.,.,.
+2,Shravani is studying Natural Language Processing at her university.,0,Shravani,NOUN,NOUN
+2,Shravani is studying Natural Language Processing at her university.,1,is,VERB,VERB
+2,Shravani is studying Natural Language Processing at her university.,2,studying,VERB,VERB
+2,Shravani is studying Natural Language Processing at her university.,3,Natural,NOUN,NOUN
+2,Shravani is studying Natural Language Processing at her university.,4,Language,NOUN,NOUN
+2,Shravani is studying Natural Language Processing at her university.,5,Processing,NOUN,NOUN
+2,Shravani is studying Natural Language Processing at her university.,6,at,ADP,ADP
+2,Shravani is studying Natural Language Processing at her university.,7,her,PRON,PRON
+2,Shravani is studying Natural Language Processing at her university.,8,university,NOUN,NOUN
+2,Shravani is studying Natural Language Processing at her university.,9,.,.,.
+3,The committee approved the new budget after a long discussion.,0,The,DET,DET
+3,The committee approved the new budget after a long discussion.,1,committee,NOUN,NOUN
+3,The committee approved the new budget after a long discussion.,2,approved,VERB,VERB
+3,The committee approved the new budget after a long discussion.,3,the,DET,DET
+3,The committee approved the new budget after a long discussion.,4,new,ADJ,ADJ
+3,The committee approved the new budget after a long discussion.,5,budget,NOUN,NOUN
+3,The committee approved the new budget after a long discussion.,6,after,ADP,ADP
+3,The committee approved the new budget after a long discussion.,7,a,DET,DET
+3,The committee approved the new budget after a long discussion.,8,long,ADJ,ADJ
+3,The committee approved the new budget after a long discussion.,9,discussion,NOUN,NOUN
+3,The committee approved the new budget after a long discussion.,10,.,.,.
+4,She bought three apples and two oranges at the market.,0,She,PRON,PRON
+4,She bought three apples and two oranges at the market.,1,bought,VERB,VERB
+4,She bought three apples and two oranges at the market.,2,three,NUM,NUM
+4,She bought three apples and two oranges at the market.,3,apples,NOUN,NOUN
+4,She bought three apples and two oranges at the market.,4,and,CONJ,CONJ
+4,She bought three apples and two oranges at the market.,5,two,NUM,NUM
+4,She bought three apples and two oranges at the market.,6,oranges,NOUN,NOUN
+4,She bought three apples and two oranges at the market.,7,at,ADP,ADP
+4,She bought three apples and two oranges at the market.,8,the,DET,DET
+4,She bought three apples and two oranges at the market.,9,market,NOUN,NOUN
+4,She bought three apples and two oranges at the market.,10,.,.,.
+5,The weather in Pune is pleasant during October.,0,The,DET,DET
+5,The weather in Pune is pleasant during October.,1,weather,NOUN,NOUN
+5,The weather in Pune is pleasant during October.,2,in,ADP,ADP
+5,The weather in Pune is pleasant during October.,3,Pune,NOUN,NOUN
+5,The weather in Pune is pleasant during October.,4,is,VERB,VERB
+5,The weather in Pune is pleasant during October.,5,pleasant,NOUN,NOUN
+5,The weather in Pune is pleasant during October.,6,during,ADP,ADP
+5,The weather in Pune is pleasant during October.,7,October,NOUN,NOUN
+5,The weather in Pune is pleasant during October.,8,.,.,.
+6,Can you explain how the Viterbi algorithm works?,0,Can,NOUN,NOUN
+6,Can you explain how the Viterbi algorithm works?,1,you,PRON,PRON
+6,Can you explain how the Viterbi algorithm works?,2,explain,VERB,VERB
+6,Can you explain how the Viterbi algorithm works?,3,how,ADV,ADV
+6,Can you explain how the Viterbi algorithm works?,4,the,DET,DET
+6,Can you explain how the Viterbi algorithm works?,5,Viterbi,NOUN,NOUN
+6,Can you explain how the Viterbi algorithm works?,6,algorithm,NOUN,NOUN
+6,Can you explain how the Viterbi algorithm works?,7,works,NOUN,NOUN
+6,Can you explain how the Viterbi algorithm works?,8,?,.,.
+7,The company reported a 15% increase in revenue for 2025.,0,The,DET,DET
+7,The company reported a 15% increase in revenue for 2025.,1,company,NOUN,NOUN
+7,The company reported a 15% increase in revenue for 2025.,2,reported,VERB,VERB
+7,The company reported a 15% increase in revenue for 2025.,3,a,DET,DET
+7,The company reported a 15% increase in revenue for 2025.,4,15,NUM,NUM
+7,The company reported a 15% increase in revenue for 2025.,5,%,NOUN,NOUN
+7,The company reported a 15% increase in revenue for 2025.,6,increase,NOUN,NOUN
+7,The company reported a 15% increase in revenue for 2025.,7,in,ADP,ADP
+7,The company reported a 15% increase in revenue for 2025.,8,revenue,NOUN,NOUN
+7,The company reported a 15% increase in revenue for 2025.,9,for,ADP,ADP
+7,The company reported a 15% increase in revenue for 2025.,10,2025,NUM,NOUN
+7,The company reported a 15% increase in revenue for 2025.,11,.,.,.
+8,He quickly finished his assignment and submitted it on time.,0,He,PRON,PRON
+8,He quickly finished his assignment and submitted it on time.,1,quickly,ADV,ADV
+8,He quickly finished his assignment and submitted it on time.,2,finished,VERB,VERB
+8,He quickly finished his assignment and submitted it on time.,3,his,PRON,PRON
+8,He quickly finished his assignment and submitted it on time.,4,assignment,NOUN,NOUN
+8,He quickly finished his assignment and submitted it on time.,5,and,CONJ,CONJ
+8,He quickly finished his assignment and submitted it on time.,6,submitted,VERB,NOUN
+8,He quickly finished his assignment and submitted it on time.,7,it,PRON,PRON
+8,He quickly finished his assignment and submitted it on time.,8,on,ADP,ADP
+8,He quickly finished his assignment and submitted it on time.,9,time,NOUN,NOUN
+8,He quickly finished his assignment and submitted it on time.,10,.,.,.
+9,The children were playing football in the park.,0,The,DET,DET
+9,The children were playing football in the park.,1,children,NOUN,NOUN
+9,The children were playing football in the park.,2,were,VERB,VERB
+9,The children were playing football in the park.,3,playing,VERB,VERB
+9,The children were playing football in the park.,4,football,NOUN,NOUN
+9,The children were playing football in the park.,5,in,ADP,ADP
+9,The children were playing football in the park.,6,the,DET,DET
+9,The children were playing football in the park.,7,park,NOUN,NOUN
+9,The children were playing football in the park.,8,.,.,.
+10,"Although it was raining, we decided to continue the journey.",0,Although,ADP,ADP
+10,"Although it was raining, we decided to continue the journey.",1,it,PRON,PRON
+10,"Although it was raining, we decided to continue the journey.",2,was,VERB,VERB
+10,"Although it was raining, we decided to continue the journey.",3,raining,VERB,NOUN
+10,"Although it was raining, we decided to continue the journey.",4,",",.,.
+10,"Although it was raining, we decided to continue the journey.",5,we,PRON,PRON
+10,"Although it was raining, we decided to continue the journey.",6,decided,VERB,VERB
+10,"Although it was raining, we decided to continue the journey.",7,to,PRT,PRT
+10,"Although it was raining, we decided to continue the journey.",8,continue,VERB,VERB
+10,"Although it was raining, we decided to continue the journey.",9,the,DET,DET
+10,"Although it was raining, we decided to continue the journey.",10,journey,NOUN,NOUN
+10,"Although it was raining, we decided to continue the journey.",11,.,.,.
+11,The professor asked the students to submit their reports by Friday.,0,The,DET,DET
+11,The professor asked the students to submit their reports by Friday.,1,professor,NOUN,NOUN
+11,The professor asked the students to submit their reports by Friday.,2,asked,VERB,VERB
+11,The professor asked the students to submit their reports by Friday.,3,the,DET,DET
+11,The professor asked the students to submit their reports by Friday.,4,students,NOUN,NOUN
+11,The professor asked the students to submit their reports by Friday.,5,to,PRT,PRT
+11,The professor asked the students to submit their reports by Friday.,6,submit,VERB,VERB
+11,The professor asked the students to submit their reports by Friday.,7,their,PRON,PRON
+11,The professor asked the students to submit their reports by Friday.,8,reports,NOUN,NOUN
+11,The professor asked the students to submit their reports by Friday.,9,by,ADP,ADP
+11,The professor asked the students to submit their reports by Friday.,10,Friday,NOUN,NOUN
+11,The professor asked the students to submit their reports by Friday.,11,.,.,.
+12,This smartphone has a battery life of more than two days.,0,This,DET,DET
+12,This smartphone has a battery life of more than two days.,1,smartphone,NOUN,NOUN
+12,This smartphone has a battery life of more than two days.,2,has,VERB,VERB
+12,This smartphone has a battery life of more than two days.,3,a,DET,DET
+12,This smartphone has a battery life of more than two days.,4,battery,NOUN,NOUN
+12,This smartphone has a battery life of more than two days.,5,life,NOUN,NOUN
+12,This smartphone has a battery life of more than two days.,6,of,ADP,ADP
+12,This smartphone has a battery life of more than two days.,7,more,ADJ,ADJ
+12,This smartphone has a battery life of more than two days.,8,than,ADP,ADP
+12,This smartphone has a battery life of more than two days.,9,two,NUM,NUM
+12,This smartphone has a battery life of more than two days.,10,days,NOUN,NOUN
+12,This smartphone has a battery life of more than two days.,11,.,.,.
+13,The train to Mumbai was delayed by 30 minutes.,0,The,DET,DET
+13,The train to Mumbai was delayed by 30 minutes.,1,train,VERB,VERB
+13,The train to Mumbai was delayed by 30 minutes.,2,to,PRT,PRT
+13,The train to Mumbai was delayed by 30 minutes.,3,Mumbai,NOUN,NOUN
+13,The train to Mumbai was delayed by 30 minutes.,4,was,VERB,VERB
+13,The train to Mumbai was delayed by 30 minutes.,5,delayed,VERB,VERB
+13,The train to Mumbai was delayed by 30 minutes.,6,by,ADP,ADP
+13,The train to Mumbai was delayed by 30 minutes.,7,30,NUM,NUM
+13,The train to Mumbai was delayed by 30 minutes.,8,minutes,NOUN,NOUN
+13,The train to Mumbai was delayed by 30 minutes.,9,.,.,.
+14,My brother wants to become a software engineer.,0,My,PRON,PRON
+14,My brother wants to become a software engineer.,1,brother,NOUN,NOUN
+14,My brother wants to become a software engineer.,2,wants,VERB,VERB
+14,My brother wants to become a software engineer.,3,to,PRT,PRT
+14,My brother wants to become a software engineer.,4,become,VERB,VERB
+14,My brother wants to become a software engineer.,5,a,DET,DET
+14,My brother wants to become a software engineer.,6,software,NOUN,NOUN
+14,My brother wants to become a software engineer.,7,engineer,NOUN,NOUN
+14,My brother wants to become a software engineer.,8,.,.,.
+15,The government announced a new policy for renewable energy.,0,The,DET,DET
+15,The government announced a new policy for renewable energy.,1,government,NOUN,NOUN
+15,The government announced a new policy for renewable energy.,2,announced,VERB,VERB
+15,The government announced a new policy for renewable energy.,3,a,DET,DET
+15,The government announced a new policy for renewable energy.,4,new,ADJ,ADJ
+15,The government announced a new policy for renewable energy.,5,policy,NOUN,NOUN
+15,The government announced a new policy for renewable energy.,6,for,ADP,ADP
+15,The government announced a new policy for renewable energy.,7,renewable,ADJ,NOUN
+15,The government announced a new policy for renewable energy.,8,energy,NOUN,NOUN
+15,The government announced a new policy for renewable energy.,9,.,.,.
+16,Please close the door and turn off the lights.,0,Please,NOUN,NOUN
+16,Please close the door and turn off the lights.,1,close,VERB,NOUN
+16,Please close the door and turn off the lights.,2,the,DET,DET
+16,Please close the door and turn off the lights.,3,door,NOUN,NOUN
+16,Please close the door and turn off the lights.,4,and,CONJ,CONJ
+16,Please close the door and turn off the lights.,5,turn,NOUN,NOUN
+16,Please close the door and turn off the lights.,6,off,ADP,PRT
+16,Please close the door and turn off the lights.,7,the,DET,DET
+16,Please close the door and turn off the lights.,8,lights,NOUN,NOUN
+16,Please close the door and turn off the lights.,9,.,.,.
+17,The museum displays ancient artifacts from South India.,0,The,DET,DET
+17,The museum displays ancient artifacts from South India.,1,museum,NOUN,NOUN
+17,The museum displays ancient artifacts from South India.,2,displays,NOUN,NOUN
+17,The museum displays ancient artifacts from South India.,3,ancient,ADJ,ADJ
+17,The museum displays ancient artifacts from South India.,4,artifacts,NOUN,NOUN
+17,The museum displays ancient artifacts from South India.,5,from,ADP,ADP
+17,The museum displays ancient artifacts from South India.,6,South,NOUN,NOUN
+17,The museum displays ancient artifacts from South India.,7,India,NOUN,NOUN
+17,The museum displays ancient artifacts from South India.,8,.,.,.
+18,Artificial intelligence is transforming the healthcare industry.,0,Artificial,NOUN,NOUN
+18,Artificial intelligence is transforming the healthcare industry.,1,intelligence,NOUN,NOUN
+18,Artificial intelligence is transforming the healthcare industry.,2,is,VERB,VERB
+18,Artificial intelligence is transforming the healthcare industry.,3,transforming,VERB,VERB
+18,Artificial intelligence is transforming the healthcare industry.,4,the,DET,DET
+18,Artificial intelligence is transforming the healthcare industry.,5,healthcare,ADJ,NOUN
+18,Artificial intelligence is transforming the healthcare industry.,6,industry,NOUN,NOUN
+18,Artificial intelligence is transforming the healthcare industry.,7,.,.,.
+19,They have been working on this project since January.,0,They,PRON,PRON
+19,They have been working on this project since January.,1,have,VERB,VERB
+19,They have been working on this project since January.,2,been,VERB,VERB
+19,They have been working on this project since January.,3,working,VERB,VERB
+19,They have been working on this project since January.,4,on,ADP,ADP
+19,They have been working on this project since January.,5,this,DET,DET
+19,They have been working on this project since January.,6,project,NOUN,NOUN
+19,They have been working on this project since January.,7,since,ADP,ADP
+19,They have been working on this project since January.,8,January,NOUN,NOUN
+19,They have been working on this project since January.,9,.,.,.
+20,The little girl smiled at the photographer.,0,The,DET,DET
+20,The little girl smiled at the photographer.,1,little,ADJ,ADJ
+20,The little girl smiled at the photographer.,2,girl,NOUN,NOUN
+20,The little girl smiled at the photographer.,3,smiled,VERB,NOUN
+20,The little girl smiled at the photographer.,4,at,ADP,ADP
+20,The little girl smiled at the photographer.,5,the,DET,DET
+20,The little girl smiled at the photographer.,6,photographer,NOUN,NOUN
+20,The little girl smiled at the photographer.,7,.,.,.
+21,Researchers at IIT Bombay developed an efficient language model.,0,Researchers,NOUN,NOUN
+21,Researchers at IIT Bombay developed an efficient language model.,1,at,ADP,ADP
+21,Researchers at IIT Bombay developed an efficient language model.,2,IIT,NOUN,NOUN
+21,Researchers at IIT Bombay developed an efficient language model.,3,Bombay,NOUN,NOUN
+21,Researchers at IIT Bombay developed an efficient language model.,4,developed,VERB,VERB
+21,Researchers at IIT Bombay developed an efficient language model.,5,an,DET,DET
+21,Researchers at IIT Bombay developed an efficient language model.,6,efficient,ADJ,ADJ
+21,Researchers at IIT Bombay developed an efficient language model.,7,language,NOUN,NOUN
+21,Researchers at IIT Bombay developed an efficient language model.,8,model,NOUN,NOUN
+21,Researchers at IIT Bombay developed an efficient language model.,9,.,.,.
+22,Neither the manager nor the employees were satisfied with the result.,0,Neither,DET,DET
+22,Neither the manager nor the employees were satisfied with the result.,1,the,DET,DET
+22,Neither the manager nor the employees were satisfied with the result.,2,manager,NOUN,NOUN
+22,Neither the manager nor the employees were satisfied with the result.,3,nor,CONJ,CONJ
+22,Neither the manager nor the employees were satisfied with the result.,4,the,DET,DET
+22,Neither the manager nor the employees were satisfied with the result.,5,employees,NOUN,NOUN
+22,Neither the manager nor the employees were satisfied with the result.,6,were,VERB,VERB
+22,Neither the manager nor the employees were satisfied with the result.,7,satisfied,VERB,NOUN
+22,Neither the manager nor the employees were satisfied with the result.,8,with,ADP,ADP
+22,Neither the manager nor the employees were satisfied with the result.,9,the,DET,DET
+22,Neither the manager nor the employees were satisfied with the result.,10,result,NOUN,VERB
+22,Neither the manager nor the employees were satisfied with the result.,11,.,.,.
+23,The old man walked slowly along the riverbank.,0,The,DET,DET
+23,The old man walked slowly along the riverbank.,1,old,ADJ,ADJ
+23,The old man walked slowly along the riverbank.,2,man,NOUN,NOUN
+23,The old man walked slowly along the riverbank.,3,walked,VERB,NOUN
+23,The old man walked slowly along the riverbank.,4,slowly,ADV,ADV
+23,The old man walked slowly along the riverbank.,5,along,ADP,ADP
+23,The old man walked slowly along the riverbank.,6,the,DET,DET
+23,The old man walked slowly along the riverbank.,7,riverbank,NOUN,NOUN
+23,The old man walked slowly along the riverbank.,8,.,.,.
+24,"Wow, that was an amazing performance!",0,Wow,NOUN,NOUN
+24,"Wow, that was an amazing performance!",1,",",.,.
+24,"Wow, that was an amazing performance!",2,that,DET,ADP
+24,"Wow, that was an amazing performance!",3,was,VERB,VERB
+24,"Wow, that was an amazing performance!",4,an,DET,DET
+24,"Wow, that was an amazing performance!",5,amazing,ADJ,NOUN
+24,"Wow, that was an amazing performance!",6,performance,NOUN,NOUN
+24,"Wow, that was an amazing performance!",7,!,.,.
+25,"""Stop!"" shouted the officer near the crowded station.",0,``,.,.
+25,"""Stop!"" shouted the officer near the crowded station.",1,Stop,NOUN,NOUN
+25,"""Stop!"" shouted the officer near the crowded station.",2,!,.,.
+25,"""Stop!"" shouted the officer near the crowded station.",3,'',.,.
+25,"""Stop!"" shouted the officer near the crowded station.",4,shouted,VERB,NOUN
+25,"""Stop!"" shouted the officer near the crowded station.",5,the,DET,DET
+25,"""Stop!"" shouted the officer near the crowded station.",6,officer,NOUN,NOUN
+25,"""Stop!"" shouted the officer near the crowded station.",7,near,ADP,ADP
+25,"""Stop!"" shouted the officer near the crowded station.",8,the,DET,DET
+25,"""Stop!"" shouted the officer near the crowded station.",9,crowded,VERB,VERB
+25,"""Stop!"" shouted the officer near the crowded station.",10,station,NOUN,NOUN
+25,"""Stop!"" shouted the officer near the crowded station.",11,.,.,.

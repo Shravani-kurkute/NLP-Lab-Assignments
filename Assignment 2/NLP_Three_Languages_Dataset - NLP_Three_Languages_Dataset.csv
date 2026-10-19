@@ -1,0 +1,51 @@
+ID,English,Hindi,Marathi
+1,I love natural language processing.,मुझे प्राकृतिक भाषा प्रसंस्करण पसंद है।,मला नैसर्गिक भाषा प्रक्रिया आवडते.
+2,Students learn machine learning.,छात्र मशीन लर्निंग सीखते हैं।,विद्यार्थी मशीन लर्निंग शिकतात.
+3,Data science is an interesting field.,डेटा विज्ञान एक रोचक क्षेत्र है।,डेटा सायन्स हे एक मनोरंजक क्षेत्र आहे.
+4,Python is useful for data analysis.,डेटा विश्लेषण के लिए पायथन उपयोगी है।,डेटा विश्लेषणासाठी पायथन उपयुक्त आहे.
+5,Artificial intelligence is changing the world.,कृत्रिम बुद्धिमत्ता दुनिया को बदल रही है।,कृत्रिम बुद्धिमत्ता जग बदलत आहे.
+6,Students use computers for learning.,छात्र सीखने के लिए कंप्यूटर का उपयोग करते हैं।,विद्यार्थी शिकण्यासाठी संगणकाचा वापर करतात.
+7,Natural language processing is useful.,प्राकृतिक भाषा प्रसंस्करण उपयोगी है।,नैसर्गिक भाषा प्रक्रिया उपयुक्त आहे.
+8,Machine learning requires data.,मशीन लर्निंग के लिए डेटा आवश्यक है।,मशीन लर्निंगसाठी डेटा आवश्यक आहे.
+9,We analyze text using Python.,हम पायथन का उपयोग करके पाठ का विश्लेषण करते हैं।,आपण पायथनचा वापर करून मजकुराचे विश्लेषण करतो.
+10,Language is important for communication.,संचार के लिए भाषा महत्वपूर्ण है।,संवादासाठी भाषा महत्त्वाची आहे.
+11,Students read books in the library.,छात्र पुस्तकालय में किताबें पढ़ते हैं।,विद्यार्थी ग्रंथालयात पुस्तके वाचतात.
+12,Teachers explain difficult concepts.,शिक्षक कठिन अवधारणाओं को समझाते हैं।,शिक्षक कठीण संकल्पना समजावून सांगतात.
+13,The internet provides useful information.,इंटरनेट उपयोगी जानकारी प्रदान करता है।,इंटरनेट उपयुक्त माहिती पुरवते.
+14,We use data to make decisions.,हम निर्णय लेने के लिए डेटा का उपयोग करते हैं।,आपण निर्णय घेण्यासाठी डेटाचा वापर करतो.
+15,A computer can process large amounts of data.,कंप्यूटर बड़ी मात्रा में डेटा संसाधित कर सकता है।,संगणक मोठ्या प्रमाणात डेटावर प्रक्रिया करू शकतो.
+16,Students practice programming every day.,छात्र हर दिन प्रोग्रामिंग का अभ्यास करते हैं।,विद्यार्थी दररोज प्रोग्रामिंगचा सराव करतात.
+17,Python is a popular programming language.,पायथन एक लोकप्रिय प्रोग्रामिंग भाषा है।,पायथन ही एक लोकप्रिय प्रोग्रामिंग भाषा आहे.
+18,Data cleaning is an important step.,डेटा सफाई एक महत्वपूर्ण चरण है।,डेटा स्वच्छता ही एक महत्त्वाची पायरी आहे.
+19,We remove unnecessary words from text.,हम पाठ से अनावश्यक शब्द हटाते हैं।,आपण मजकुरातून अनावश्यक शब्द काढून टाकतो.
+20,Tokenization divides text into smaller units.,टोकनाइजेशन पाठ को छोटी इकाइयों में विभाजित करता है।,टोकनायझेशन मजकुराचे लहान घटकांमध्ये विभाजन करते.
+21,The model learns patterns from data.,मॉडल डेटा से पैटर्न सीखता है।,मॉडेल डेटामधून नमुने शिकते.
+22,Machine learning can identify patterns.,मशीन लर्निंग पैटर्न की पहचान कर सकता है।,मशीन लर्निंग नमुने ओळखू शकते.
+23,Deep learning uses neural networks.,डीप लर्निंग न्यूरल नेटवर्क का उपयोग करता है।,डीप लर्निंग न्यूरल नेटवर्कचा वापर करते.
+24,A neural network contains connected nodes.,न्यूरल नेटवर्क में जुड़े हुए नोड होते हैं।,न्यूरल नेटवर्कमध्ये जोडलेले नोड असतात.
+25,Artificial intelligence is used in many applications.,कृत्रिम बुद्धिमत्ता का उपयोग कई अनुप्रयोगों में किया जाता है।,कृत्रिम बुद्धिमत्तेचा वापर अनेक अनुप्रयोगांमध्ये केला जातो.
+26,Students are learning data science.,छात्र डेटा विज्ञान सीख रहे हैं।,विद्यार्थी डेटा सायन्स शिकत आहेत.
+27,Statistics helps us understand data.,सांख्यिकी हमें डेटा समझने में मदद करती है।,सांख्यिकी आपल्याला डेटा समजून घेण्यास मदत करते.
+28,The average value represents the center of the data.,औसत मान डेटा के केंद्र को दर्शाता है।,सरासरी मूल्य डेटाचे केंद्र दर्शवते.
+29,We calculate the mean and standard deviation.,हम माध्य और मानक विचलन की गणना करते हैं।,आपण सरासरी आणि प्रमाणित विचलन मोजतो.
+30,Visualization helps us understand patterns.,दृश्यांकन हमें पैटर्न समझने में मदद करता है।,दृश्यांकन आपल्याला नमुने समजून घेण्यास मदत करते.
+31,Charts can present information clearly.,चार्ट जानकारी को स्पष्ट रूप से प्रस्तुत कर सकते हैं।,चार्ट माहिती स्पष्टपणे सादर करू शकतात.
+32,A dataset contains many observations.,एक डेटासेट में कई अवलोकन होते हैं।,डेटासेटमध्ये अनेक निरीक्षणे असतात.
+33,Missing values can affect data analysis.,लुप्त मान डेटा विश्लेषण को प्रभावित कर सकते हैं।,गहाळ मूल्ये डेटा विश्लेषणावर परिणाम करू शकतात.
+34,We need to clean the dataset before analysis.,हमें विश्लेषण से पहले डेटासेट को साफ करना चाहिए।,विश्लेषणापूर्वी आपल्याला डेटासेट स्वच्छ करणे आवश्यक आहे.
+35,Outliers can influence statistical results.,असामान्य मान सांख्यिकीय परिणामों को प्रभावित कर सकते हैं।,असामान्य मूल्ये सांख्यिकीय परिणामांवर परिणाम करू शकतात.
+36,Feature selection reduces unnecessary information.,फीचर चयन अनावश्यक जानकारी को कम करता है।,फीचर निवड अनावश्यक माहिती कमी करते.
+37,A good model should generalize to new data.,एक अच्छा मॉडल नए डेटा पर भी अच्छा प्रदर्शन करना चाहिए।,चांगल्या मॉडेलने नवीन डेटावरही चांगली कामगिरी केली पाहिजे.
+38,Training data is used to build a model.,प्रशिक्षण डेटा का उपयोग मॉडल बनाने के लिए किया जाता है।,प्रशिक्षण डेटाचा वापर मॉडेल तयार करण्यासाठी केला जातो.
+39,Testing data is used to evaluate a model.,परीक्षण डेटा का उपयोग मॉडल का मूल्यांकन करने के लिए किया जाता है।,चाचणी डेटाचा वापर मॉडेलचे मूल्यांकन करण्यासाठी केला जातो.
+40,Accuracy is one measure of model performance.,सटीकता मॉडल के प्रदर्शन का एक माप है।,अचूकता हे मॉडेलच्या कामगिरीचे एक माप आहे.
+41,Natural language processing works with human language.,प्राकृतिक भाषा प्रसंस्करण मानव भाषा के साथ काम करता है।,नैसर्गिक भाषा प्रक्रिया मानवी भाषेसोबत काम करते.
+42,Sentiment analysis identifies opinions in text.,भावना विश्लेषण पाठ में राय की पहचान करता है।,भावना विश्लेषण मजकुरातील मते ओळखते.
+43,Text classification assigns labels to documents.,पाठ वर्गीकरण दस्तावेजों को लेबल प्रदान करता है।,मजकूर वर्गीकरण दस्तऐवजांना लेबल प्रदान करते.
+44,Search engines process large collections of text.,सर्च इंजन बड़े पाठ संग्रहों को संसाधित करते हैं।,सर्च इंजिन मोठ्या मजकूर संग्रहांवर प्रक्रिया करतात.
+45,Chatbots can communicate with users.,चैटबॉट उपयोगकर्ताओं के साथ संवाद कर सकते हैं।,चॅटबॉट वापरकर्त्यांशी संवाद साधू शकतात.
+46,Language models predict the next word.,भाषा मॉडल अगले शब्द की भविष्यवाणी करते हैं।,भाषा मॉडेल पुढील शब्दाचा अंदाज लावतात.
+47,Word embeddings represent words as vectors.,वर्ड एम्बेडिंग शब्दों को वेक्टर के रूप में दर्शाते हैं।,वर्ड एम्बेडिंग शब्दांना वेक्टरच्या स्वरूपात दर्शवतात.
+48,Similar words often have similar representations.,समान शब्दों के अक्सर समान प्रतिनिधित्व होते हैं।,समान शब्दांचे अनेकदा समान प्रतिनिधित्व असते.
+49,Researchers use experiments to evaluate NLP systems.,शोधकर्ता NLP प्रणालियों का मूल्यांकन करने के लिए प्रयोग करते हैं।,संशोधक NLP प्रणालींचे मूल्यमापन करण्यासाठी प्रयोग करतात.
+50,NLP has applications in education and healthcare.,NLP का उपयोग शिक्षा और स्वास्थ्य सेवा में किया जाता है।,NLP चा वापर शिक्षण आणि आरोग्यसेवेत केला जातो.

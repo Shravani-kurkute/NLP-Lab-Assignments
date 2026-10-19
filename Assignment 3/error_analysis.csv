@@ -1,0 +1,870 @@
+sentence_id,token_index,token,gold_tag,predicted_tag,baseline_tag,is_oov,error_pair,pair_count,context
+1,5,Elsevier,NOUN,DET,NOUN,1,NOUN -> DET,18,"is chairman of [Elsevier/NOUN->DET] N.V. , the"
+1,9,Dutch,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,"N.V. , the [Dutch/NOUN->ADJ] publishing group ."
+1,10,publishing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,", the Dutch [publishing/VERB->NOUN] group ."
+4,5,ago,ADP,ADV,ADP,0,ADP -> ADV,26,talking about years [ago/ADP->ADV] before anyone heard
+5,22,1950s,NUM,NOUN,NOUN,1,NUM -> NOUN,6,in the early [1950s/NUM->NOUN] and replaced with
+7,9,that,DET,ADP,ADP,0,DET -> ADP,41,few industrialized nations [that/DET->ADP] does n't have
+7,20,smooth,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"regulation for the [smooth/ADJ->NOUN] , needle-like fibers"
+7,22,needle-like,ADJ,ADP,NOUN,1,ADJ -> ADP,2,"the smooth , [needle-like/ADJ->ADP] fibers such as"
+7,27,that,DET,ADP,ADP,0,DET -> ADP,41,such as crocidolite [that/DET->ADP] are classified as
+8,6,that,DET,ADP,ADP,0,DET -> ADP,41,at a factory [that/DET->ADP] made paper for
+8,19,1950s,NUM,NOUN,NOUN,1,NUM -> NOUN,6,asbestos in the [1950s/NUM->NOUN] .
+9,9,hung,VERB,NOUN,NOUN,1,VERB -> NOUN,152,dust '' that [hung/VERB->NOUN] over parts of
+9,17,though,ADP,ADV,ADP,0,ADP -> ADV,26,"factory , even [though/ADP->ADV] exhaust fans ventilated"
+9,18,exhaust,NOUN,VERB,VERB,0,NOUN -> VERB,76,", even though [exhaust/NOUN->VERB] fans ventilated the"
+10,3,bearing,NOUN,VERB,VERB,0,NOUN -> VERB,76,It has no [bearing/NOUN->VERB] on our work
+10,6,work,NOUN,VERB,NOUN,0,NOUN -> VERB,76,bearing on our [work/NOUN->VERB] force today .
+11,0,Shorter,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,[Shorter/ADJ->NOUN] maturities are considered
+12,5,open,ADJ,VERB,ADJ,0,ADJ -> VERB,55,maturity for funds [open/ADJ->VERB] only to institutions
+13,1,invests,VERB,NOUN,NOUN,1,VERB -> NOUN,152,It [invests/VERB->NOUN] heavily in dollar-denominated
+13,6,overseas,ADV,ADJ,ADJ,0,ADV -> ADJ,31,in dollar-denominated securities [overseas/ADV->ADJ] and is currently
+13,17,yield,NOUN,VERB,VERB,0,NOUN -> VERB,76,which boosts its [yield/NOUN->VERB] .
+14,2,acts,VERB,NOUN,NOUN,1,VERB -> NOUN,152,"Until Congress [acts/VERB->NOUN] , the government"
+15,2,breakfast,NOUN,.,NOUN,1,NOUN -> .,5,A buffet [breakfast/NOUN->.] was held in
+15,12,drinks,NOUN,VERB,NOUN,1,NOUN -> VERB,76,where food and [drinks/NOUN->VERB] are banned to
+15,16,everyday,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,are banned to [everyday/ADJ->NOUN] visitors .
+16,0,Knowing,VERB,ADP,NOUN,1,VERB -> ADP,21,[Knowing/VERB->ADP] a tasty --
+16,2,tasty,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,Knowing a [tasty/ADJ->NOUN] -- and free
+16,19,standing,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,the chefs a [standing/ADJ->NOUN] ovation .
+19,3,four-color,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"A full , [four-color/ADJ->NOUN] page in Newsweek"
+19,8,cost,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"in Newsweek will [cost/VERB->NOUN] $ 100,980 ."
+20,44,costs,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"page in Time [costs/VERB->NOUN] about $ 120,000"
+22,5,out,ADP,PRT,PRT,0,ADP -> PRT,5,Electric System bowed [out/ADP->PRT] of the bidding
+22,32,future,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,far in the [future/NOUN->ADJ] to justify a
+23,11,emerges,VERB,NOUN,NOUN,1,VERB -> NOUN,152,", after it [emerges/VERB->NOUN] from bankruptcy proceedings"
+24,0,Separately,ADV,NOUN,NOUN,0,ADV -> NOUN,13,"[Separately/ADV->NOUN] , the Federal"
+24,8,down,PRT,ADV,ADV,0,PRT -> ADV,9,Regulatory Commission turned [down/PRT->ADV] for now a
+26,11,operating,VERB,NOUN,NOUN,0,VERB -> NOUN,152,president and chief [operating/VERB->NOUN] officer of Toys
+27,8,audit,VERB,NOUN,NOUN,0,VERB -> NOUN,152,the commission to [audit/VERB->NOUN] Commonwealth Edison 's
+28,6,refund,VERB,NOUN,NOUN,0,VERB -> NOUN,152,Edison had to [refund/VERB->NOUN] $ 72.7 million
+28,16,I,NOUN,PRON,PRON,0,NOUN -> PRON,1,of its LaSalle [I/NOUN->PRON] nuclear plant .
+30,10,arising,VERB,NOUN,NOUN,1,VERB -> NOUN,152,from price reductions [arising/VERB->NOUN] from introduction of
+31,21,manufacture,VERB,NOUN,NOUN,1,VERB -> NOUN,152,South Korea to [manufacture/VERB->NOUN] control devices .
+36,6,there,DET,ADV,DET,0,DET -> ADV,4,said it believes [there/DET->ADV] are fewer than
+38,9,about,ADP,ADV,ADP,0,ADP -> ADV,26,book value at [about/ADP->ADV] $ 4.75 a
+39,3,executive,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,Mr. Stevens was [executive/NOUN->ADJ] vice president of
+39,9,holding,NOUN,VERB,VERB,0,NOUN -> VERB,76,of this electric-utility [holding/NOUN->VERB] company .
+42,3,compel,VERB,DET,NOUN,1,VERB -> DET,13,That measure could [compel/VERB->DET] Taipei 's growing
+42,17,showing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,movie producers for [showing/VERB->NOUN] their films .
+43,9,about,ADP,ADV,ADP,0,ADP -> ADV,26,is still concerned [about/ADP->ADV] `` disturbing developments
+43,11,disturbing,ADJ,VERB,NOUN,1,ADJ -> VERB,55,concerned about `` [disturbing/ADJ->VERB] developments in Turkey
+44,0,So,ADP,ADV,ADV,0,ADP -> ADV,26,"[So/ADP->ADV] far , Mrs."
+44,11,enough,ADV,ADJ,ADV,0,ADV -> ADJ,31,any cases bad [enough/ADV->ADJ] to merit an
+44,15,accelerated,VERB,ADJ,ADJ,0,VERB -> ADJ,16,to merit an [accelerated/VERB->ADJ] investigation under the
+45,3,Economy,NOUN,DET,NOUN,1,NOUN -> DET,18,The declaration by [Economy/NOUN->DET] Minister Nestor Rapanelli
+48,5,before,ADP,ADV,ADP,0,ADP -> ADV,26,has not said [before/ADP->ADV] that the country
+49,6,The,NOUN,DET,DET,0,NOUN -> DET,18,"centennial year , [The/NOUN->DET] Wall Street Journal"
+49,11,report,VERB,NOUN,NOUN,0,VERB -> NOUN,152,Street Journal will [report/VERB->NOUN] events of the
+49,17,that,DET,ADP,ADP,0,DET -> ADP,41,the past century [that/DET->ADP] stand as milestones
+49,18,stand,VERB,NOUN,VERB,0,VERB -> NOUN,152,past century that [stand/VERB->NOUN] as milestones of
+50,13,desktop,NOUN,DET,NOUN,1,NOUN -> DET,18,product development in [desktop/NOUN->DET] models for the
+51,0,Big,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,[Big/ADJ->NOUN] mainframe computers for
+51,7,around,ADP,ADV,ADP,0,ADP -> ADV,26,business had been [around/ADP->ADV] for years .
+54,0,Following,VERB,ADP,NOUN,1,VERB -> ADP,21,[Following/VERB->ADP] the acquisition of
+54,8,buy-out,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,Scherer by a [buy-out/ADJ->NOUN] group led by
+54,15,earlier,ADJ,ADV,ADJ,0,ADJ -> ADV,31,"Shearson Lehman Hutton [earlier/ADJ->ADV] this year ,"
+54,22,gelatin,NOUN,DET,NOUN,1,NOUN -> DET,18,the maker of [gelatin/NOUN->DET] capsules decided to
+54,32,non-encapsulating,ADJ,VERB,NOUN,1,ADJ -> VERB,55,certain of its [non-encapsulating/ADJ->VERB] businesses .
+55,16,tariff,NOUN,ADP,NOUN,1,NOUN -> ADP,7,58 different U.S. [tariff/NOUN->ADP] classifications .
+56,12,low-priced,ADJ,VERB,NOUN,1,ADJ -> VERB,55,"watches , including [low-priced/ADJ->VERB] battery-operated watches assembled"
+56,13,battery-operated,ADJ,VERB,NOUN,1,ADJ -> VERB,55,", including low-priced [battery-operated/ADJ->VERB] watches assembled in"
+56,27,tariff,NOUN,ADP,NOUN,1,NOUN -> ADP,7,by the U.S. [tariff/NOUN->ADP] preferences .
+57,6,that,DET,ADP,ADP,0,DET -> ADP,41,types of watches [that/DET->ADP] now will be
+57,15,about,ADP,ADV,ADP,0,ADP -> ADV,26,duty-free treatment totaled [about/ADP->ADV] $ 37.3 million
+57,35,that,DET,ADP,ADP,0,DET -> ADP,41,"U.S. watch imports [that/DET->ADP] year , according"
+58,11,resigned,ADJ,VERB,VERB,0,ADJ -> VERB,55,"James McAlpine , [resigned/ADJ->VERB] and its chairman"
+58,21,in,ADV,ADP,ADP,0,ADV -> ADP,18,", is stepping [in/ADV->ADP] to help turn"
+58,26,automotive-parts,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"help turn the [automotive-parts/ADJ->NOUN] manufacturer around ,"
+58,28,around,ADV,ADP,ADP,0,ADV -> ADP,18,"the automotive-parts manufacturer [around/ADV->ADP] , the company"
+60,13,load,NOUN,VERB,VERB,0,NOUN -> VERB,76,a heavy debt [load/NOUN->VERB] as the automotive
+61,7,half,DET,NOUN,DET,0,DET -> NOUN,1,quarterly dividend in [half/DET->NOUN] and the company
+61,13,A,NOUN,DET,DET,0,NOUN -> DET,18,company 's Class [A/NOUN->DET] shares are wallowing
+61,21,high,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,below their 52-week [high/NOUN->ADJ] of 16.125 Canadian
+66,4,together,PRT,ADV,ADV,0,PRT -> ADV,9,fund was put [together/PRT->ADV] by Blackstone Group
+67,2,Pate,NOUN,VERB,NOUN,1,NOUN -> VERB,76,"James L. [Pate/NOUN->VERB] , 54-year-old executive"
+68,10,yen-support,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,Bank of Japan [yen-support/ADJ->NOUN] intervention since June
+70,6,mirrors,VERB,ADP,NOUN,1,VERB -> ADP,21,of country funds [mirrors/VERB->ADP] the `` closed-end
+70,15,1920s,NOUN,NUM,NUM,0,NOUN -> NUM,2,"'' of the [1920s/NOUN->NUM] , Mr. Foot"
+71,2,open-end,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"Unlike traditional [open-end/ADJ->NOUN] mutual funds ,"
+71,9,one-country,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,most of these [one-country/ADJ->NOUN] portfolios are the
+71,24,that,DET,ADP,ADP,0,DET -> ADP,41,number of shares [that/DET->ADP] trade publicly .
+71,25,trade,VERB,NOUN,NOUN,0,VERB -> NOUN,152,of shares that [trade/VERB->NOUN] publicly .
+72,0,Financial,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,[Financial/ADJ->NOUN] planners often urge
+73,14,startling,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,surged to a [startling/ADJ->NOUN] 120 % premium
+77,13,seasonal,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"effects of usual [seasonal/ADJ->NOUN] patterns , but"
+78,22,taper,VERB,NOUN,NOUN,1,VERB -> NOUN,152,is beginning to [taper/VERB->NOUN] off .
+81,10,about,ADP,ADV,ADP,0,ADP -> ADV,26,the economy is [about/ADP->ADV] to slip into
+82,4,that,ADP,DET,ADP,0,ADP -> DET,19,department previously estimated [that/ADP->DET] durable-goods orders fell
+84,14,accounts,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"construction , which [accounts/VERB->NOUN] for nearly half"
+84,24,off,ADJ,PRT,PRT,0,ADJ -> PRT,2,"spending , was [off/ADJ->PRT] 0.9 % in"
+85,7,off,ADJ,PRT,PRT,0,ADJ -> PRT,2,nonresidential construction was [off/ADJ->PRT] 2.6 % to
+85,21,showing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,with no sector [showing/VERB->NOUN] strength .
+86,2,counts,VERB,NOUN,NOUN,0,VERB -> NOUN,152,The goverment [counts/VERB->NOUN] money as it
+86,10,counts,VERB,NOUN,NOUN,0,VERB -> NOUN,152,spent ; Dodge [counts/VERB->NOUN] contracts when they
+87,12,though,ADP,ADV,ADP,0,ADP -> ADV,26,"export growth , [though/ADP->ADV] still continuing ,"
+89,3,that,ADP,DET,ADP,0,ADP -> DET,19,They also said [that/ADP->DET] vendors were delivering
+90,1,demand,NOUN,VERB,NOUN,0,NOUN -> VERB,76,When [demand/NOUN->VERB] is stronger than
+90,7,handle,VERB,NOUN,NOUN,1,VERB -> NOUN,152,than suppliers can [handle/VERB->NOUN] and delivery times
+90,11,lengthen,VERB,NOUN,NOUN,1,VERB -> NOUN,152,"and delivery times [lengthen/VERB->NOUN] , prices tend"
+93,5,whistle,VERB,NOUN,NOUN,1,VERB -> NOUN,152,"Salty Dogs , [whistle/VERB->NOUN] `` Johnny B."
+93,12,watch,VERB,NOUN,VERB,0,VERB -> NOUN,152,Goode '' and [watch/VERB->NOUN] Bugs Bunny reruns
+94,8,much,ADV,ADJ,ADV,0,ADV -> ADJ,31,", drink too [much/ADV->ADJ] and suffer through"
+94,15,desultory,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,broken marriages and [desultory/ADJ->NOUN] affairs .
+95,9,implicit,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,'' carries an [implicit/ADJ->NOUN] message for international
+96,1,'s,VERB,PRT,PRT,0,VERB -> PRT,6,It ['s/VERB->PRT] imaginative and often
+96,2,imaginative,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,It 's [imaginative/ADJ->NOUN] and often funny
+97,5,meets,VERB,NOUN,NOUN,1,VERB -> NOUN,152,"way , he [meets/VERB->NOUN] a solicitous Christian"
+97,8,Christian,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,meets a solicitous [Christian/ADJ->NOUN] chauffeur who offers
+97,9,chauffeur,NOUN,.,NOUN,1,NOUN -> .,5,a solicitous Christian [chauffeur/NOUN->.] who offers the
+97,27,roughhewn,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"a sweet , [roughhewn/ADJ->NOUN] figure who wears"
+97,28,figure,NOUN,VERB,NOUN,0,NOUN -> VERB,76,"sweet , roughhewn [figure/NOUN->VERB] who wears --"
+97,30,wears,VERB,NOUN,NOUN,1,VERB -> NOUN,152,roughhewn figure who [wears/VERB->NOUN] -- what else
+97,35,a,ADJ,DET,DET,0,ADJ -> DET,18,what else -- [a/ADJ->DET] sheepskin .
+98,1,more,ADV,ADJ,ADJ,0,ADV -> ADJ,31,"A [more/ADV->ADJ] recent novel ,"
+98,11,Japanese,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,'' -LRB- every [Japanese/NOUN->ADJ] under 40 seems
+98,17,fluent,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,seems to be [fluent/ADJ->NOUN] in Beatles lyrics
+98,25,more,ADJ,ADV,ADJ,0,ADJ -> ADV,31,", has sold [more/ADJ->ADV] than four million"
+99,11,humble,ADJ,VERB,NOUN,1,ADJ -> VERB,55,", a `` [humble/ADJ->VERB] , uncomplaining ,"
+99,13,uncomplaining,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"`` humble , [uncomplaining/ADJ->NOUN] , obedient soul"
+99,15,obedient,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,", uncomplaining , [obedient/ADJ->NOUN] soul , ''"
+99,16,soul,NOUN,.,NOUN,1,NOUN -> .,5,"uncomplaining , obedient [soul/NOUN->.] , '' as"
+101,6,deputy,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,the Journal 's [deputy/NOUN->ADJ] editorial features editor
+102,5,exempt,ADJ,VERB,NOUN,1,ADJ -> VERB,55,private clubs are [exempt/ADJ->VERB] from the ban
+103,2,bans,VERB,NOUN,NOUN,1,VERB -> NOUN,152,Singapore already [bans/VERB->NOUN] smoking in all
+105,11,multibillion-dollar,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,parliament terminated a [multibillion-dollar/ADJ->NOUN] River Danube dam
+105,18,Austrian,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,being built by [Austrian/ADJ->NOUN] firms .
+109,4,later,ADV,ADJ,ADJ,0,ADV -> ADJ,31,", 13 years [later/ADV->ADJ] , Mr. Lane"
+109,14,full-length,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,Artist in a [full-length/ADJ->NOUN] movie called ``
+110,0,Filmed,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Filmed/VERB->NOUN] in lovely black
+110,2,lovely,ADJ,DET,NOUN,1,ADJ -> DET,18,Filmed in [lovely/ADJ->DET] black and white
+110,3,black,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,Filmed in lovely [black/NOUN->ADJ] and white by
+110,5,white,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,lovely black and [white/NOUN->ADJ] by Bill Dill
+110,20,benign,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,Stories '' seem [benign/ADJ->NOUN] .
+111,17,jostle,VERB,NOUN,NOUN,1,VERB -> NOUN,152,only when they [jostle/VERB->NOUN] for cabs .
+113,11,as,ADV,ADP,ADP,0,ADV -> ADP,18,Mr. Lane had [as/ADV->ADP] strong a presence
+115,0,Yet,ADV,CONJ,CONJ,0,ADV -> CONJ,1,"[Yet/ADV->CONJ] this woman ,"
+115,29,Vichy,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,symbol of the [Vichy/NOUN->ADJ] government 's hypocrisy
+116,1,Vichy,NOUN,DET,NOUN,1,NOUN -> DET,18,While [Vichy/NOUN->DET] collaborated with the
+116,26,symbolic,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,needed a diversionary [symbolic/ADJ->NOUN] traitor .
+117,3,shallow,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,Her remorse was [shallow/ADJ->NOUN] and brief .
+118,12,confused,ADJ,VERB,NOUN,1,ADJ -> VERB,55,", '' a [confused/ADJ->VERB] rendering of the"
+118,13,rendering,NOUN,VERB,NOUN,1,NOUN -> VERB,76,'' a confused [rendering/NOUN->VERB] of the Carlos
+119,5,as,ADP,ADV,ADP,0,ADP -> ADV,26,", as often [as/ADP->ADV] not , the"
+120,7,for,ADV,ADP,ADP,0,ADV -> ADP,18,"commercial , paid [for/ADV->ADP] by Republican Rudolph"
+120,9,Republican,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,paid for by [Republican/NOUN->ADJ] Rudolph Giuliani 's
+121,1,Nasty,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"`` [Nasty/ADJ->NOUN] innuendoes , ''"
+121,24,that,DET,ADP,ADP,0,DET -> ADP,41,of political corruption [that/DET->ADP] simply does n't
+122,7,that,DET,ADP,ADP,0,DET -> ADP,41,situation of ads [that/DET->ADP] are true but
+123,3,interjects,VERB,NOUN,NOUN,1,VERB -> NOUN,152,Then an announcer [interjects/VERB->NOUN] : `` It
+124,0,So,ADV,ADP,ADV,0,ADV -> ADP,18,[So/ADV->ADP] the next time
+124,6,talks,VERB,NOUN,NOUN,0,VERB -> NOUN,152,time Mr. Wilder [talks/VERB->NOUN] about the rights
+127,2,'s,VERB,PRT,PRT,0,VERB -> PRT,6,But it ['s/VERB->PRT] building on a
+128,14,posing,VERB,NOUN,NOUN,1,VERB -> NOUN,152,of domination and [posing/VERB->NOUN] fresh policy questions
+128,15,fresh,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,domination and posing [fresh/ADJ->NOUN] policy questions .
+129,12,whereby,ADV,ADP,NOUN,1,ADV -> ADP,18,`` a process [whereby/ADV->ADP] these economies will
+129,18,together,PRT,ADV,ADV,0,PRT -> ADV,9,will be knitted [together/PRT->ADV] by the great
+131,2,resists,VERB,NOUN,NOUN,1,VERB -> NOUN,152,But it [resists/VERB->NOUN] yielding political ground
+132,5,Southeast,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,swelling investment in [Southeast/NOUN->ADJ] Asia is part
+133,2,past,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,"In the [past/NOUN->ADJ] decade , Japanese"
+134,5,Southeast,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,will help turn [Southeast/NOUN->ADJ] Asia into a
+134,9,more,ADV,ADJ,ADJ,0,ADV -> ADJ,31,Asia into a [more/ADV->ADJ] cohesive economic region
+135,11,parallel,VERB,ADJ,ADJ,0,VERB -> ADJ,16,n't likely to [parallel/VERB->ADJ] the European Common
+135,13,European,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,to parallel the [European/NOUN->ADJ] Common Market approach
+135,14,Common,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,parallel the European [Common/NOUN->ADJ] Market approach .
+136,29,Internatonal,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,for Public and [Internatonal/NOUN->ADJ] Affairs at Princeton
+137,8,together,PRT,ADV,ADV,0,PRT -> ADV,9,to pull Asia [together/PRT->ADV] not as a
+137,17,integrated,ADJ,VERB,VERB,0,ADJ -> VERB,55,"but as an [integrated/ADJ->VERB] production zone ,"
+138,4,as,ADP,ADV,ADP,0,ADP -> ADV,26,"In Asia , [as/ADP->ADV] in Europe ,"
+140,3,voice,VERB,NOUN,NOUN,0,VERB -> NOUN,152,While U.S. officials [voice/VERB->NOUN] optimism about Japan
+140,8,enlarged,ADJ,VERB,NOUN,1,ADJ -> VERB,55,about Japan 's [enlarged/ADJ->VERB] role in Asia
+140,15,convey,VERB,ADP,NOUN,1,VERB -> ADP,21,", they also [convey/VERB->ADP] an undertone of"
+141,11,step,VERB,NOUN,NOUN,0,VERB -> NOUN,152,demand that Tokyo [step/VERB->NOUN] up its military
+141,12,up,PRT,ADP,PRT,0,PRT -> ADP,10,that Tokyo step [up/PRT->ADP] its military spending
+142,13,up,PRT,ADV,PRT,0,PRT -> ADV,9,"and sew it [up/PRT->ADV] , '' says"
+143,3,Comprehensive,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,While giving the [Comprehensive/ADJ->NOUN] Test of Basic
+143,25,crib,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,student looking at [crib/ADJ->NOUN] sheets .
+144,0,Virtually,ADV,NOUN,NOUN,1,ADV -> NOUN,13,[Virtually/ADV->NOUN] word for word
+145,15,school-improvement,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,South Carolina 's [school-improvement/ADJ->NOUN] laws .
+146,2,disturbing,ADJ,VERB,NOUN,1,ADJ -> VERB,55,"And most [disturbing/ADJ->VERB] , it is"
+146,15,much,ADV,ADJ,ADV,0,ADV -> ADJ,31,are blamed for [much/ADV->ADJ] of the wrongdoing
+147,0,High,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,"[High/ADJ->NOUN] test scores ,"
+147,15,a,ADP,DET,DET,0,ADP -> DET,19,extra money -- [a/ADP->DET] new computer lab
+149,3,over,PRT,ADP,ADP,0,PRT -> ADP,10,"Mrs. Ward took [over/PRT->ADP] in 1986 ,"
+149,11,seventh,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,the school 's [seventh/ADJ->NOUN] principal in 15
+152,2,deteriorating,VERB,NOUN,NOUN,1,VERB -> NOUN,152,"Because of [deteriorating/VERB->NOUN] hearing , she"
+153,13,correct,ADJ,VERB,VERB,0,ADJ -> VERB,55,her motives were [correct/ADJ->VERB] .
+158,2,dumbfounded,ADJ,VERB,NOUN,1,ADJ -> VERB,55,"I was [dumbfounded/ADJ->VERB] , '' Mrs."
+158,7,recalls,VERB,NOUN,NOUN,1,VERB -> NOUN,152,'' Mrs. Ward [recalls/VERB->NOUN] .
+159,12,and,ADJ,CONJ,CONJ,0,ADJ -> CONJ,1,legal authorities -- [and/ADJ->CONJ] perhaps as a
+160,8,out,ADP,PRT,PRT,0,ADP -> PRT,5,board of education [out/ADP->PRT] of all this
+163,3,test-practice,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,Worksheets in a [test-practice/ADJ->NOUN] kit called Learning
+163,4,kit,NOUN,.,NOUN,1,NOUN -> .,5,in a test-practice [kit/NOUN->.] called Learning Materials
+165,0,Close,ADJ,DET,NOUN,1,ADJ -> DET,18,[Close/ADJ->DET] parallels between tests
+166,0,Standardized,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,[Standardized/ADJ->NOUN] achievement tests are
+166,20,eighth,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,from kindergarten through [eighth/ADJ->NOUN] grade .
+167,5,that,DET,ADP,ADP,0,DET -> ADP,41,"to the questions [that/DET->ADP] matched , he"
+167,12,coincidental,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,said it was [coincidental/ADJ->NOUN] .
+168,6,the,ADJ,DET,DET,0,ADJ -> DET,18,these subskills -- [the/ADJ->DET] symmetry of geometrical
+168,26,are,NOUN,VERB,VERB,0,NOUN -> VERB,76,for example -- [are/NOUN->VERB] only a small
+169,12,as,ADP,ADV,ADP,0,ADP -> ADV,26,"for abortion , [as/ADP->ADV] does President Bush"
+171,9,recruit,VERB,DET,NOUN,1,VERB -> DET,13,'s efforts to [recruit/VERB->DET] prominent doctors to
+172,10,surgeon,NOUN,DET,NOUN,1,NOUN -> DET,18,"to serve as [surgeon/NOUN->DET] general , reportedly"
+172,11,general,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,"serve as surgeon [general/NOUN->ADJ] , reportedly has"
+173,0,Earlier,ADJ,ADV,ADJ,0,ADJ -> ADV,31,"[Earlier/ADJ->ADV] this week ,"
+173,13,that,ADP,DET,ADP,0,ADP -> DET,19,charges by stressing [that/ADP->DET] candidates to head
+173,16,head,VERB,NOUN,NOUN,0,VERB -> NOUN,152,that candidates to [head/VERB->NOUN] the NIH and
+174,2,disturbing,ADJ,VERB,NOUN,1,ADJ -> VERB,55,`` The [disturbing/ADJ->VERB] thing about this
+174,16,so,ADP,ADV,ADV,0,ADP -> ADV,26,"become polarized , [so/ADP->ADV] that no mechanism"
+174,20,exists,VERB,NOUN,NOUN,1,VERB -> NOUN,152,that no mechanism [exists/VERB->NOUN] '' for finding
+174,23,finding,VERB,NOUN,NOUN,0,VERB -> NOUN,152,exists '' for [finding/VERB->NOUN] a middle ground
+174,25,middle,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,for finding a [middle/ADJ->NOUN] ground .
+175,27,more,ADV,ADJ,ADJ,0,ADV -> ADJ,31,one of the [more/ADV->ADJ] visible foundations to
+175,32,support,NOUN,VERB,VERB,0,NOUN -> VERB,76,"foundations to provide [support/NOUN->VERB] , '' he"
+176,11,damaged,ADJ,VERB,VERB,0,ADJ -> VERB,55,ability to regenerate [damaged/ADJ->VERB] tissues or to
+176,18,that,DET,ADP,ADP,0,DET -> ADP,41,turn off genes [that/DET->ADP] cause cancer ''
+176,19,cause,VERB,NOUN,NOUN,0,VERB -> NOUN,152,off genes that [cause/VERB->NOUN] cancer '' or
+176,26,that,DET,ADP,ADP,0,DET -> ADP,41,to regulate genes [that/DET->ADP] cause Down 's
+176,27,cause,VERB,NOUN,NOUN,0,VERB -> NOUN,152,regulate genes that [cause/VERB->NOUN] Down 's syndrome
+176,33,leading,VERB,ADJ,VERB,0,VERB -> ADJ,16,"syndrome , the [leading/VERB->ADJ] cause of mental"
+177,0,Rekindled,VERB,DET,NOUN,1,VERB -> DET,13,[Rekindled/VERB->DET] hope that two
+177,27,lackluster,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,only slightly in [lackluster/ADJ->NOUN] trading .
+178,10,far,ADJ,ADV,ADV,0,ADJ -> ADV,31,"the year so [far/ADJ->ADV] , daily volume"
+182,6,trade,VERB,NOUN,NOUN,0,VERB -> NOUN,152,banks whose shares [trade/VERB->NOUN] in the OTC
+184,19,third-quarter,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,after reporting a [third-quarter/ADJ->NOUN] loss of $
+184,30,pretax,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,$ 89.9 million [pretax/ADJ->NOUN] charge mostly related
+184,31,charge,NOUN,VERB,NOUN,0,NOUN -> VERB,76,89.9 million pretax [charge/NOUN->VERB] mostly related to
+184,33,related,ADJ,VERB,VERB,0,ADJ -> VERB,55,pretax charge mostly [related/ADJ->VERB] to its mobile
+184,36,mobile,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,related to its [mobile/ADJ->NOUN] home financing unit
+184,38,financing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,its mobile home [financing/VERB->NOUN] unit .
+185,27,preferred,ADJ,VERB,VERB,0,ADJ -> VERB,55,of Heritage Media [preferred/ADJ->VERB] stock that would
+185,29,that,DET,ADP,ADP,0,DET -> ADP,41,Media preferred stock [that/DET->ADP] would be convertible
+185,40,common,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,Heritage Media 's [common/NOUN->ADJ] .
+188,8,criminal,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,at least 100 [criminal/NOUN->ADJ] defense attorneys in
+188,24,outcry,NOUN,VERB,NOUN,1,NOUN -> VERB,76,led to an [outcry/NOUN->VERB] by members of
+188,29,organized,ADJ,VERB,VERB,0,ADJ -> VERB,55,"members of the [organized/ADJ->VERB] bar , who"
+189,0,Filling,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Filling/VERB->NOUN] out detailed forms
+189,8,tip,VERB,ADP,NOUN,1,VERB -> ADP,21,these individuals would [tip/VERB->ADP] the IRS off
+190,8,force,NOUN,VERB,NOUN,0,NOUN -> VERB,76,"formed a task [force/NOUN->VERB] this week ,"
+190,21,deal,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"Lefcourt , to [deal/VERB->NOUN] with the matter"
+193,0,Individuals,NOUN,DET,NOUN,1,NOUN -> DET,18,[Individuals/NOUN->DET] familiar with the
+193,9,that,ADP,DET,ADP,0,ADP -> DET,19,'s policy said [that/ADP->DET] Justice officials had
+193,10,Justice,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,policy said that [Justice/ADJ->NOUN] officials had n't
+195,0,Federal,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,[Federal/ADJ->NOUN] judges make $
+195,14,that,DET,ADP,ADP,0,DET -> ADP,41,rejected a bill [that/DET->ADP] would have increased
+195,19,pay,NOUN,VERB,VERB,0,NOUN -> VERB,76,have increased their [pay/NOUN->VERB] by 50 %
+196,1,CREATOR'S,NOUN,ADP,NOUN,1,NOUN -> ADP,7,DOONESBURY [CREATOR'S/NOUN->ADP] UNION TROUBLES are
+196,6,laughing,ADJ,VERB,VERB,0,ADJ -> VERB,55,TROUBLES are no [laughing/ADJ->VERB] matter .
+198,23,collective-bargaining,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,by a guild [collective-bargaining/ADJ->NOUN] agreement .
+199,12,consists,VERB,NOUN,NOUN,1,VERB -> NOUN,152,said the harassment [consists/VERB->NOUN] mainly of the
+200,9,next,ADP,ADJ,ADJ,0,ADP -> ADJ,5,hearing is scheduled [next/ADP->ADJ] Monday in New
+201,21,that,DET,ADP,ADP,0,DET -> ADP,41,funds for programs [that/DET->ADP] assist a woman
+203,7,calls,NOUN,VERB,VERB,0,NOUN -> VERB,76,Hampton had sparked [calls/NOUN->VERB] for a judicial
+204,4,as,ADP,ADV,ADP,0,ADP -> ADV,26,judge was quoted [as/ADP->ADV] referring to the
+204,32,teenage,ADJ,VERB,NOUN,1,ADJ -> VERB,55,streets picking up [teenage/ADJ->VERB] boys . ''
+205,4,stock-manipulation,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,in the third [stock-manipulation/ADJ->NOUN] trial of GAF
+206,2,&,X,CONJ,CONJ,0,X -> CONJ,1,Cooper Tire [&/X->CONJ] Rubber Co. said
+207,24,cutthroat,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,make about Japanese [cutthroat/ADJ->NOUN] pricing .
+208,5,equivalent,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,it bid the [equivalent/NOUN->ADJ] of less than
+211,15,antitrust-law,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,bids for possible [antitrust-law/ADJ->NOUN] violations .
+212,8,contrary,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,", were `` [contrary/ADJ->NOUN] to common sense"
+213,15,that,DET,ADP,ADP,0,DET -> ADP,41,make a sale [that/DET->ADP] may have long-term
+214,2,there,DET,ADV,DET,0,DET -> ADV,4,So far [there/DET->ADV] have been no
+216,5,limited,ADJ,VERB,VERB,0,ADJ -> VERB,55,that they have [limited/ADJ->VERB] access to government
+216,19,undercut,VERB,ADP,NOUN,1,VERB -> ADP,21,Japanese companies unfairly [undercut/VERB->ADP] them .
+217,7,U.S.-Japan,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"flap would hurt [U.S.-Japan/ADJ->NOUN] relations , Mr."
+217,19,minus,NOUN,CONJ,CONJ,0,NOUN -> CONJ,2,will be a [minus/NOUN->CONJ] factor . ''
+218,6,about,ADV,ADP,ADP,0,ADV -> ADP,18,expected to pay [about/ADV->ADP] 11 million yen
+218,23,free,ADV,ADJ,ADJ,0,ADV -> ADJ,31,do it for [free/ADV->ADJ] .
+220,3,that,ADP,DET,ADP,0,ADP -> DET,19,Mr. Yamamoto insisted [that/ADP->DET] headquarters had n't
+222,12,total,VERB,ADJ,ADJ,0,VERB -> ADJ,16,plants together will [total/VERB->ADJ] about 40 billion
+222,13,about,ADV,ADP,ADP,0,ADV -> ADP,18,together will total [about/ADV->ADP] 40 billion yen
+223,0,Related,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Related/VERB->NOUN] to that decision
+224,4,Woodcliff,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,"Co . -LRB- [Woodcliff/NOUN->ADJ] Lake , N.J"
+225,7,chief,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,former chairman and [chief/ADJ->NOUN] executive officer of
+225,8,executive,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,chairman and chief [executive/ADJ->NOUN] officer of General
+226,16,narrow,ADJ,DET,NOUN,1,ADJ -> DET,18,into a relatively [narrow/ADJ->DET] range in recent
+228,5,U.S.,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,"Thursday , the [U.S./ADJ->NOUN] currency opened for"
+229,25,undisclosed,ADJ,VERB,NOUN,1,ADJ -> VERB,55,role of an [undisclosed/ADJ->VERB] Japanese company in
+230,2,unclear,ADJ,VERB,NOUN,1,ADJ -> VERB,55,It remains [unclear/ADJ->VERB] whether the bond
+230,10,over,PRT,ADP,ADP,0,PRT -> ADP,10,will be rolled [over/PRT->ADP] .
+232,1,point,VERB,NOUN,NOUN,0,VERB -> NOUN,152,They [point/VERB->NOUN] out that these
+232,9,in,PRT,ADP,ADP,0,PRT -> ADP,10,want to lock [in/PRT->ADP] returns on high-yield
+232,25,unabated,ADJ,VERB,NOUN,1,ADJ -> VERB,55,unit will continue [unabated/ADJ->VERB] until rates in
+233,11,slowing,VERB,NOUN,VERB,0,VERB -> NOUN,152,"evidence of a [slowing/VERB->NOUN] U.S. economy ,"
+233,17,note,VERB,NOUN,NOUN,0,VERB -> NOUN,152,", and traders [note/VERB->NOUN] that the market"
+233,27,cues,NOUN,VERB,NOUN,1,NOUN -> VERB,76,has taken its [cues/NOUN->VERB] more from Wall
+234,6,lower,ADV,ADJ,ADJ,0,ADV -> ADJ,31,dollar merely drifted [lower/ADV->ADJ] following the release
+234,14,purchasing,NOUN,VERB,VERB,0,NOUN -> VERB,76,of the U.S. [purchasing/NOUN->VERB] managers ' report
+236,1,early,ADV,ADJ,ADJ,0,ADV -> ADJ,31,In [early/ADV->ADJ] trading in Hong
+237,16,that,DET,ADP,ADP,0,DET -> ADP,41,independent TV stations [that/DET->ADP] air the shows
+237,17,air,VERB,NOUN,NOUN,0,VERB -> NOUN,152,TV stations that [air/VERB->NOUN] the shows .
+238,8,move,NOUN,VERB,NOUN,0,NOUN -> VERB,76,believes Viacom 's [move/NOUN->VERB] is a ``
+238,28,drop,VERB,NOUN,NOUN,0,VERB -> NOUN,152,will continue to [drop/VERB->NOUN] in syndication over
+241,19,that,DET,ADP,ADP,0,DET -> ADP,41,the same folks [that/DET->ADP] are major magazine
+242,7,furious,ADJ,ADP,NOUN,1,ADJ -> ADP,2,"one , is [furious/ADJ->ADP] its Souper Combo"
+242,19,In,NOUN,ADP,ADP,0,NOUN -> ADP,7,the premiere `` [In/NOUN->ADP] the Dumpster ''
+244,23,run,NOUN,VERB,VERB,0,NOUN -> VERB,76,"to make a [run/NOUN->VERB] of it ,"
+244,29,Mike,NOUN,ADP,NOUN,1,NOUN -> ADP,7,", '' says [Mike/NOUN->ADP] White , senior"
+246,5,much,ADJ,ADV,ADV,0,ADJ -> ADV,31,do n't spend [much/ADJ->ADV] on print advertising
+246,7,print,NOUN,VERB,VERB,0,NOUN -> VERB,76,"spend much on [print/NOUN->VERB] advertising , ''"
+248,0,Individual,ADJ,DET,NOUN,1,ADJ -> DET,18,[Individual/ADJ->DET] copies of the
+249,10,publishing,NOUN,VERB,NOUN,0,NOUN -> VERB,76,"Corp. , her [publishing/NOUN->VERB] company , printed"
+253,13,buy-back,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,its $ 70-a-share [buy-back/ADJ->NOUN] plan if pressed
+253,26,tender,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,made an earlier [tender/ADJ->NOUN] offer for Sea
+254,8,hostile,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,ward off a [hostile/ADJ->NOUN] takeover attempt by
+258,13,less,ADJ,ADV,ADJ,0,ADJ -> ADV,31,"10,000 pounds or [less/ADJ->ADV] ."
+260,7,British,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,58-year-old chairman of [British/NOUN->ADJ] Petroleum Co. until
+262,12,real-estate,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,"the region 's [real-estate/ADJ->NOUN] slump , with"
+263,22,leasing,NOUN,VERB,NOUN,1,NOUN -> VERB,76,part of its [leasing/NOUN->VERB] business to the
+266,37,plan,VERB,NOUN,NOUN,0,VERB -> NOUN,152,Rally 's and [plan/VERB->NOUN] to seek a
+267,7,in,PRT,ADP,ADP,0,PRT -> ADP,10,Vineyard Cabernet weighed [in/PRT->ADP] this fall with
+268,2,boast,VERB,ADP,NOUN,1,VERB -> ADP,21,France can [boast/VERB->ADP] the lion 's
+270,7,higher,ADV,ADJ,ADJ,0,ADV -> ADJ,31,", they soared [higher/ADV->ADJ] : La Tache"
+271,6,that,DET,ADP,ADP,0,DET -> ADP,41,certain cult wines [that/DET->ADP] can command these
+271,8,command,VERB,NOUN,NOUN,0,VERB -> NOUN,152,wines that can [command/VERB->NOUN] these higher prices
+273,16,Schaefer,NOUN,VERB,NOUN,1,NOUN -> VERB,76,wine director at [Schaefer/NOUN->VERB] 's in Skokie
+273,29,suburban,ADJ,DET,NOUN,1,ADJ -> DET,18,"top stores in [suburban/ADJ->DET] Chicago , ``"
+273,38,there,ADV,DET,DET,0,ADV -> DET,5,are people out [there/ADV->DET] with very different
+275,9,more,ADV,ADJ,ADJ,0,ADV -> ADJ,31,level are also [more/ADV->ADJ] knowledgeable than they
+275,10,knowledgeable,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,are also more [knowledgeable/ADJ->NOUN] than they were
+275,17,ago,ADV,ADP,ADP,0,ADV -> ADP,18,a few years [ago/ADV->ADP] .
+276,14,Cedric,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,", '' said [Cedric/NOUN->ADJ] Martin of Martin"
+277,21,down,PRT,ADP,ADV,0,PRT -> ADP,10,"just to slow [down/PRT->ADP] movement , but"
+278,1,'s,VERB,PRT,PRT,0,VERB -> PRT,6,It ['s/VERB->PRT] interesting to find
+279,6,clear,ADJ,VERB,ADJ,0,ADJ -> VERB,55,should be fairly [clear/ADJ->VERB] what 's hot
+279,11,and,NOUN,CONJ,CONJ,0,NOUN -> CONJ,2,'s hot -- [and/NOUN->CONJ] what 's not
+281,0,Retail,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,[Retail/ADJ->NOUN] sales also were
+281,5,slow,ADV,VERB,ADJ,0,ADV -> VERB,3,also were reported [slow/ADV->VERB] in most districts
+281,15,big-ticket,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"for discretionary , [big-ticket/ADJ->NOUN] items such as"
+283,14,next,ADP,ADJ,ADJ,0,ADP -> ADJ,5,"notes and bonds [next/ADP->ADJ] week , but"
+283,26,acts,VERB,NOUN,NOUN,1,VERB -> NOUN,152,postponed unless Congress [acts/VERB->NOUN] quickly to lift
+284,3,deputy,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,"Michael Basham , [deputy/NOUN->ADJ] assistant secretary for"
+284,4,assistant,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,"Basham , deputy [assistant/NOUN->ADJ] secretary for federal"
+287,0,Long-term,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,[Long-term/ADJ->NOUN] bond prices rose
+288,0,Continuing,VERB,DET,NOUN,1,VERB -> DET,13,[Continuing/VERB->DET] demand for dollars
+296,3,junk-bond,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,"However , the [junk-bond/ADJ->NOUN] market has collapsed"
+297,3,clear,ADJ,VERB,ADJ,0,ADJ -> VERB,55,It was n't [clear/ADJ->VERB] how NL and
+299,6,subject,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,is on the [subject/NOUN->ADJ] of U.S. direct
+300,33,subject,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,journalists to the [subject/NOUN->ADJ] of recent Japanese
+302,8,ago,ADV,ADP,ADP,0,ADV -> ADP,18,"meetings two months [ago/ADV->ADP] , some U.S."
+302,14,that,ADP,DET,ADP,0,ADP -> DET,19,U.S. officials complained [that/ADP->DET] Japan had n't
+302,19,up,PRT,ADV,PRT,0,PRT -> ADV,9,had n't come [up/PRT->ADV] with specific changes
+303,6,about,ADV,ADP,ADP,0,ADV -> ADP,18,a team of [about/ADV->ADP] 15 MITI and
+304,2,joint-venture,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"In a [joint-venture/ADJ->NOUN] deal , Mitsui"
+304,6,guided,VERB,ADP,NOUN,1,VERB -> ADP,21,"deal , Mitsui [guided/VERB->ADP] Candela through Tokyo"
+306,6,medium-sized,ADJ,VERB,NOUN,1,ADJ -> VERB,55,financed small and [medium-sized/ADJ->VERB] U.S. firms for
+307,9,York-based,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,", the New [York-based/NOUN->ADJ] arm of Mitsubishi"
+308,2,declines,VERB,NOUN,NOUN,0,VERB -> NOUN,152,Mr. Bodner [declines/VERB->NOUN] to comment on
+309,17,working,VERB,ADJ,VERB,0,VERB -> ADJ,16,n't have the [working/VERB->ADJ] capital to make
+310,20,generate,VERB,NOUN,NOUN,1,VERB -> NOUN,152,a company can [generate/VERB->NOUN] . ''
+311,12,more,ADJ,ADV,ADJ,0,ADJ -> ADV,31,last March were [more/ADJ->ADV] than $ 17
+312,23,fiscal,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,its most recent [fiscal/NOUN->ADJ] year and last
+313,3,chief,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,His duties as [chief/ADJ->NOUN] executive will be
+315,5,up,PRT,ADV,PRT,0,PRT -> ADV,9,are being stepped [up/PRT->ADV] .
+317,3,55-year-old,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,`` An active [55-year-old/NOUN->ADJ] in Boca Raton
+317,17,75-year-old,NUM,ADJ,NOUN,1,NUM -> ADJ,1,", while a [75-year-old/NUM->ADJ] in Panama City"
+318,8,about,ADP,ADV,ADP,0,ADP -> ADV,26,n't even thinking [about/ADP->ADV] targeting 10 years
+320,0,Currently,NOUN,ADV,ADV,0,NOUN -> ADV,1,"[Currently/NOUN->ADV] , ShareData has"
+320,4,about,ADV,ADP,ADP,0,ADV -> ADP,18,", ShareData has [about/ADV->ADP] 4.1 million common"
+321,0,Five,NUM,NOUN,NOUN,1,NUM -> NOUN,6,[Five/NUM->NOUN] things you can
+321,9,less,ADJ,ADV,ADJ,0,ADJ -> ADV,31,"$ 15,000 or [less/ADJ->ADV] :"
+322,4,Hawaiian,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,. Take a [Hawaiian/ADJ->NOUN] vacation .
+323,0,4,X,NUM,NUM,0,X -> NUM,1,[4/X->NUM] . Buy a
+325,8,experience,VERB,NOUN,NOUN,0,VERB -> NOUN,152,", you will [experience/VERB->NOUN] the same joy"
+325,30,troubled,VERB,ADJ,ADJ,0,VERB -> ADJ,16,ways to help [troubled/VERB->ADJ] savings institutions and
+327,22,that,ADP,DET,ADP,0,ADP -> DET,19,"trading , arguing [that/ADP->DET] firms could get"
+328,19,stock-index,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,Poor 's 500 [stock-index/NOUN->ADJ] futures pit once
+328,22,once,ADV,ADP,ADV,0,ADV -> ADP,18,stock-index futures pit [once/ADV->ADP] S&P 500 futures
+328,32,equivalent,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,points -- the [equivalent/NOUN->ADJ] of about a
+328,34,about,ADV,ADP,ADP,0,ADV -> ADP,18,the equivalent of [about/ADV->ADP] a 150-point drop
+329,9,happy,ADJ,.,NOUN,1,ADJ -> .,4,would have been [happy/ADJ->.] just writing a
+331,8,ago,ADV,ADP,ADP,0,ADV -> ADP,18,"taken a year [ago/ADV->ADP] , nearly a"
+332,1,one,PRON,NOUN,NUM,0,PRON -> NOUN,1,"No [one/PRON->NOUN] speaks , and"
+332,6,snaking,VERB,NOUN,NOUN,1,VERB -> NOUN,152,", and the [snaking/VERB->NOUN] of the ropes"
+333,0,Far,ADV,NOUN,NOUN,1,ADV -> NOUN,13,[Far/ADV->NOUN] above in the
+333,1,above,ADV,ADP,ADP,0,ADV -> ADP,18,Far [above/ADV->ADP] in the belfry
+333,34,mouth-up,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"inverted , or [mouth-up/ADJ->NOUN] position ."
+334,0,Skilled,ADJ,DET,NOUN,1,ADJ -> DET,18,[Skilled/ADJ->DET] ringers use their
+334,6,advance,VERB,NOUN,NOUN,0,VERB -> NOUN,152,their wrists to [advance/VERB->NOUN] or retard the
+334,8,retard,VERB,ADP,NOUN,1,VERB -> ADP,21,to advance or [retard/VERB->ADP] the next swing
+334,11,swing,NOUN,VERB,VERB,0,NOUN -> VERB,76,"retard the next [swing/NOUN->VERB] , so that"
+334,18,swap,VERB,NOUN,NOUN,0,VERB -> NOUN,152,one bell can [swap/VERB->NOUN] places with another
+334,24,following,ADJ,VERB,VERB,0,ADJ -> VERB,55,another in the [following/ADJ->VERB] change .
+335,2,well-known,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,In a [well-known/ADJ->NOUN] detective-story involving church
+335,14,ringing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,L. Sayers described [ringing/VERB->NOUN] as a ``
+335,20,that,DET,ADP,ADP,0,DET -> ADP,41,`` passion -LCB- [that/DET->ADP] -RCB- finds its
+335,22,finds,VERB,.,NOUN,1,VERB -> .,2,-LCB- that -RCB- [finds/VERB->.] its satisfaction in
+336,10,solemn,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,filled with the [solemn/ADJ->NOUN] intoxication that comes
+336,12,that,DET,ADP,ADP,0,DET -> ADP,41,the solemn intoxication [that/DET->ADP] comes of intricate
+336,15,intricate,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,that comes of [intricate/ADJ->NOUN] ritual faultlessly performed
+336,16,ritual,NOUN,.,NOUN,1,NOUN -> .,5,comes of intricate [ritual/NOUN->.] faultlessly performed .
+338,7,steadily,ADV,ADP,NOUN,1,ADV -> ADP,18,"Church of England [steadily/ADV->ADP] dwindling , strong-willed"
+338,8,dwindling,VERB,NOUN,NOUN,1,VERB -> NOUN,152,"of England steadily [dwindling/VERB->NOUN] , strong-willed vicars"
+338,10,strong-willed,ADJ,VERB,NOUN,1,ADJ -> VERB,55,"steadily dwindling , [strong-willed/ADJ->VERB] vicars are pressing"
+338,15,strong-willed,ADJ,VERB,NOUN,1,ADJ -> VERB,55,are pressing equally [strong-willed/ADJ->VERB] and often non-religious
+340,6,refuses,VERB,NOUN,NOUN,1,VERB -> NOUN,152,"W.D. Jones , [refuses/VERB->NOUN] to talk about"
+340,18,wound,NOUN,VERB,VERB,0,NOUN -> VERB,76,`` reopen the [wound/NOUN->VERB] . ''
+341,7,net,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,bells is a [net/NOUN->ADJ] to draw people
+342,6,growing,VERB,ADJ,VERB,0,VERB -> ADJ,16,is that a [growing/VERB->ADJ] number of women
+342,14,male-dominated,ADJ,VERB,NOUN,1,ADJ -> VERB,55,entered the once [male-dominated/ADJ->VERB] field ; more
+342,17,more,ADJ,ADV,ADJ,0,ADJ -> ADV,31,male-dominated field ; [more/ADJ->ADV] than a third
+344,8,Red-blooded,ADJ,VERB,NOUN,1,ADJ -> VERB,55,"letter as `` [Red-blooded/ADJ->VERB] , balanced male"
+344,10,balanced,ADJ,VERB,NOUN,1,ADJ -> VERB,55,"`` Red-blooded , [balanced/ADJ->VERB] male , ''"
+345,13,more,ADJ,ADV,ADJ,0,ADJ -> ADV,31,raising their payouts [more/ADJ->ADV] than 10 %
+347,8,trends,NOUN,VERB,NOUN,1,NOUN -> VERB,76,say recent dividend [trends/NOUN->VERB] raise another warning
+347,27,even,ADJ,ADV,ADV,0,ADJ -> ADV,31,kept pace with [even/ADJ->ADV] stronger advances in
+348,0,Put,VERB,ADP,NOUN,1,VERB -> ADP,21,"[Put/VERB->ADP] another way ,"
+349,8,escaped,VERB,ADP,NOUN,1,VERB -> ADP,21,and sold shares [escaped/VERB->ADP] the October debacle
+350,6,measure,VERB,NOUN,NOUN,0,VERB -> NOUN,152,tally does n't [measure/VERB->NOUN] the magnitude of
+350,30,next,ADP,ADJ,ADJ,0,ADP -> ADJ,5,slower dividend growth [next/ADP->ADJ] year .
+351,9,much,ADJ,ADV,ADV,0,ADJ -> ADV,31,mixed on how [much/ADJ->ADV] of a boost
+351,12,boost,NOUN,VERB,VERB,0,NOUN -> VERB,76,much of a [boost/NOUN->VERB] the overall stock
+352,9,next,ADP,ADJ,ADJ,0,ADP -> ADJ,5,"corporate earnings likely [next/ADP->ADJ] year , ``"
+352,23,upside,ADV,NOUN,NOUN,1,ADV -> NOUN,13,to have much [upside/ADV->NOUN] from current levels
+353,34,princely,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"Bell for a [princely/ADJ->NOUN] $ 50,000 ,"
+353,40,Western,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,", infringed upon [Western/NOUN->ADJ] Union 's Edison"
+354,17,Western,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,"'s application , [Western/NOUN->ADJ] Union dropped the"
+355,0,Troubled,NOUN,DET,NOUN,1,NOUN -> DET,18,[Troubled/NOUN->DET] NBI Inc. said
+355,6,more,ADJ,ADV,ADJ,0,ADJ -> ADV,31,said it fired [more/ADJ->ADV] than half its
+355,10,work,NOUN,VERB,NOUN,0,NOUN -> VERB,76,than half its [work/NOUN->VERB] force and is
+356,18,manufacture,VERB,NOUN,NOUN,1,VERB -> NOUN,152,it wo n't [manufacture/VERB->NOUN] network computer systems
+356,22,any,ADV,DET,DET,0,ADV -> DET,5,network computer systems [any/ADV->DET] more and will
+357,0,Altogether,ADV,NOUN,NOUN,1,ADV -> NOUN,13,"[Altogether/ADV->NOUN] , NBI said"
+358,3,work,NOUN,VERB,NOUN,0,NOUN -> VERB,76,The company 's [work/NOUN->VERB] force will fall
+358,4,force,NOUN,VERB,NOUN,0,NOUN -> VERB,76,company 's work [force/NOUN->VERB] will fall to
+359,18,A,NOUN,DET,DET,0,NOUN -> DET,18,on its Series [A/NOUN->DET] convertible preferred stock
+359,20,preferred,VERB,ADJ,VERB,0,VERB -> ADJ,16,"Series A convertible [preferred/VERB->ADJ] stock , said"
+360,1,official,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,"One [official/ADJ->NOUN] newspaper , Legal"
+363,0,Shortly,ADV,DET,NOUN,1,ADV -> DET,5,"[Shortly/ADV->DET] afterwards , Mr."
+363,1,afterwards,ADV,NOUN,NOUN,1,ADV -> NOUN,13,"Shortly [afterwards/ADV->NOUN] , Mr. Bush"
+363,9,anti-China,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"a series of [anti-China/ADJ->NOUN] sanctions , including"
+363,16,high-level,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"suspension of most [high-level/ADJ->NOUN] talks , which"
+364,26,top-level,ADJ,DET,NOUN,1,ADJ -> DET,18,of talks with [top-level/ADJ->DET] Chinese officials .
+367,7,Financial,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,`` Japan 's [Financial/ADJ->NOUN] Firms Lure Science
+367,8,Firms,NOUN,ADP,NOUN,1,NOUN -> ADP,7,Japan 's Financial [Firms/NOUN->ADP] Lure Science Graduates
+367,9,Lure,VERB,NOUN,NOUN,1,VERB -> NOUN,152,'s Financial Firms [Lure/VERB->NOUN] Science Graduates ''
+367,13,states,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"Science Graduates '' [states/VERB->NOUN] , `` Industrial"
+367,16,Industrial,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,"states , `` [Industrial/ADJ->NOUN] companies are accusing"
+367,23,jeopardizing,VERB,DET,NOUN,1,VERB -> DET,13,financial institutions of [jeopardizing/VERB->DET] Japan 's economy
+369,7,higher-salaried,ADJ,VERB,NOUN,1,ADJ -> VERB,55,to choose a [higher-salaried/ADJ->VERB] job .
+370,6,page-one,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,your Oct. 9 [page-one/NOUN->ADJ] article `` Barbara
+370,11,Earns,VERB,NOUN,NOUN,1,VERB -> NOUN,152,`` Barbara Bush [Earns/VERB->NOUN] Even Higher Ratings
+370,27,define,VERB,ADJ,NOUN,1,VERB -> ADJ,16,you must continually [define/VERB->ADJ] blacks by our
+372,30,improper,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,", for alleged [improper/ADJ->NOUN] use of a"
+372,31,use,NOUN,VERB,VERB,0,NOUN -> VERB,76,for alleged improper [use/NOUN->VERB] of a customer
+378,0,Except,ADP,VERB,NOUN,1,ADP -> VERB,3,"[Except/ADP->VERB] where noted ,"
+380,1,following,NOUN,VERB,VERB,0,NOUN -> VERB,76,The [following/NOUN->VERB] were barred or
+380,106,one-week,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"7,500 fine and [one-week/ADJ->NOUN] suspension ; Richard"
+380,194,Leroy,NOUN,ADP,NOUN,1,NOUN -> ADP,7,"suspension ; Orville [Leroy/NOUN->ADP] Sandberg , Aurora"
+382,18,overlap,VERB,NOUN,NOUN,1,VERB -> NOUN,152,hours do n't [overlap/VERB->NOUN] .
+383,4,off,ADV,PRT,PRT,0,ADV -> PRT,2,trading has taken [off/ADV->PRT] in Japan since
+383,13,home-market,ADJ,DET,NOUN,1,ADJ -> DET,18,'s introduction of [home-market/ADJ->DET] stock-index futures trading
+383,14,stock-index,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,introduction of home-market [stock-index/NOUN->ADJ] futures trading on
+384,5,leap,NOUN,VERB,NOUN,1,NOUN -> VERB,76,n't forgotten the [leap/NOUN->VERB] in share prices
+384,23,skyward,ADV,NOUN,NOUN,1,ADV -> NOUN,13,arbitrage drove stocks [skyward/ADV->NOUN] in the last
+384,31,startling,ADJ,VERB,NOUN,1,ADJ -> VERB,55,"of trading , [startling/ADJ->VERB] regulators who thought"
+384,42,such,DET,ADJ,ADJ,0,DET -> ADJ,3,rules to prevent [such/DET->ADJ] a swing .
+384,44,swing,NOUN,VERB,VERB,0,NOUN -> VERB,76,prevent such a [swing/NOUN->VERB] .
+386,40,futures-related,ADJ,VERB,NOUN,1,ADJ -> VERB,55,"offer sophisticated , [futures-related/ADJ->VERB] investment strategies to"
+388,1,serves,VERB,NOUN,NOUN,1,VERB -> NOUN,152,London [serves/VERB->NOUN] increasingly as a
+389,0,First,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,"[First/ADJ->NOUN] , the trading"
+389,14,either,CONJ,DET,DET,0,CONJ -> DET,2,n't reported on [either/CONJ->DET] the U.S. or
+390,4,index-arbitrage,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,has two main [index-arbitrage/NOUN->ADJ] instruments .
+392,6,replete,ADJ,VERB,NOUN,1,ADJ -> VERB,55,after a debate [replete/ADJ->VERB] with complaints from
+393,28,less,ADJ,ADV,ADJ,0,ADJ -> ADV,31,will still be [less/ADJ->ADV] than 35 %
+393,35,pay,NOUN,VERB,VERB,0,NOUN -> VERB,76,"of average factory [pay/NOUN->VERB] , Mr. Williams"
+395,2,training-wage,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,Adopting a [training-wage/ADJ->NOUN] policy means ``
+395,11,diming,NOUN,VERB,NOUN,1,NOUN -> VERB,76,the nickel and [diming/NOUN->VERB] of the minimum
+397,4,Can,VERB,NOUN,NOUN,1,VERB -> NOUN,152,question now : [Can/VERB->NOUN] he act more
+397,9,hard-charging,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,act more like [hard-charging/ADJ->NOUN] Teddy Roosevelt ?
+400,20,spending,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"18 , after [spending/VERB->NOUN] only 2 1\/2"
+401,3,doctorate,NOUN,VERB,NOUN,1,NOUN -> VERB,76,He earned his [doctorate/NOUN->VERB] in nuclear physics
+402,5,that,DET,ADP,ADP,0,DET -> ADP,41,sold one unit [that/DET->ADP] made vinyl checkbook
+402,7,vinyl,NOUN,DET,NOUN,1,NOUN -> DET,18,unit that made [vinyl/NOUN->DET] checkbook covers .
+402,9,covers,NOUN,VERB,VERB,0,NOUN -> VERB,76,made vinyl checkbook [covers/NOUN->VERB] .
+403,4,buffet,VERB,NOUN,NOUN,1,VERB -> NOUN,152,idea was to [buffet/VERB->NOUN] building products from
+405,35,English-speaking,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,be allocated to [English-speaking/ADJ->NOUN] countries of the
+406,17,scenic,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"to provide a [scenic/ADJ->NOUN] view , ''"
+407,15,cast-iron,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"replaced , the [cast-iron/ADJ->NOUN] medallions from its"
+409,18,bottom,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,deal : The [bottom/NOUN->ADJ] half of the
+409,38,floral,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,old bridge 's [floral/ADJ->NOUN] pattern .
+410,0,Drink,NOUN,DET,NOUN,1,NOUN -> DET,18,[Drink/NOUN->DET] Carrier Competes With
+410,2,Competes,VERB,NOUN,NOUN,1,VERB -> NOUN,152,Drink Carrier [Competes/VERB->NOUN] With Cartons
+411,2,acknowledges,VERB,ADP,NOUN,1,VERB -> ADP,21,The company [acknowledges/VERB->ADP] some problems .
+412,12,yet,CONJ,ADV,ADV,0,CONJ -> ADV,1,"public muster , [yet/CONJ->ADV] close enough to"
+412,13,close,ADV,VERB,NOUN,0,ADV -> VERB,3,"muster , yet [close/ADV->VERB] enough to permit"
+413,1,medium-sized,ADJ,VERB,NOUN,1,ADJ -> VERB,55,A [medium-sized/ADJ->VERB] one in Brooklyn
+413,14,up,ADP,ADV,PRT,0,ADP -> ADV,26,"altered to house [up/ADP->ADV] to 1,000 inmates"
+413,28,upstate,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,new prison in [upstate/ADJ->NOUN] New York .
+414,18,alleged,VERB,ADJ,VERB,0,VERB -> ADJ,16,4.3 million for [alleged/VERB->ADJ] safety violations at
+416,5,future,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,"look to the [future/NOUN->ADJ] , preventing homelessness"
+417,6,sleep,NOUN,VERB,VERB,0,NOUN -> VERB,76,"three weeks of [sleep/NOUN->VERB] deprivation , you"
+417,13,touch,NOUN,VERB,VERB,0,NOUN -> VERB,76,'re scarcely in [touch/NOUN->VERB] with reality any
+417,17,more,ADV,ADJ,ADJ,0,ADV -> ADJ,31,with reality any [more/ADV->ADJ] ; without psychiatric
+418,12,grim,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"economy into the [grim/ADJ->NOUN] , brutal world"
+418,14,brutal,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"the grim , [brutal/ADJ->NOUN] world of our"
+419,3,what,DET,PRON,PRON,0,DET -> PRON,1,"Once there , [what/DET->PRON] ways of escape"
+419,8,open,ADJ,VERB,ADJ,0,ADJ -> VERB,55,of escape are [open/ADJ->VERB] to them other
+419,13,drink,NOUN,VERB,NOUN,1,NOUN -> VERB,76,"them other than [drink/NOUN->VERB] , drugs or"
+420,1,dismiss,VERB,NOUN,NOUN,1,VERB -> NOUN,152,You [dismiss/VERB->NOUN] as `` sentimental
+420,4,sentimental,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,dismiss as `` [sentimental/ADJ->NOUN] '' the view
+420,13,housing-assistance,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,reduction of federal [housing-assistance/ADJ->NOUN] programs by 77
+421,9,force,NOUN,VERB,NOUN,0,NOUN -> VERB,76,profit the driving [force/NOUN->VERB] behind those who
+421,17,advertise,VERB,NOUN,NOUN,1,VERB -> NOUN,152,"to , and [advertise/VERB->NOUN] in , your"
+422,17,conduct,VERB,NOUN,NOUN,0,VERB -> NOUN,152,I suggest you [conduct/VERB->NOUN] your own survey
+423,0,Choose,VERB,ADP,NOUN,1,VERB -> ADP,21,[Choose/VERB->ADP] 203 business executives
+423,18,out,ADP,PRT,PRT,0,ADP -> PRT,5,and put them [out/ADP->PRT] on the streets
+424,5,cable,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,for the Toronto [cable/NOUN->ADJ] television and telecommunications
+426,23,review,VERB,NOUN,NOUN,0,VERB -> NOUN,152,the chance to [review/VERB->NOUN] in advance transactions
+427,14,that,DET,ADP,ADP,0,DET -> ADP,41,on airline acquisitions [that/DET->ADP] would so load
+427,26,impede,VERB,DET,NOUN,1,VERB -> DET,13,that it would [impede/VERB->DET] safety or a
+431,3,first-rate,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,It does a [first-rate/ADJ->NOUN] job .
+432,1,Nor,CONJ,NOUN,NOUN,1,CONJ -> NOUN,1,`` [Nor/CONJ->NOUN] are you free
+432,6,reprint,VERB,DET,NOUN,1,VERB -> DET,13,"you free to [reprint/VERB->DET] such material ,"
+434,20,notwithstanding,ADP,VERB,NOUN,1,ADP -> VERB,3,"the materials , [notwithstanding/ADP->VERB] the statutory designations"
+434,22,statutory,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,", notwithstanding the [statutory/ADJ->NOUN] designations , because"
+434,40,appearing,VERB,NOUN,NOUN,1,VERB -> NOUN,152,of any person [appearing/VERB->NOUN] and requesting to
+437,5,out,ADP,PRT,PRT,0,ADP -> PRT,5,McGovern was forced [out/ADP->PRT] as Campbell Soup
+437,24,that,DET,ADP,ADP,0,DET -> ADP,41,of the power [that/DET->ADP] Dorrance family members
+437,30,wield,VERB,NOUN,NOUN,1,VERB -> NOUN,152,members intend to [wield/VERB->NOUN] in reshaping the
+440,9,much,ADJ,ADV,ADV,0,ADJ -> ADV,31,Mr. Harper has [much/ADJ->ADV] international experience .
+446,2,applaud,VERB,ADP,NOUN,1,VERB -> ADP,21,Analysts generally [applaud/VERB->ADP] the performance of
+448,10,exuded,VERB,ADP,NOUN,1,VERB -> ADP,21,", both men [exuded/VERB->ADP] confidence and seemed"
+454,1,average,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,The [average/NOUN->ADJ] of interbank offered
+459,4,centers,VERB,NOUN,NOUN,0,VERB -> NOUN,152,on his successor [centers/VERB->NOUN] on a number
+459,10,heads,NOUN,VERB,VERB,0,NOUN -> VERB,76,number of division [heads/NOUN->VERB] at the house
+461,4,most-likely-successor,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,included on the [most-likely-successor/ADJ->NOUN] list are Joni
+461,13,ago,ADP,ADV,ADP,0,ADP -> ADV,26,recruited two years [ago/ADP->ADV] to be publisher
+461,26,Sonny,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,"House , and [Sonny/NOUN->ADJ] Mehta , president"
+462,4,tall,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"Bernstein , a [tall/ADJ->NOUN] , energetic man"
+462,19,much,ADJ,ADV,ADV,0,ADJ -> ADV,31,", has spent [much/ADJ->ADV] of his time"
+464,14,that,DET,ADP,ADP,0,DET -> ADP,41,the appropriations clause [that/DET->ADP] is erroneous and
+464,16,erroneous,ADJ,.,NOUN,1,ADJ -> .,4,clause that is [erroneous/ADJ->.] and unconstitutional .
+465,3,states,VERB,NOUN,NOUN,0,VERB -> NOUN,152,The appropriations clause [states/VERB->NOUN] that `` No
+466,9,Constitutional,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,clause at the [Constitutional/NOUN->ADJ] Convention of 1787
+467,46,void,ADJ,.,NOUN,1,ADJ -> .,4,", and thus [void/ADJ->.] and severable ."
+468,2,places,VERB,NOUN,NOUN,0,VERB -> NOUN,152,Article II [places/VERB->NOUN] on the president
+468,19,Consent,NOUN,VERB,NOUN,1,NOUN -> VERB,76,the Advice and [Consent/NOUN->VERB] of the Senate
+468,24,appoint,VERB,NOUN,NOUN,1,VERB -> NOUN,152,"the Senate '' [appoint/VERB->NOUN] , ambassadors ,"
+469,9,choosing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,this restriction by [choosing/VERB->NOUN] people willing to
+469,22,voluntary,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,Anti-Deficiency Act prohibits [voluntary/ADJ->NOUN] service to the
+470,11,inquiring,VERB,NOUN,NOUN,1,VERB -> NOUN,152,branch officials from [inquiring/VERB->NOUN] into whether certain
+470,23,more,ADJ,ADV,ADJ,0,ADJ -> ADV,31,sense or proposing [more/ADJ->ADV] market-oriented alternatives to
+470,24,market-oriented,ADJ,VERB,NOUN,1,ADJ -> VERB,55,or proposing more [market-oriented/ADJ->VERB] alternatives to regulations
+471,2,amounts,VERB,NOUN,NOUN,0,VERB -> NOUN,152,This provision [amounts/VERB->NOUN] to a legislative
+471,18,one-house,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,", since a [one-house/ADJ->NOUN] resolution could be"
+471,35,bicameral,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,would require neither [bicameral/ADJ->NOUN] action in Congress
+472,10,that,ADP,DET,ADP,0,ADP -> DET,19,v. Chadha held [that/ADP->DET] legislative vetoes are
+473,3,veto,VERB,NOUN,NOUN,0,VERB -> NOUN,152,President Bush should [veto/VERB->NOUN] appropriations acts that
+473,6,that,DET,ADP,ADP,0,DET -> ADP,41,veto appropriations acts [that/DET->ADP] contain these kinds
+473,19,discharge,VERB,NOUN,NOUN,1,VERB -> NOUN,152,'s ability to [discharge/VERB->NOUN] his duties and
+475,12,that,DET,ADP,ADP,0,DET -> ADP,41,from the court [that/DET->ADP] is a vindication
+476,18,later,ADJ,ADV,ADJ,0,ADJ -> ADV,31,Duke Law Journal [later/ADJ->ADV] this year .
+477,1,less,ADJ,ADV,ADJ,0,ADJ -> ADV,31,"In [less/ADJ->ADV] parched areas ,"
+478,10,disaster-assistance,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,$ 4 billion [disaster-assistance/ADJ->NOUN] package enacted by
+479,15,close,ADV,VERB,NOUN,0,ADV -> VERB,3,cattle inventory dropped [close/ADV->VERB] to a 30-year
+479,19,low,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,to a 30-year [low/NOUN->ADJ] .
+482,14,blue-collar,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,Hearst readership -- [blue-collar/ADJ->NOUN] and sports-oriented --
+482,16,sports-oriented,ADJ,VERB,NOUN,1,ADJ -> VERB,55,-- blue-collar and [sports-oriented/ADJ->VERB] -- and trying
+482,23,sprightly,ADJ,ADV,NOUN,1,ADJ -> ADV,31,"to provide a [sprightly/ADJ->ADV] , upscale alternative"
+482,25,upscale,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,"a sprightly , [upscale/ADJ->NOUN] alternative to the"
+483,8,long,ADV,ADJ,ADJ,0,ADV -> ADJ,31,paper alive as [long/ADV->ADJ] as it did
+488,0,Outside,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"[Outside/ADJ->NOUN] , a young"
+488,5,filling,VERB,NOUN,NOUN,0,VERB -> NOUN,152,a young pressman [filling/VERB->NOUN] a news box
+488,17,Closes,VERB,NOUN,NOUN,1,VERB -> NOUN,152,`` Herald Examiner [Closes/VERB->NOUN] '' refused to
+489,15,that,DET,ADP,ADP,0,DET -> ADP,41,avoid a default [that/DET->ADP] could lead to
+490,15,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,home without the [American/NOUN->ADJ] Express card .
+491,0,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,[American/NOUN->ADJ] Express Co. and
+491,13,forces,NOUN,VERB,NOUN,0,NOUN -> VERB,76,division are joining [forces/NOUN->VERB] in a promotion
+491,19,boosting,VERB,NOUN,NOUN,1,VERB -> NOUN,152,promotion aimed at [boosting/VERB->NOUN] Buick 's sales
+491,29,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,use of the [American/NOUN->ADJ] Express card .
+492,12,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,", because the [American/NOUN->ADJ] Express green card"
+493,3,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,Mr. Riese says [American/NOUN->ADJ] Express considers GM
+493,12,direct-mail,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"`` very sophisticated [direct-mail/ADJ->NOUN] marketers , ''"
+493,16,so,ADP,ADV,ADV,0,ADP -> ADV,26,"marketers , '' [so/ADP->ADV] `` by joining"
+493,20,forces,NOUN,VERB,NOUN,0,NOUN -> VERB,76,`` by joining [forces/NOUN->VERB] with them we
+493,29,direct-mail,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,to maximize our [direct-mail/ADJ->NOUN] capability . ''
+494,0,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,[American/NOUN->ADJ] Express has more
+494,3,more,ADJ,ADV,ADJ,0,ADJ -> ADV,31,American Express has [more/ADJ->ADV] than 24 million
+495,0,Three,NUM,NOUN,NOUN,0,NUM -> NOUN,6,[Three/NUM->NOUN] divisions at American
+495,3,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,Three divisions at [American/NOUN->ADJ] Express are working
+495,26,that,DET,ADP,ADP,0,DET -> ADP,41,merchants and companies [that/DET->ADP] accept the card
+496,12,much,ADJ,ADV,ADV,0,ADJ -> ADV,31,accounted for as [much/ADJ->ADV] as 10 %
+499,21,that,ADP,DET,ADP,0,ADP -> DET,19,", who argued [that/ADP->DET] local councils are"
+499,34,capital-markets,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,engage in such [capital-markets/ADJ->NOUN] activities .
+500,10,most,ADV,ADJ,ADJ,0,ADV -> ADJ,31,by far the [most/ADV->ADJ] active local authority
+500,14,engaging,VERB,ADJ,ADJ,0,VERB -> ADJ,16,active local authority [engaging/VERB->ADJ] in such capital-markets
+500,17,capital-markets,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"engaging in such [capital-markets/ADJ->NOUN] transactions , the"
+502,9,shaken,VERB,NOUN,NOUN,1,VERB -> NOUN,152,Street has been [shaken/VERB->NOUN] by an explosion
+502,22,lightning-fast,ADJ,DET,NOUN,1,ADJ -> DET,18,"the computer-driven , [lightning-fast/ADJ->DET] trades of huge"
+502,31,that,DET,ADP,ADP,0,DET -> ADP,41,stocks and futures [that/DET->ADP] can send stock
+506,7,premier,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,the nation 's [premier/ADJ->NOUN] stock exchange --
+509,18,most,ADV,ADJ,ADJ,0,ADV -> ADJ,31,"arbitrage , the [most/ADV->ADJ] controversial type of"
+511,31,subject,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,authority on the [subject/NOUN->ADJ] .
+512,23,trading,NOUN,VERB,NOUN,0,NOUN -> VERB,76,made some program [trading/NOUN->VERB] impossible .
+516,11,up,ADP,ADV,PRT,0,ADP -> ADV,26,traders to give [up/ADP->ADV] .
+517,10,20s,NUM,NOUN,NOUN,1,NUM -> NOUN,6,millionaires in their [20s/NUM->NOUN] and 30s .
+518,10,',.,PRT,PRT,0,. -> PRT,1,in jeopardy . ['/.->PRT] ''
+522,30,long,ADV,ADJ,ADJ,0,ADV -> ADJ,31,trade them for [long/ADV->ADJ] at prices that
+522,33,that,DET,ADP,ADP,0,DET -> ADP,41,long at prices [that/DET->ADP] are widely different
+524,6,attempt,NOUN,VERB,NOUN,0,NOUN -> VERB,76,Stock Exchange 's [attempt/NOUN->VERB] to introduce a
+524,18,desires,NOUN,VERB,NOUN,1,NOUN -> VERB,76,of investors ' [desires/NOUN->VERB] to make fast
+524,21,fast,ADJ,ADV,ADV,0,ADJ -> ADV,31,desires to make [fast/ADJ->ADV] and easy transactions
+526,36,handle,VERB,NOUN,NOUN,1,VERB -> NOUN,152,an exchange to [handle/VERB->NOUN] .
+527,15,overseas,ADV,ADJ,ADJ,0,ADV -> ADJ,31,"U.S. , then [overseas/ADV->ADJ] ."
+528,0,Eliminate,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Eliminate/VERB->NOUN] arbitrage and liquidity
+529,0,Encouraging,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Encouraging/VERB->NOUN] long-term investing .
+529,2,investing,NOUN,VERB,VERB,0,NOUN -> VERB,76,Encouraging long-term [investing/NOUN->VERB] .
+530,20,undergoing,VERB,DET,NOUN,1,VERB -> DET,13,market conditions were [undergoing/VERB->DET] change -LRB- 1973-75
+531,0,Could,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Could/VERB->NOUN] rising volatility possibly
+531,20,program-trading,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,evil deeds of [program-trading/NOUN->ADJ] goblins ?
+532,3,playing,NOUN,VERB,VERB,0,NOUN -> VERB,76,Getting a level [playing/NOUN->VERB] field .
+533,9,cater,VERB,NOUN,NOUN,1,VERB -> NOUN,152,money managers who [cater/VERB->NOUN] to smaller investors
+534,21,index-fund,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,"performance , while [index-fund/NOUN->ADJ] managers slowly amass"
+535,1,sad,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,The [sad/ADJ->NOUN] reality is that
+535,13,first,ADV,ADJ,ADJ,0,ADV -> ADJ,31,"pursue stellar performers [first/ADV->ADJ] , while leaving"
+535,19,grapple,VERB,NOUN,NOUN,1,VERB -> NOUN,152,leaving institutions to [grapple/VERB->NOUN] with basis points
+536,17,high-volume,ADJ,VERB,NOUN,1,ADJ -> VERB,55,"to serve their [high-volume/ADJ->VERB] clients , here"
+536,22,overseas,ADV,ADJ,ADJ,0,ADV -> ADJ,31,", here or [overseas/ADV->ADJ] ."
+537,13,trade,VERB,NOUN,NOUN,0,VERB -> NOUN,152,cheaper ways to [trade/VERB->NOUN] and transfer capital
+537,15,transfer,VERB,NOUN,NOUN,1,VERB -> NOUN,152,to trade and [transfer/VERB->NOUN] capital among all
+538,9,about,ADP,ADV,ADP,0,ADP -> ADV,26,"70 million , [about/ADP->ADV] $ 34 million"
+540,0,Corporate,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,[Corporate/ADJ->NOUN] lawyers said the
+540,8,inhibit,VERB,DET,NOUN,1,VERB -> DET,13,fees would n't [inhibit/VERB->DET] many mergers or
+544,4,million-a-year,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"a $ 300 [million-a-year/ADJ->NOUN] business , 900"
+544,20,near,ADP,ADJ,ADP,0,ADP -> ADJ,5,next year and [near/ADP->ADJ] $ 2 billion
+545,15,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,Andrea West of [American/NOUN->ADJ] Telephone & Telegraph
+546,3,that,DET,ADP,ADP,0,DET -> ADP,41,`` The thing [that/DET->ADP] will really break
+546,9,right,ADV,NOUN,NOUN,0,ADV -> NOUN,13,break this market [right/ADV->NOUN] open is merchandising
+546,10,open,ADJ,VERB,ADJ,0,ADJ -> VERB,55,"this market right [open/ADJ->VERB] is merchandising ,"
+547,3,canine,ADJ,.,NOUN,1,ADJ -> .,4,Patients who receive [canine/ADJ->.] or feline visitors
+547,5,feline,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,receive canine or [feline/ADJ->NOUN] visitors are found
+547,19,more,ADV,ADJ,ADJ,0,ADV -> ADJ,31,appetite and be [more/ADV->ADJ] receptive to therapy
+547,20,receptive,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"and be more [receptive/ADJ->NOUN] to therapy ,"
+547,22,therapy,NOUN,VERB,NOUN,1,NOUN -> VERB,76,"more receptive to [therapy/NOUN->VERB] , says Mary"
+549,5,day-care,ADJ,DET,NOUN,1,ADJ -> DET,18,new customers : [day-care/ADJ->DET] centers that previously
+549,7,that,DET,ADP,ADP,0,DET -> ADP,41,: day-care centers [that/DET->ADP] previously spurned the
+550,16,more,ADJ,ADV,ADJ,0,ADJ -> ADV,31,it has gotten [more/ADJ->ADV] than 672 inquiries
+550,22,interested,ADJ,VERB,ADJ,0,ADJ -> VERB,55,inquiries from people [interested/ADJ->VERB] in starting diaper
+551,8,covers,NOUN,VERB,VERB,0,NOUN -> VERB,76,cloth : diaper [covers/NOUN->VERB] with Velcro fasteners
+551,12,that,DET,ADP,ADP,0,DET -> ADP,41,with Velcro fasteners [that/DET->ADP] eliminate the need
+553,3,dislike,NOUN,VERB,VERB,0,NOUN -> VERB,76,Mr. Egnuss 's [dislike/NOUN->VERB] of program trading
+554,1,notes,VERB,NOUN,NOUN,0,VERB -> NOUN,152,He [notes/VERB->NOUN] that program traders
+554,36,earlier,ADJ,ADV,ADJ,0,ADJ -> ADV,31,can figure out [earlier/ADJ->ADV] where the market
+555,4,sound,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,'s not a [sound/ADJ->NOUN] thing ; there
+555,7,there,DET,ADV,DET,0,DET -> ADV,4,sound thing ; [there/DET->ADV] 's no inherent
+555,8,'s,VERB,PRT,PRT,0,VERB -> PRT,6,thing ; there ['s/VERB->PRT] no inherent virtue
+559,2,that,ADP,DET,ADP,0,ADP -> DET,19,He adds [that/ADP->DET] program trading ``
+559,6,increases,VERB,NOUN,NOUN,0,VERB -> NOUN,152,program trading `` [increases/VERB->NOUN] liquidity in the
+560,12,comments,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"insurance-company lawyer , [comments/VERB->NOUN] that program trading"
+560,17,increases,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"program trading `` [increases/VERB->NOUN] volatility , but"
+562,11,more,ADV,ADJ,ADJ,0,ADV -> ADJ,31,you might be [more/ADV->ADJ] leery about program
+562,12,leery,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,might be more [leery/ADJ->NOUN] about program trading
+567,8,upset,ADJ,VERB,VERB,0,ADJ -> VERB,55,get yourself too [upset/ADJ->VERB] about these things
+568,4,that,ADP,DET,ADP,0,ADP -> DET,19,Underwood family said [that/ADP->DET] holders of more
+569,1,conduct,VERB,NOUN,NOUN,0,VERB -> NOUN,152,Superconductors [conduct/VERB->NOUN] electricity without resistance
+571,13,bombarding,VERB,NOUN,NOUN,1,VERB -> NOUN,152,crystal changes by [bombarding/VERB->NOUN] superconductor samples with
+571,21,that,DET,ADP,ADP,0,DET -> ADP,41,", a process [that/DET->ADP] creates some radioactivity"
+571,34,large-scale,ADJ,DET,NOUN,1,ADJ -> DET,18,be feasible for [large-scale/ADJ->DET] commercial use .
+572,6,changes,VERB,NOUN,NOUN,0,VERB -> NOUN,152,said the crystal [changes/VERB->NOUN] his team introduced
+573,0,Separately,ADV,NOUN,NOUN,0,ADV -> NOUN,13,"[Separately/ADV->NOUN] , Citadel posted"
+573,19,versus,CONJ,DET,NOUN,1,CONJ -> DET,2,"a share , [versus/CONJ->DET] net income of"
+573,35,earlier,ADJ,ADV,ADJ,0,ADJ -> ADV,31,", a year [earlier/ADJ->ADV] ."
+574,3,operating,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"In addition , [operating/VERB->NOUN] results were hit"
+575,1,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,In [American/NOUN->ADJ] Stock Exchange composite
+582,12,equity-purchase,ADJ,DET,NOUN,1,ADJ -> DET,18,"1993 , with [equity-purchase/ADJ->DET] warrants , indicating"
+584,0,Put,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Put/VERB->NOUN] option March 31
+585,0,Put,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Put/VERB->NOUN] option on Dec.
+587,6,concede,VERB,ADP,NOUN,1,VERB -> ADP,21,", its backers [concede/VERB->ADP] the ballpark is"
+588,21,endorse,VERB,ADP,NOUN,1,VERB -> ADP,21,", wo n't [endorse/VERB->ADP] the new ballpark"
+589,23,own,ADJ,VERB,ADJ,0,ADJ -> VERB,55,'' of their [own/ADJ->VERB] with the voters
+591,18,earlier,ADJ,ADV,ADJ,0,ADJ -> ADV,31,pence a year [earlier/ADJ->ADV] .
+593,2,'s,VERB,PRT,PRT,0,VERB -> PRT,6,But Moody ['s/VERB->PRT] warned that Shearson
+593,4,that,ADP,DET,ADP,0,ADP -> DET,19,Moody 's warned [that/ADP->DET] Shearson 's commercial
+593,17,that,DET,ADP,ADP,0,DET -> ADP,41,", a move [that/DET->ADP] would reduce Shearson"
+593,28,signal,VERB,NOUN,NOUN,0,VERB -> NOUN,152,its borrowings and [signal/VERB->NOUN] trouble ahead for
+595,6,Catch-22,NOUN,NUM,NOUN,1,NOUN -> NUM,2,"is facing a [Catch-22/NOUN->NUM] situation , ''"
+597,21,rebounding,VERB,NOUN,NOUN,1,VERB -> NOUN,152,no signs of [rebounding/VERB->NOUN] from the slump
+597,25,that,DET,ADP,ADP,0,DET -> ADP,41,from the slump [that/DET->ADP] followed the October
+598,17,manufacturing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,of product and [manufacturing/VERB->NOUN] engineering at Ford
+602,6,slippery,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,tumbled down a [slippery/ADJ->NOUN] slope .
+603,6,alike,ADV,ADP,NOUN,1,ADV -> ADP,18,"plaintiffs are not [alike/ADV->ADP] , it turns"
+603,10,out,PRT,ADP,PRT,0,PRT -> ADP,10,", it turns [out/PRT->ADP] that DES defendants"
+603,11,that,ADP,DET,ADP,0,ADP -> DET,19,it turns out [that/ADP->DET] DES defendants marketed
+603,17,differently,ADV,.,NOUN,1,ADV -> .,1,marketed the drugs [differently/ADV->.] and may have
+604,9,notes,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"William Van Alstyne [notes/VERB->NOUN] , by this"
+605,22,all,DET,ADV,DET,0,DET -> ADV,4,justices saw how [all/DET->ADV] the pharmaceutical litigation
+606,13,hidden,VERB,DET,NOUN,1,VERB -> DET,13,"the huge , [hidden/VERB->DET] social costs ."
+607,1,Public,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,`` [Public/ADJ->NOUN] policy favors the
+607,3,favors,VERB,NOUN,NOUN,1,VERB -> NOUN,152,`` Public policy [favors/VERB->NOUN] the development and
+607,23,accompany,VERB,ADP,NOUN,1,VERB -> ADP,21,"ones , might [accompany/VERB->ADP] their introduction because"
+608,17,introduces,VERB,ADP,NOUN,1,VERB -> ADP,21,any drug maker [introduces/VERB->ADP] an anti-miscarriage drug
+608,19,anti-miscarriage,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,maker introduces an [anti-miscarriage/ADJ->NOUN] drug `` it
+608,23,'s,VERB,PRT,PRT,0,VERB -> PRT,6,drug `` it ['s/VERB->PRT] time to sell
+608,31,short,ADV,ADJ,ADJ,0,ADV -> ADJ,31,company 's stock [short/ADV->ADJ] . ''
+609,4,that,ADP,DET,ADP,0,ADP -> DET,19,by now understands [that/ADP->DET] Congress is utterly
+609,7,utterly,ADV,DET,NOUN,1,ADV -> DET,5,that Congress is [utterly/ADV->DET] incapable of writing
+609,10,writing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,utterly incapable of [writing/VERB->NOUN] legislation to help
+609,14,deserving,ADJ,VERB,NOUN,1,ADJ -> VERB,55,legislation to help [deserving/ADJ->VERB] people without its
+609,20,billion-dollar,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,its becoming some [billion-dollar/ADJ->NOUN] morass .
+609,21,morass,NOUN,VERB,NOUN,1,NOUN -> VERB,76,becoming some billion-dollar [morass/NOUN->VERB] .
+610,8,well-known,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,", runs such [well-known/ADJ->NOUN] department stores as"
+614,10,start-up,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,earnings to higher [start-up/ADJ->NOUN] costs of its
+614,19,softer,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"division , a [softer/ADJ->NOUN] motor-home market and"
+615,20,midsized,ADJ,VERB,VERB,0,ADJ -> VERB,55,of production for [midsized/ADJ->VERB] motor home chassis
+617,3,focus,NOUN,VERB,VERB,0,NOUN -> VERB,76,Investors switched trading [focus/NOUN->VERB] quickly as they
+618,0,Teikoku,NOUN,DET,NOUN,1,NOUN -> DET,18,"[Teikoku/NOUN->DET] Oil , also"
+619,10,up,ADP,PRT,PRT,0,ADP -> PRT,5,", which was [up/ADP->PRT] 80 at 2,410"
+622,8,high,ADJ,NOUN,ADJ,0,ADJ -> NOUN,143,"near its session [high/ADJ->NOUN] of 2163.2 ,"
+622,18,half-hour,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,within the last [half-hour/NOUN->ADJ] of trading .
+628,12,as,ADP,ADV,ADP,0,ADP -> ADV,26,"stock markets , [as/ADP->ADV] calculated by Morgan"
+629,4,offering,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"Water Co. , [offering/VERB->NOUN] of 150,000 shares"
+630,13,plans,NOUN,VERB,VERB,0,NOUN -> VERB,76,are still beauty [plans/NOUN->VERB] left to tackle
+630,16,tackle,VERB,NOUN,NOUN,1,VERB -> NOUN,152,plans left to [tackle/VERB->NOUN] : But as
+630,27,That,ADP,DET,DET,0,ADP -> DET,19,", it seems [That/ADP->DET] before I paint"
+630,34,spackle,VERB,NOUN,NOUN,1,VERB -> NOUN,152,", I should [spackle/VERB->NOUN] ."
+631,0,Named,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Named/VERB->NOUN] as defendants were
+631,17,chief,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,"vice president and [chief/NOUN->ADJ] financial officer ,"
+632,19,routine,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,plant to `` [routine/ADJ->NOUN] inspection '' in
+635,7,worsen,VERB,NOUN,NOUN,1,VERB -> NOUN,152,said conditions will [worsen/VERB->NOUN] in the period
+638,7,fixed-income,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"turned to other [fixed-income/ADJ->NOUN] markets , corporate"
+640,8,manufacturing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,indicates that the [manufacturing/VERB->NOUN] sector is slowing
+641,8,fresh,ADJ,DET,NOUN,1,ADJ -> DET,18,10 billion in [fresh/ADJ->DET] cash by selling
+641,11,selling,VERB,NOUN,VERB,0,VERB -> NOUN,152,fresh cash by [selling/VERB->NOUN] $ 30 billion
+641,24,three-year,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,billion of new [three-year/ADJ->NOUN] notes and $
+645,5,net,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,said the average [net/NOUN->ADJ] asset value of
+646,18,off,PRT,ADV,PRT,0,PRT -> ADV,9,allocation bonds got [off/PRT->ADV] to a slow
+649,11,2003\/2007,NUM,NOUN,NOUN,1,NUM -> NOUN,6,% bond due [2003\/2007/NUM->NOUN] fell 14\/32 to
+652,5,cost,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"'s plan could [cost/VERB->NOUN] utilities , mainly"
+652,10,that,DET,ADP,ADP,0,DET -> ADP,41,", mainly those [that/DET->ADP] use coal ,"
+652,11,use,VERB,NOUN,VERB,0,VERB -> NOUN,152,"mainly those that [use/VERB->NOUN] coal , up"
+653,15,enough,ADV,ADJ,ADV,0,ADV -> ADJ,31,will be broad [enough/ADV->ADJ] to pose a
+654,5,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,", chairman of [American/NOUN->ADJ] City , said"
+656,13,buying,VERB,NOUN,VERB,0,VERB -> NOUN,152,investment strategy of [buying/VERB->NOUN] and holding a
+656,28,barometer,NOUN,VERB,NOUN,1,NOUN -> VERB,76,a broad stock-market [barometer/NOUN->VERB] such as the
+658,5,selling,VERB,NOUN,VERB,0,VERB -> NOUN,152,-- Buying or [selling/VERB->NOUN] baskets of stocks
+658,18,stock-index,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,offsetting trades in [stock-index/NOUN->ADJ] futures or options
+660,1,most,ADV,ADJ,ADJ,0,ADV -> ADJ,31,The [most/ADV->ADJ] common program-trading vehicles
+660,11,poor,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,on Standard & [poor/NOUN->ADJ] 's 500-stock index
+660,32,that,DET,ADP,ADP,0,DET -> ADP,41,a 20-stock index [that/DET->ADP] mimics the Dow
+660,33,mimics,VERB,NOUN,NOUN,1,VERB -> NOUN,152,20-stock index that [mimics/VERB->NOUN] the Dow Jones
+660,43,chicago,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,traded on the [chicago/NOUN->ADJ] Board of Trade
+662,0,Such,DET,ADJ,ADJ,0,DET -> ADJ,3,[Such/DET->ADJ] an application for
+662,12,that,DET,ADP,ADP,0,DET -> ADP,41,for any investor [that/DET->ADP] might seek control
+664,9,land,VERB,NOUN,NOUN,0,VERB -> NOUN,152,job helped him [land/VERB->NOUN] the top job
+665,17,explore,VERB,NOUN,NOUN,1,VERB -> NOUN,152,investment banker to [explore/VERB->NOUN] alternatives `` to
+667,3,The,NOUN,DET,DET,0,NOUN -> DET,18,Dow Jones publishes [The/NOUN->DET] Wall Street Journal
+670,16,weapons-modernization,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,on a fixed-price [weapons-modernization/ADJ->NOUN] development program --
+670,22,C-130,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,"-- probably the [C-130/NOUN->ADJ] gunship , according"
+671,7,fresh,ADJ,VERB,NOUN,1,ADJ -> VERB,55,contracts rose to [fresh/ADJ->VERB] life-of-contract highs of
+671,8,life-of-contract,ADJ,DET,NOUN,1,ADJ -> DET,18,rose to fresh [life-of-contract/ADJ->DET] highs of 14.54
+672,22,near-limit,ADJ,VERB,NOUN,1,ADJ -> VERB,55,contract months showed [near-limit/ADJ->VERB] advances .
+674,23,more,ADV,ADJ,ADJ,0,ADV -> ADJ,31,", indicates a [more/ADV->ADJ] drastic shift than"
+675,6,total,VERB,ADJ,ADJ,0,VERB -> ADJ,16,"were expected to [total/VERB->ADJ] 645,000 tons in"
+675,10,contrast,NOUN,VERB,VERB,0,NOUN -> VERB,76,"645,000 tons in [contrast/NOUN->VERB] to shipments of"
+676,5,right,ADV,NOUN,NOUN,0,ADV -> NOUN,13,were granted the [right/ADV->NOUN] earlier this year
+676,10,ship,VERB,NOUN,NOUN,0,VERB -> NOUN,152,this year to [ship/VERB->NOUN] sugar and the
+680,6,over,PRT,ADP,ADP,0,PRT -> ADP,10,most part carried [over/PRT->ADP] from the previous
+680,20,mine,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,that a Chilean [mine/ADJ->NOUN] strike may have
+681,0,Separately,ADV,NOUN,NOUN,0,ADV -> NOUN,13,"[Separately/ADV->NOUN] , Reuter reported"
+682,4,that,ADP,DET,ADP,0,ADP -> DET,19,Lama Co. said [that/ADP->DET] Equus Investment II
+682,27,all-cash,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,stock from an [all-cash/ADJ->NOUN] transaction .
+683,15,preferred,VERB,ADJ,VERB,0,VERB -> ADJ,16,accessories said the [preferred/VERB->ADJ] stock would accrue
+683,18,accrue,VERB,DET,NOUN,1,VERB -> DET,13,preferred stock would [accrue/VERB->DET] dividends at a
+686,2,earlier,ADJ,ADV,ADJ,0,ADJ -> ADV,31,"A year [earlier/ADJ->ADV] , net income"
+687,26,manufacturing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,indicated that the [manufacturing/VERB->NOUN] sector was improving
+690,4,restructuring,VERB,NOUN,NOUN,0,VERB -> NOUN,152,rumored takeover and [restructuring/VERB->NOUN] candidates to attract
+690,14,up,ADV,PRT,PRT,0,ADV -> PRT,2,", which went [up/ADV->PRT] 1 3\/4 to"
+691,17,early-retirement,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,", for an [early-retirement/ADJ->NOUN] program ."
+696,1,preferred,VERB,ADJ,VERB,0,VERB -> ADJ,16,"The [preferred/VERB->ADJ] stock , which"
+698,15,unanticipated,ADJ,VERB,NOUN,1,ADJ -> VERB,55,said GenCorp 's [unanticipated/ADJ->VERB] losses come largely
+700,19,financing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,is seeking other [financing/VERB->NOUN] sources and waivers
+703,6,profit,NOUN,VERB,NOUN,0,NOUN -> VERB,76,of Ratners 's [profit/NOUN->VERB] already is derived
+705,13,early,ADV,ADJ,ADJ,0,ADV -> ADJ,31,next year or [early/ADV->ADJ] in 1991 .
+706,4,pretax,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,bulk of the [pretax/NOUN->ADJ] charge is a
+706,14,servicing,NOUN,VERB,VERB,0,NOUN -> VERB,76,write-off of capitalized [servicing/NOUN->VERB] at the mobile
+706,17,mobile,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,servicing at the [mobile/ADJ->NOUN] home financing subsidiary
+706,19,financing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,"the mobile home [financing/VERB->NOUN] subsidiary , which"
+708,16,about,ADP,ADV,ADP,0,ADP -> ADV,26,Group Inc. for [about/ADP->ADV] $ 250 million
+712,3,support,NOUN,VERB,VERB,0,NOUN -> VERB,76,While he reaffirmed [support/NOUN->VERB] for the country
+712,14,that,ADP,DET,ADP,0,ADP -> DET,19,", Ortega indicated [that/ADP->DET] renewed U.S. military"
+712,23,thwart,VERB,ADP,NOUN,1,VERB -> ADP,21,the Contras could [thwart/VERB->ADP] the balloting .
+714,10,deplorable,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,suspension as `` [deplorable/ADJ->NOUN] '' but brushed
+714,15,talk,NOUN,VERB,VERB,0,NOUN -> VERB,76,but brushed off [talk/NOUN->VERB] of renewing military
+714,17,renewing,VERB,DET,NOUN,1,VERB -> DET,13,off talk of [renewing/VERB->DET] military funding for
+715,1,German,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,East [German/NOUN->ADJ] leader Krenz called
+715,17,that,ADP,DET,ADP,0,ADP -> DET,19,", '' saying [that/ADP->DET] many of those"
+715,27,support,NOUN,VERB,VERB,0,NOUN -> VERB,76,freedoms were showing [support/NOUN->VERB] for `` the
+716,2,plan,VERB,NOUN,NOUN,0,VERB -> NOUN,152,Health officials [plan/VERB->NOUN] to extend a
+716,13,fetal-tissue,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,of research involving [fetal-tissue/NOUN->ADJ] transplants .
+718,0,Guerrilla,NOUN,DET,NOUN,1,NOUN -> DET,18,[Guerrilla/NOUN->DET] leaders said Pretoria
+718,7,sabotage,VERB,NOUN,NOUN,1,VERB -> NOUN,152,was attempting to [sabotage/VERB->NOUN] next week 's
+719,20,Sino-U.S.,ADJ,NOUN,NOUN,0,ADJ -> NOUN,143,ease strains in [Sino-U.S./ADJ->NOUN] ties caused by
+721,19,Andean,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,'' in the [Andean/ADJ->NOUN] nations of South
+722,0,Died,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Died/VERB->NOUN] : James A.
+722,13,Mutual,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,and president of [Mutual/NOUN->ADJ] Life Insurance Co.
+722,31,anemic,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,of an acute [anemic/ADJ->NOUN] condition .
+723,15,close,VERB,ADJ,NOUN,0,VERB -> ADJ,16,is scheduled to [close/VERB->ADJ] Monday .
+724,15,cutthroat,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,pricing has been [cutthroat/ADJ->NOUN] and natural disasters
+726,12,climb,VERB,NOUN,NOUN,1,VERB -> NOUN,152,31 sales will [climb/VERB->NOUN] to 600 billion
+726,22,pretax,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,billion yen ; [pretax/NOUN->ADJ] profit was forecast
+727,14,apparent,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,due to the [apparent/ADJ->NOUN] slowing of the
+727,15,slowing,NOUN,VERB,VERB,0,NOUN -> VERB,76,to the apparent [slowing/NOUN->VERB] of the economy
+728,3,out,PRT,ADP,PRT,0,PRT -> ADP,10,Campbell Soup forced [out/PRT->ADP] its president and
+730,5,more,ADJ,ADV,ADJ,0,ADJ -> ADV,31,clearance to buy [more/ADJ->ADV] than 15 %
+732,12,house,NOUN,VERB,NOUN,0,NOUN -> VERB,76,from the publishing [house/NOUN->VERB] he has run
+734,11,earlier,ADV,ADJ,ADJ,0,ADV -> ADJ,31,reaching 11 3\/4 [earlier/ADV->ADJ] this year on
+737,8,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,"Carl Lindner 's [American/NOUN->ADJ] Financial , investor"
+737,24,stake,NOUN,VERB,NOUN,0,NOUN -> VERB,76,latter cut its [stake/NOUN->VERB] this summer .
+738,16,such,DET,ADJ,ADJ,0,DET -> ADJ,3,Spiegel is mulling [such/DET->ADJ] a plan to
+738,20,mitigate,VERB,NOUN,NOUN,1,VERB -> NOUN,152,a plan to [mitigate/VERB->NOUN] Columbia 's junk
+739,12,till,ADP,VERB,NOUN,1,ADP -> VERB,3,from the thrift [till/ADP->VERB] they mature --
+739,26,restructures,VERB,NOUN,NOUN,1,VERB -> NOUN,152,goes bust or [restructures/VERB->NOUN] -- the junk
+739,33,all,ADV,DET,DET,0,ADV -> DET,5,portfolio might do [all/ADV->DET] right .
+739,34,right,ADV,NOUN,NOUN,0,ADV -> NOUN,13,might do all [right/ADV->NOUN] .
+740,3,longtime,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,"Columbia , a [longtime/NOUN->ADJ] Drexel client ,"
+741,2,that,DET,ADP,ADP,0,DET -> ADP,41,"Possibly offsetting [that/DET->ADP] , Columbia recently"
+741,9,unrealized,ADJ,VERB,NOUN,1,ADJ -> VERB,55,estimated it has [unrealized/ADJ->VERB] gains on publicly
+742,17,off,PRT,ADV,PRT,0,PRT -> ADV,9,might be spun [off/PRT->ADV] to Columbia shareholders
+745,24,American,NOUN,ADJ,NOUN,0,NOUN -> ADJ,75,week when the [American/NOUN->ADJ] Bar Association gave
+745,33,qualified,ADJ,VERB,VERB,0,ADJ -> VERB,55,"only a `` [qualified/ADJ->VERB] '' rating ,"
+746,7,rating,VERB,NOUN,NOUN,0,VERB -> NOUN,152,`` qualified '' [rating/VERB->NOUN] to nominees it
+746,9,nominees,NOUN,VERB,NOUN,1,NOUN -> VERB,76,'' rating to [nominees/NOUN->VERB] it believes would
+747,1,contrast,NOUN,VERB,VERB,0,NOUN -> VERB,76,"In [contrast/NOUN->VERB] , the lawyers"
+748,14,assess,VERB,DET,NOUN,1,VERB -> DET,13,the U.S. would [assess/VERB->DET] penalty duties on
+749,2,manmade-fiber,ADJ,DET,NOUN,1,ADJ -> DET,18,Imports of [manmade-fiber/ADJ->DET] sweaters in 1988
+749,7,about,ADP,ADV,ADP,0,ADP -> ADV,26,in 1988 totaled [about/ADP->ADV] $ 405 million
+750,7,shareholder-rights,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,year adopted a [shareholder-rights/ADJ->NOUN] plan to ward
+750,12,unwanted,ADJ,VERB,NOUN,1,ADJ -> VERB,55,to ward off [unwanted/ADJ->VERB] suitors .
+751,6,first,ADV,ADJ,ADJ,0,ADV -> ADJ,31,it is the [first/ADV->ADJ] early retirement plan
+751,14,cost-control,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,under its two-year [cost-control/ADJ->NOUN] strategy .
+753,29,manufacturing,VERB,NOUN,NOUN,0,VERB -> NOUN,152,as a small [manufacturing/VERB->NOUN] company to the
+753,35,full-fledged,ADJ,DET,NOUN,1,ADJ -> DET,18,"the status of [full-fledged/ADJ->DET] defense contractor ,"
+753,45,vital,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,task of producing [vital/ADJ->NOUN] equipment for the
+755,0,Absorbed,VERB,NOUN,NOUN,1,VERB -> NOUN,152,[Absorbed/VERB->NOUN] in doling out
+755,2,doling,VERB,NOUN,NOUN,1,VERB -> NOUN,152,Absorbed in [doling/VERB->NOUN] out `` Feeding
+755,9,tidbits,NOUN,VERB,NOUN,1,NOUN -> VERB,76,"Frenzy 's '' [tidbits/NOUN->VERB] , the authors"
+755,13,gloss,VERB,.,NOUN,1,VERB -> .,2,", the authors [gloss/VERB->.] over the root"
+755,26,A,NOUN,DET,DET,0,NOUN -> DET,18,Section 8 -LRB- [A/NOUN->DET] -RRB- federal program
+756,5,A,NOUN,DET,DET,0,NOUN -> DET,18,Section 8 -LRB- [A/NOUN->DET] -RRB- are a
+756,9,little,ADV,ADJ,ADJ,0,ADV -> ADJ,31,-RRB- are a [little/ADV->ADJ] like leaving gold
+756,21,thieves,NOUN,VERB,NOUN,1,NOUN -> VERB,76,expressing surprise when [thieves/NOUN->VERB] walk by to
+756,23,by,PRT,ADP,ADP,0,PRT -> ADP,10,when thieves walk [by/PRT->ADP] to scoop it
+756,25,scoop,VERB,NOUN,NOUN,0,VERB -> NOUN,152,walk by to [scoop/VERB->NOUN] it up .
+756,27,up,ADP,ADV,PRT,0,ADP -> ADV,26,to scoop it [up/ADP->ADV] .
+758,7,repay,VERB,NOUN,NOUN,1,VERB -> NOUN,152,company hopes to [repay/VERB->NOUN] $ 45 million
+758,20,discharge,VERB,ADP,NOUN,1,VERB -> ADP,21,which will completely [discharge/VERB->ADP] its secured debt
+762,0,Otherwise,ADV,NOUN,NOUN,1,ADV -> NOUN,13,"[Otherwise/ADV->NOUN] , actual profit"
+763,10,cash-and-stock,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,$ 55.1 million [cash-and-stock/ADJ->NOUN] acquisition of closely
+764,33,train,NOUN,VERB,VERB,0,NOUN -> VERB,76,of corn by [train/NOUN->VERB] to the port
+765,1,Soviet,NOUN,ADJ,ADJ,0,NOUN -> ADJ,75,The [Soviet/NOUN->ADJ] Union usually begins
+765,8,earlier,ADJ,ADV,ADJ,0,ADJ -> ADV,31,buying U.S. crops [earlier/ADJ->ADV] in the fall
+766,0,PRECIOUS,NOUN,ADJ,NOUN,1,NOUN -> ADJ,75,[PRECIOUS/NOUN->ADJ] METALS : Futures
+767,11,more,ADJ,ADV,ADJ,0,ADJ -> ADV,31,are being influenced [more/ADJ->ADV] by stock market
+770,10,upbeat,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,"said , the [upbeat/ADJ->NOUN] mood of stocks"
+771,10,midrange,ADJ,NOUN,NOUN,1,ADJ -> NOUN,143,Tower line of [midrange/ADJ->NOUN] computers and introduced
+771,14,advanced,VERB,ADJ,VERB,0,VERB -> ADJ,16,computers and introduced [advanced/VERB->ADJ] networking software to
+772,11,operating,VERB,NOUN,NOUN,0,VERB -> NOUN,152,'s NetWare network [operating/VERB->NOUN] system software .
+773,11,as,ADP,ADV,ADP,0,ADP -> ADV,26,"third-quarter profit , [as/ADP->ADV] improved oil results"
+777,8,rise,NOUN,VERB,VERB,0,NOUN -> VERB,76,a 15 % [rise/NOUN->VERB] in operating profit

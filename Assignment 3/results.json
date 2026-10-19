@@ -1,0 +1,5218 @@
+{
+  "assignment": "NLP Laboratory Assignment 3",
+  "title": "Survey and Implementation of POS Tagging using a Hidden Markov Model",
+  "student_name": "Shravani Kurkute",
+  "generated_at": "2026-10-19T22:03:19",
+  "project_directory": "/home/shravanikurkute/BTech/4th Year/NLP/Assignment 3",
+  "environment": {
+    "python": "3.13.9",
+    "nltk": "3.9.2",
+    "numpy": "2.2.0",
+    "scikit-learn": "1.6.0",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.6",
+    "openpyxl": "3.1.5",
+    "python-docx": "1.2.0"
+  },
+  "config": {
+    "seed": 42,
+    "test_size": 0.2,
+    "transition_smoothing": "add-k",
+    "transition_k": 0.001,
+    "rare_word_threshold": 2,
+    "max_suffix_length": 4,
+    "oov_alpha": 0.1,
+    "tagset": "NLTK Universal tagset (12 tags; '.' denotes punctuation)",
+    "decoder": "Viterbi with log probabilities and backpointers",
+    "baseline": "Most frequent tag per word; global most frequent tag for OOV"
+  },
+  "corpus": {
+    "name": "NLTK Penn Treebank (treebank.tagged_sents())",
+    "raw_sentences": 3914,
+    "raw_tokens": 100676,
+    "trace_tokens_removed": 6592,
+    "sentences_after_trace_removal": 3914,
+    "tokens_after_trace_removal": 94084,
+    "duplicate_sentences_removed": 11,
+    "prepared_sentences": 3903,
+    "prepared_tokens": 94027,
+    "train_sentences": 3122,
+    "test_sentences": 781,
+    "train_tokens": 75349,
+    "test_tokens": 18678,
+    "train_vocabulary": 10625,
+    "test_oov_tokens": 1467,
+    "test_oov_rate": 0.07854159974301317,
+    "ptb_tag_count": 45,
+    "universal_tag_count": 12,
+    "universal_tags": [
+      ".",
+      "ADJ",
+      "ADP",
+      "ADV",
+      "CONJ",
+      "DET",
+      "NOUN",
+      "NUM",
+      "PRON",
+      "PRT",
+      "VERB",
+      "X"
+    ],
+    "universal_tag_counts": {
+      ".": 11703,
+      "ADJ": 6396,
+      "ADP": 9856,
+      "ADV": 3164,
+      "CONJ": 2265,
+      "DET": 8724,
+      "NOUN": 28851,
+      "NUM": 3544,
+      "PRON": 2736,
+      "PRT": 3219,
+      "VERB": 13548,
+      "X": 21
+    },
+    "train_tag_counts": {
+      ".": 9365,
+      "ADJ": 5100,
+      "ADP": 7913,
+      "ADV": 2513,
+      "CONJ": 1838,
+      "DET": 7041,
+      "NOUN": 23015,
+      "NUM": 2861,
+      "PRON": 2210,
+      "PRT": 2605,
+      "VERB": 10870,
+      "X": 18
+    },
+    "test_tag_counts": {
+      ".": 2338,
+      "ADJ": 1296,
+      "ADP": 1943,
+      "ADV": 651,
+      "CONJ": 427,
+      "DET": 1683,
+      "NOUN": 5836,
+      "NUM": 683,
+      "PRON": 526,
+      "PRT": 614,
+      "VERB": 2678,
+      "X": 3
+    }
+  },
+  "tagset": {
+    "ADJ": "Adjective (e.g., quick, old, national)",
+    "ADP": "Adposition / preposition (e.g., in, of, over)",
+    "ADV": "Adverb (e.g., quickly, very, yesterday)",
+    "CONJ": "Conjunction (e.g., and, or, but)",
+    "DET": "Determiner / article (e.g., the, a, this)",
+    "NOUN": "Noun, including proper nouns (e.g., dog, Shravani, Pune)",
+    "NUM": "Numeral (e.g., 61, 2025, three)",
+    "PRON": "Pronoun (e.g., he, she, it, their)",
+    "PRT": "Particle (e.g., to, up, off)",
+    "VERB": "Verb (e.g., run, is, reported, studying)",
+    ".": "Punctuation / sentence delimiter (., ,, ?, !, quotes, brackets)",
+    "X": "Other: foreign word, symbol, or unclassifiable item"
+  },
+  "tag_mapping": {
+    "#": ".",
+    "$": ".",
+    "''": ".",
+    ",": ".",
+    "-LRB-": ".",
+    "-RRB-": ".",
+    ".": ".",
+    ":": ".",
+    "CC": "CONJ",
+    "CD": "NUM",
+    "DT": "DET",
+    "EX": "DET",
+    "FW": "X",
+    "IN": "ADP",
+    "JJ": "ADJ",
+    "JJR": "ADJ",
+    "JJS": "ADJ",
+    "LS": "X",
+    "MD": "VERB",
+    "NN": "NOUN",
+    "NNP": "NOUN",
+    "NNPS": "NOUN",
+    "NNS": "NOUN",
+    "PDT": "DET",
+    "POS": "PRT",
+    "PRP": "PRON",
+    "PRP$": "PRON",
+    "RB": "ADV",
+    "RBR": "ADV",
+    "RBS": "ADV",
+    "RP": "PRT",
+    "SYM": "X",
+    "TO": "PRT",
+    "UH": "X",
+    "VB": "VERB",
+    "VBD": "VERB",
+    "VBG": "VERB",
+    "VBN": "VERB",
+    "VBP": "VERB",
+    "VBZ": "VERB",
+    "WDT": "DET",
+    "WP": "PRON",
+    "WP$": "PRON",
+    "WRB": "ADV",
+    "``": "."
+  },
+  "model": {
+    "num_tags": 12,
+    "vocabulary_size": 10625,
+    "emission_pairs": 11271,
+    "transition_rows": 13,
+    "rare_token_occurrences": 8929,
+    "numeric_rare_occurrences": 747,
+    "suffix_lengths": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "baseline": {
+    "accuracy": 0.9325944961987365,
+    "macro_precision": 0.8760462095714413,
+    "macro_recall": 0.8414941720943195,
+    "macro_f1": 0.8563782212888263,
+    "weighted_precision": 0.9354618810319877,
+    "weighted_recall": 0.9325944961987365,
+    "weighted_f1": 0.9314155778280064,
+    "support": 18678,
+    "oov_count": 1467,
+    "oov_rate": 0.07854159974301317,
+    "oov_accuracy": 0.5364689843217451,
+    "known_count": 17211,
+    "known_accuracy": 0.9663587240718146,
+    "per_tag": {
+      ".": {
+        "precision": 0.9995721009841677,
+        "recall": 0.9991445680068435,
+        "f1_score": 0.9993582887700535,
+        "support": 2338
+      },
+      "ADJ": {
+        "precision": 0.8827838827838828,
+        "recall": 0.7438271604938271,
+        "f1_score": 0.8073701842546064,
+        "support": 1296
+      },
+      "ADP": {
+        "precision": 0.9593781344032096,
+        "recall": 0.9845599588265569,
+        "f1_score": 0.9718059436118872,
+        "support": 1943
+      },
+      "ADV": {
+        "precision": 0.9430147058823529,
+        "recall": 0.7880184331797235,
+        "f1_score": 0.8585774058577406,
+        "support": 651
+      },
+      "CONJ": {
+        "precision": 0.9883177570093458,
+        "recall": 0.990632318501171,
+        "f1_score": 0.9894736842105263,
+        "support": 427
+      },
+      "DET": {
+        "precision": 0.9860436893203883,
+        "recall": 0.9655377302436126,
+        "f1_score": 0.9756829780846593,
+        "support": 1683
+      },
+      "NOUN": {
+        "precision": 0.869002284843869,
+        "recall": 0.977553118574366,
+        "f1_score": 0.9200870897508265,
+        "support": 5836
+      },
+      "NUM": {
+        "precision": 0.9912587412587412,
+        "recall": 0.8301610541727672,
+        "f1_score": 0.9035856573705179,
+        "support": 683
+      },
+      "PRON": {
+        "precision": 0.9962049335863378,
+        "recall": 0.9980988593155894,
+        "f1_score": 0.9971509971509972,
+        "support": 526
+      },
+      "PRT": {
+        "precision": 0.9305555555555556,
+        "recall": 0.9820846905537459,
+        "f1_score": 0.9556259904912837,
+        "support": 614
+      },
+      "VERB": {
+        "precision": 0.9664227292294447,
+        "recall": 0.8383121732636296,
+        "f1_score": 0.8978204359128175,
+        "support": 2678
+      },
+      "X": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0,
+        "support": 3
+      }
+    },
+    "classification_report": "              precision    recall  f1-score   support\n\n           .     0.9996    0.9991    0.9994      2338\n         ADJ     0.8828    0.7438    0.8074      1296\n         ADP     0.9594    0.9846    0.9718      1943\n         ADV     0.9430    0.7880    0.8586       651\n        CONJ     0.9883    0.9906    0.9895       427\n         DET     0.9860    0.9655    0.9757      1683\n        NOUN     0.8690    0.9776    0.9201      5836\n         NUM     0.9913    0.8302    0.9036       683\n        PRON     0.9962    0.9981    0.9972       526\n         PRT     0.9306    0.9821    0.9556       614\n        VERB     0.9664    0.8383    0.8978      2678\n           X     0.0000    0.0000    0.0000         3\n\n    accuracy                         0.9326     18678\n   macro avg     0.8760    0.8415    0.8564     18678\nweighted avg     0.9355    0.9326    0.9314     18678\n"
+  },
+  "hmm": {
+    "accuracy": 0.9534746760895171,
+    "macro_precision": 0.9605386157036716,
+    "macro_recall": 0.8999351921179395,
+    "macro_f1": 0.9161275149783882,
+    "weighted_precision": 0.9530453874407084,
+    "weighted_recall": 0.9534746760895171,
+    "weighted_f1": 0.9530038778252558,
+    "support": 18678,
+    "oov_count": 1467,
+    "oov_rate": 0.07854159974301317,
+    "oov_accuracy": 0.7559645535105658,
+    "known_count": 17211,
+    "known_accuracy": 0.9703096856661437,
+    "per_tag": {
+      ".": {
+        "precision": 0.9948914431673053,
+        "recall": 0.9995722840034217,
+        "f1_score": 0.9972263708128867,
+        "support": 2338
+      },
+      "ADJ": {
+        "precision": 0.888129803586678,
+        "recall": 0.8024691358024691,
+        "f1_score": 0.8431293068504256,
+        "support": 1296
+      },
+      "ADP": {
+        "precision": 0.9501008064516129,
+        "recall": 0.9701492537313433,
+        "f1_score": 0.9600203717850777,
+        "support": 1943
+      },
+      "ADV": {
+        "precision": 0.889060092449923,
+        "recall": 0.8863287250384024,
+        "f1_score": 0.8876923076923077,
+        "support": 651
+      },
+      "CONJ": {
+        "precision": 0.9883177570093458,
+        "recall": 0.990632318501171,
+        "f1_score": 0.9894736842105263,
+        "support": 427
+      },
+      "DET": {
+        "precision": 0.9560889929742389,
+        "recall": 0.970291146761735,
+        "f1_score": 0.9631377174874668,
+        "support": 1683
+      },
+      "NOUN": {
+        "precision": 0.9468655715722427,
+        "recall": 0.9679575051405072,
+        "f1_score": 0.9572953736654805,
+        "support": 5836
+      },
+      "NUM": {
+        "precision": 0.9955817378497791,
+        "recall": 0.9897510980966325,
+        "f1_score": 0.9926578560939795,
+        "support": 683
+      },
+      "PRON": {
+        "precision": 0.9962049335863378,
+        "recall": 0.9980988593155894,
+        "f1_score": 0.9971509971509972,
+        "support": 526
+      },
+      "PRT": {
+        "precision": 0.9738134206219312,
+        "recall": 0.9690553745928339,
+        "f1_score": 0.9714285714285714,
+        "support": 614
+      },
+      "VERB": {
+        "precision": 0.9474088291746641,
+        "recall": 0.9215832710978342,
+        "f1_score": 0.9343176225629377,
+        "support": 2678
+      },
+      "X": {
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1_score": 0.5,
+        "support": 3
+      }
+    },
+    "classification_report": "              precision    recall  f1-score   support\n\n           .     0.9949    0.9996    0.9972      2338\n         ADJ     0.8881    0.8025    0.8431      1296\n         ADP     0.9501    0.9701    0.9600      1943\n         ADV     0.8891    0.8863    0.8877       651\n        CONJ     0.9883    0.9906    0.9895       427\n         DET     0.9561    0.9703    0.9631      1683\n        NOUN     0.9469    0.9680    0.9573      5836\n         NUM     0.9956    0.9898    0.9927       683\n        PRON     0.9962    0.9981    0.9972       526\n         PRT     0.9738    0.9691    0.9714       614\n        VERB     0.9474    0.9216    0.9343      2678\n           X     1.0000    0.3333    0.5000         3\n\n    accuracy                         0.9535     18678\n   macro avg     0.9605    0.8999    0.9161     18678\nweighted avg     0.9530    0.9535    0.9530     18678\n"
+  },
+  "baseline_per_tag": {
+    ".": {
+      "precision": 0.9995721009841677,
+      "recall": 0.9991445680068435,
+      "f1_score": 0.9993582887700535,
+      "support": 2338
+    },
+    "ADJ": {
+      "precision": 0.8827838827838828,
+      "recall": 0.7438271604938271,
+      "f1_score": 0.8073701842546064,
+      "support": 1296
+    },
+    "ADP": {
+      "precision": 0.9593781344032096,
+      "recall": 0.9845599588265569,
+      "f1_score": 0.9718059436118872,
+      "support": 1943
+    },
+    "ADV": {
+      "precision": 0.9430147058823529,
+      "recall": 0.7880184331797235,
+      "f1_score": 0.8585774058577406,
+      "support": 651
+    },
+    "CONJ": {
+      "precision": 0.9883177570093458,
+      "recall": 0.990632318501171,
+      "f1_score": 0.9894736842105263,
+      "support": 427
+    },
+    "DET": {
+      "precision": 0.9860436893203883,
+      "recall": 0.9655377302436126,
+      "f1_score": 0.9756829780846593,
+      "support": 1683
+    },
+    "NOUN": {
+      "precision": 0.869002284843869,
+      "recall": 0.977553118574366,
+      "f1_score": 0.9200870897508265,
+      "support": 5836
+    },
+    "NUM": {
+      "precision": 0.9912587412587412,
+      "recall": 0.8301610541727672,
+      "f1_score": 0.9035856573705179,
+      "support": 683
+    },
+    "PRON": {
+      "precision": 0.9962049335863378,
+      "recall": 0.9980988593155894,
+      "f1_score": 0.9971509971509972,
+      "support": 526
+    },
+    "PRT": {
+      "precision": 0.9305555555555556,
+      "recall": 0.9820846905537459,
+      "f1_score": 0.9556259904912837,
+      "support": 614
+    },
+    "VERB": {
+      "precision": 0.9664227292294447,
+      "recall": 0.8383121732636296,
+      "f1_score": 0.8978204359128175,
+      "support": 2678
+    },
+    "X": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "support": 3
+    }
+  },
+  "comparison": {
+    "accuracy_gain": 0.020880179890780615,
+    "macro_f1_gain": 0.05974929368956183,
+    "weighted_f1_gain": 0.021588299997249316
+  },
+  "oov": {
+    "count": 1467,
+    "rate": 0.07854159974301317,
+    "hmm_accuracy": 0.7559645535105658,
+    "baseline_accuracy": 0.5364689843217451,
+    "known_count": 17211,
+    "hmm_known_accuracy": 0.9703096856661437,
+    "baseline_known_accuracy": 0.9663587240718146
+  },
+  "confusion_matrix": {
+    "labels": [
+      ".",
+      "ADJ",
+      "ADP",
+      "ADV",
+      "CONJ",
+      "DET",
+      "NOUN",
+      "NUM",
+      "PRON",
+      "PRT",
+      "VERB",
+      "X"
+    ],
+    "matrix": [
+      [
+        2337,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        4,
+        1040,
+        2,
+        31,
+        1,
+        18,
+        143,
+        0,
+        0,
+        2,
+        55,
+        0
+      ],
+      [
+        0,
+        5,
+        1885,
+        26,
+        0,
+        19,
+        0,
+        0,
+        0,
+        5,
+        3,
+        0
+      ],
+      [
+        1,
+        31,
+        18,
+        577,
+        1,
+        5,
+        13,
+        0,
+        0,
+        2,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        423,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        41,
+        4,
+        0,
+        1633,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        5,
+        75,
+        7,
+        1,
+        2,
+        18,
+        5649,
+        2,
+        1,
+        0,
+        76,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        6,
+        676,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        525,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        10,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        595,
+        0,
+        0
+      ],
+      [
+        2,
+        16,
+        21,
+        0,
+        0,
+        13,
+        152,
+        0,
+        0,
+        6,
+        2468,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    ]
+  },
+  "top_errors": [
+    {
+      "gold_tag": "VERB",
+      "predicted_tag": "NOUN",
+      "count": 152,
+      "percentage_of_errors": 17.491369390103568,
+      "example_context": ", the Dutch [publishing/VERB->NOUN] group ."
+    },
+    {
+      "gold_tag": "ADJ",
+      "predicted_tag": "NOUN",
+      "count": 143,
+      "percentage_of_errors": 16.455696202531644,
+      "example_context": "regulation for the [smooth/ADJ->NOUN] , needle-like fibers"
+    },
+    {
+      "gold_tag": "NOUN",
+      "predicted_tag": "VERB",
+      "count": 76,
+      "percentage_of_errors": 8.745684695051784,
+      "example_context": ", even though [exhaust/NOUN->VERB] fans ventilated the"
+    },
+    {
+      "gold_tag": "NOUN",
+      "predicted_tag": "ADJ",
+      "count": 75,
+      "percentage_of_errors": 8.63060989643268,
+      "example_context": "N.V. , the [Dutch/NOUN->ADJ] publishing group ."
+    },
+    {
+      "gold_tag": "ADJ",
+      "predicted_tag": "VERB",
+      "count": 55,
+      "percentage_of_errors": 6.329113924050633,
+      "example_context": "maturity for funds [open/ADJ->VERB] only to institutions"
+    },
+    {
+      "gold_tag": "DET",
+      "predicted_tag": "ADP",
+      "count": 41,
+      "percentage_of_errors": 4.7180667433832,
+      "example_context": "few industrialized nations [that/DET->ADP] does n't have"
+    },
+    {
+      "gold_tag": "ADJ",
+      "predicted_tag": "ADV",
+      "count": 31,
+      "percentage_of_errors": 3.567318757192175,
+      "example_context": "Shearson Lehman Hutton [earlier/ADJ->ADV] this year ,"
+    },
+    {
+      "gold_tag": "ADV",
+      "predicted_tag": "ADJ",
+      "count": 31,
+      "percentage_of_errors": 3.567318757192175,
+      "example_context": "in dollar-denominated securities [overseas/ADV->ADJ] and is currently"
+    },
+    {
+      "gold_tag": "ADP",
+      "predicted_tag": "ADV",
+      "count": 26,
+      "percentage_of_errors": 2.991944764096663,
+      "example_context": "talking about years [ago/ADP->ADV] before anyone heard"
+    },
+    {
+      "gold_tag": "VERB",
+      "predicted_tag": "ADP",
+      "count": 21,
+      "percentage_of_errors": 2.4165707710011506,
+      "example_context": "[Knowing/VERB->ADP] a tasty --"
+    },
+    {
+      "gold_tag": "ADP",
+      "predicted_tag": "DET",
+      "count": 19,
+      "percentage_of_errors": 2.186421173762946,
+      "example_context": "department previously estimated [that/ADP->DET] durable-goods orders fell"
+    },
+    {
+      "gold_tag": "ADJ",
+      "predicted_tag": "DET",
+      "count": 18,
+      "percentage_of_errors": 2.0713463751438432,
+      "example_context": "what else -- [a/ADJ->DET] sheepskin ."
+    },
+    {
+      "gold_tag": "ADV",
+      "predicted_tag": "ADP",
+      "count": 18,
+      "percentage_of_errors": 2.0713463751438432,
+      "example_context": ", is stepping [in/ADV->ADP] to help turn"
+    },
+    {
+      "gold_tag": "NOUN",
+      "predicted_tag": "DET",
+      "count": 18,
+      "percentage_of_errors": 2.0713463751438432,
+      "example_context": "is chairman of [Elsevier/NOUN->DET] N.V. , the"
+    },
+    {
+      "gold_tag": "VERB",
+      "predicted_tag": "ADJ",
+      "count": 16,
+      "percentage_of_errors": 1.8411967779056386,
+      "example_context": "to merit an [accelerated/VERB->ADJ] investigation under the"
+    },
+    {
+      "gold_tag": "ADV",
+      "predicted_tag": "NOUN",
+      "count": 13,
+      "percentage_of_errors": 1.4959723820483315,
+      "example_context": "[Separately/ADV->NOUN] , the Federal"
+    },
+    {
+      "gold_tag": "VERB",
+      "predicted_tag": "DET",
+      "count": 13,
+      "percentage_of_errors": 1.4959723820483315,
+      "example_context": "That measure could [compel/VERB->DET] Taipei 's growing"
+    },
+    {
+      "gold_tag": "PRT",
+      "predicted_tag": "ADP",
+      "count": 10,
+      "percentage_of_errors": 1.1507479861910241,
+      "example_context": "that Tokyo step [up/PRT->ADP] its military spending"
+    },
+    {
+      "gold_tag": "PRT",
+      "predicted_tag": "ADV",
+      "count": 9,
+      "percentage_of_errors": 1.0356731875719216,
+      "example_context": "Regulatory Commission turned [down/PRT->ADV] for now a"
+    },
+    {
+      "gold_tag": "NOUN",
+      "predicted_tag": "ADP",
+      "count": 7,
+      "percentage_of_errors": 0.805523590333717,
+      "example_context": "58 different U.S. [tariff/NOUN->ADP] classifications ."
+    }
+  ],
+  "top_error_count": 52,
+  "total_error_tokens": 869,
+  "custom_sentences": [
+    {
+      "sentence_id": 1,
+      "sentence": "The quick brown fox jumps over the lazy dog.",
+      "tokens": [
+        "The",
+        "quick",
+        "brown",
+        "fox",
+        "jumps",
+        "over",
+        "the",
+        "lazy",
+        "dog",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "ADJ",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "ADP",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "ADJ",
+        "NOUN",
+        "NOUN",
+        "NOUN",
+        "ADP",
+        "DET",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET quick/ADJ brown/NOUN fox/ADP jumps/NOUN over/ADP the/DET lazy/ADJ dog/NOUN ./.",
+      "baseline_tagged": "The/DET quick/ADJ brown/NOUN fox/NOUN jumps/NOUN over/ADP the/DET lazy/NOUN dog/NOUN ./."
+    },
+    {
+      "sentence_id": 2,
+      "sentence": "Shravani is studying Natural Language Processing at her university.",
+      "tokens": [
+        "Shravani",
+        "is",
+        "studying",
+        "Natural",
+        "Language",
+        "Processing",
+        "at",
+        "her",
+        "university",
+        "."
+      ],
+      "hmm_tags": [
+        "NOUN",
+        "VERB",
+        "VERB",
+        "NOUN",
+        "NOUN",
+        "NOUN",
+        "ADP",
+        "PRON",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "NOUN",
+        "VERB",
+        "VERB",
+        "NOUN",
+        "NOUN",
+        "NOUN",
+        "ADP",
+        "PRON",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "Shravani/NOUN is/VERB studying/VERB Natural/NOUN Language/NOUN Processing/NOUN at/ADP her/PRON university/NOUN ./.",
+      "baseline_tagged": "Shravani/NOUN is/VERB studying/VERB Natural/NOUN Language/NOUN Processing/NOUN at/ADP her/PRON university/NOUN ./."
+    },
+    {
+      "sentence_id": 3,
+      "sentence": "The committee approved the new budget after a long discussion.",
+      "tokens": [
+        "The",
+        "committee",
+        "approved",
+        "the",
+        "new",
+        "budget",
+        "after",
+        "a",
+        "long",
+        "discussion",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "ADP",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "ADP",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET committee/NOUN approved/VERB the/DET new/ADJ budget/NOUN after/ADP a/DET long/ADJ discussion/NOUN ./.",
+      "baseline_tagged": "The/DET committee/NOUN approved/VERB the/DET new/ADJ budget/NOUN after/ADP a/DET long/ADJ discussion/NOUN ./."
+    },
+    {
+      "sentence_id": 4,
+      "sentence": "She bought three apples and two oranges at the market.",
+      "tokens": [
+        "She",
+        "bought",
+        "three",
+        "apples",
+        "and",
+        "two",
+        "oranges",
+        "at",
+        "the",
+        "market",
+        "."
+      ],
+      "hmm_tags": [
+        "PRON",
+        "VERB",
+        "NUM",
+        "NOUN",
+        "CONJ",
+        "NUM",
+        "NOUN",
+        "ADP",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "PRON",
+        "VERB",
+        "NUM",
+        "NOUN",
+        "CONJ",
+        "NUM",
+        "NOUN",
+        "ADP",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "She/PRON bought/VERB three/NUM apples/NOUN and/CONJ two/NUM oranges/NOUN at/ADP the/DET market/NOUN ./.",
+      "baseline_tagged": "She/PRON bought/VERB three/NUM apples/NOUN and/CONJ two/NUM oranges/NOUN at/ADP the/DET market/NOUN ./."
+    },
+    {
+      "sentence_id": 5,
+      "sentence": "The weather in Pune is pleasant during October.",
+      "tokens": [
+        "The",
+        "weather",
+        "in",
+        "Pune",
+        "is",
+        "pleasant",
+        "during",
+        "October",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "VERB",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "VERB",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET weather/NOUN in/ADP Pune/NOUN is/VERB pleasant/NOUN during/ADP October/NOUN ./.",
+      "baseline_tagged": "The/DET weather/NOUN in/ADP Pune/NOUN is/VERB pleasant/NOUN during/ADP October/NOUN ./."
+    },
+    {
+      "sentence_id": 6,
+      "sentence": "Can you explain how the Viterbi algorithm works?",
+      "tokens": [
+        "Can",
+        "you",
+        "explain",
+        "how",
+        "the",
+        "Viterbi",
+        "algorithm",
+        "works",
+        "?"
+      ],
+      "hmm_tags": [
+        "NOUN",
+        "PRON",
+        "VERB",
+        "ADV",
+        "DET",
+        "NOUN",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "NOUN",
+        "PRON",
+        "VERB",
+        "ADV",
+        "DET",
+        "NOUN",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "Can/NOUN you/PRON explain/VERB how/ADV the/DET Viterbi/NOUN algorithm/NOUN works/NOUN ?/.",
+      "baseline_tagged": "Can/NOUN you/PRON explain/VERB how/ADV the/DET Viterbi/NOUN algorithm/NOUN works/NOUN ?/."
+    },
+    {
+      "sentence_id": 7,
+      "sentence": "The company reported a 15% increase in revenue for 2025.",
+      "tokens": [
+        "The",
+        "company",
+        "reported",
+        "a",
+        "15",
+        "%",
+        "increase",
+        "in",
+        "revenue",
+        "for",
+        "2025",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "DET",
+        "NUM",
+        "NOUN",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "ADP",
+        "NUM",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "DET",
+        "NUM",
+        "NOUN",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET company/NOUN reported/VERB a/DET 15/NUM %/NOUN increase/NOUN in/ADP revenue/NOUN for/ADP 2025/NUM ./.",
+      "baseline_tagged": "The/DET company/NOUN reported/VERB a/DET 15/NUM %/NOUN increase/NOUN in/ADP revenue/NOUN for/ADP 2025/NOUN ./."
+    },
+    {
+      "sentence_id": 8,
+      "sentence": "He quickly finished his assignment and submitted it on time.",
+      "tokens": [
+        "He",
+        "quickly",
+        "finished",
+        "his",
+        "assignment",
+        "and",
+        "submitted",
+        "it",
+        "on",
+        "time",
+        "."
+      ],
+      "hmm_tags": [
+        "PRON",
+        "ADV",
+        "VERB",
+        "PRON",
+        "NOUN",
+        "CONJ",
+        "VERB",
+        "PRON",
+        "ADP",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "PRON",
+        "ADV",
+        "VERB",
+        "PRON",
+        "NOUN",
+        "CONJ",
+        "NOUN",
+        "PRON",
+        "ADP",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "He/PRON quickly/ADV finished/VERB his/PRON assignment/NOUN and/CONJ submitted/VERB it/PRON on/ADP time/NOUN ./.",
+      "baseline_tagged": "He/PRON quickly/ADV finished/VERB his/PRON assignment/NOUN and/CONJ submitted/NOUN it/PRON on/ADP time/NOUN ./."
+    },
+    {
+      "sentence_id": 9,
+      "sentence": "The children were playing football in the park.",
+      "tokens": [
+        "The",
+        "children",
+        "were",
+        "playing",
+        "football",
+        "in",
+        "the",
+        "park",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "VERB",
+        "NOUN",
+        "ADP",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "VERB",
+        "NOUN",
+        "ADP",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET children/NOUN were/VERB playing/VERB football/NOUN in/ADP the/DET park/NOUN ./.",
+      "baseline_tagged": "The/DET children/NOUN were/VERB playing/VERB football/NOUN in/ADP the/DET park/NOUN ./."
+    },
+    {
+      "sentence_id": 10,
+      "sentence": "Although it was raining, we decided to continue the journey.",
+      "tokens": [
+        "Although",
+        "it",
+        "was",
+        "raining",
+        ",",
+        "we",
+        "decided",
+        "to",
+        "continue",
+        "the",
+        "journey",
+        "."
+      ],
+      "hmm_tags": [
+        "ADP",
+        "PRON",
+        "VERB",
+        "VERB",
+        ".",
+        "PRON",
+        "VERB",
+        "PRT",
+        "VERB",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "ADP",
+        "PRON",
+        "VERB",
+        "NOUN",
+        ".",
+        "PRON",
+        "VERB",
+        "PRT",
+        "VERB",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "Although/ADP it/PRON was/VERB raining/VERB ,/. we/PRON decided/VERB to/PRT continue/VERB the/DET journey/NOUN ./.",
+      "baseline_tagged": "Although/ADP it/PRON was/VERB raining/NOUN ,/. we/PRON decided/VERB to/PRT continue/VERB the/DET journey/NOUN ./."
+    },
+    {
+      "sentence_id": 11,
+      "sentence": "The professor asked the students to submit their reports by Friday.",
+      "tokens": [
+        "The",
+        "professor",
+        "asked",
+        "the",
+        "students",
+        "to",
+        "submit",
+        "their",
+        "reports",
+        "by",
+        "Friday",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "DET",
+        "NOUN",
+        "PRT",
+        "VERB",
+        "PRON",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "DET",
+        "NOUN",
+        "PRT",
+        "VERB",
+        "PRON",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET professor/NOUN asked/VERB the/DET students/NOUN to/PRT submit/VERB their/PRON reports/NOUN by/ADP Friday/NOUN ./.",
+      "baseline_tagged": "The/DET professor/NOUN asked/VERB the/DET students/NOUN to/PRT submit/VERB their/PRON reports/NOUN by/ADP Friday/NOUN ./."
+    },
+    {
+      "sentence_id": 12,
+      "sentence": "This smartphone has a battery life of more than two days.",
+      "tokens": [
+        "This",
+        "smartphone",
+        "has",
+        "a",
+        "battery",
+        "life",
+        "of",
+        "more",
+        "than",
+        "two",
+        "days",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "DET",
+        "NOUN",
+        "NOUN",
+        "ADP",
+        "ADJ",
+        "ADP",
+        "NUM",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "DET",
+        "NOUN",
+        "NOUN",
+        "ADP",
+        "ADJ",
+        "ADP",
+        "NUM",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "This/DET smartphone/NOUN has/VERB a/DET battery/NOUN life/NOUN of/ADP more/ADJ than/ADP two/NUM days/NOUN ./.",
+      "baseline_tagged": "This/DET smartphone/NOUN has/VERB a/DET battery/NOUN life/NOUN of/ADP more/ADJ than/ADP two/NUM days/NOUN ./."
+    },
+    {
+      "sentence_id": 13,
+      "sentence": "The train to Mumbai was delayed by 30 minutes.",
+      "tokens": [
+        "The",
+        "train",
+        "to",
+        "Mumbai",
+        "was",
+        "delayed",
+        "by",
+        "30",
+        "minutes",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "VERB",
+        "PRT",
+        "NOUN",
+        "VERB",
+        "VERB",
+        "ADP",
+        "NUM",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "VERB",
+        "PRT",
+        "NOUN",
+        "VERB",
+        "VERB",
+        "ADP",
+        "NUM",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET train/VERB to/PRT Mumbai/NOUN was/VERB delayed/VERB by/ADP 30/NUM minutes/NOUN ./.",
+      "baseline_tagged": "The/DET train/VERB to/PRT Mumbai/NOUN was/VERB delayed/VERB by/ADP 30/NUM minutes/NOUN ./."
+    },
+    {
+      "sentence_id": 14,
+      "sentence": "My brother wants to become a software engineer.",
+      "tokens": [
+        "My",
+        "brother",
+        "wants",
+        "to",
+        "become",
+        "a",
+        "software",
+        "engineer",
+        "."
+      ],
+      "hmm_tags": [
+        "PRON",
+        "NOUN",
+        "VERB",
+        "PRT",
+        "VERB",
+        "DET",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "PRON",
+        "NOUN",
+        "VERB",
+        "PRT",
+        "VERB",
+        "DET",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "My/PRON brother/NOUN wants/VERB to/PRT become/VERB a/DET software/NOUN engineer/NOUN ./.",
+      "baseline_tagged": "My/PRON brother/NOUN wants/VERB to/PRT become/VERB a/DET software/NOUN engineer/NOUN ./."
+    },
+    {
+      "sentence_id": 15,
+      "sentence": "The government announced a new policy for renewable energy.",
+      "tokens": [
+        "The",
+        "government",
+        "announced",
+        "a",
+        "new",
+        "policy",
+        "for",
+        "renewable",
+        "energy",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "ADP",
+        "ADJ",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "NOUN",
+        "VERB",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET government/NOUN announced/VERB a/DET new/ADJ policy/NOUN for/ADP renewable/ADJ energy/NOUN ./.",
+      "baseline_tagged": "The/DET government/NOUN announced/VERB a/DET new/ADJ policy/NOUN for/ADP renewable/NOUN energy/NOUN ./."
+    },
+    {
+      "sentence_id": 16,
+      "sentence": "Please close the door and turn off the lights.",
+      "tokens": [
+        "Please",
+        "close",
+        "the",
+        "door",
+        "and",
+        "turn",
+        "off",
+        "the",
+        "lights",
+        "."
+      ],
+      "hmm_tags": [
+        "NOUN",
+        "VERB",
+        "DET",
+        "NOUN",
+        "CONJ",
+        "NOUN",
+        "ADP",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "NOUN",
+        "NOUN",
+        "DET",
+        "NOUN",
+        "CONJ",
+        "NOUN",
+        "PRT",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "Please/NOUN close/VERB the/DET door/NOUN and/CONJ turn/NOUN off/ADP the/DET lights/NOUN ./.",
+      "baseline_tagged": "Please/NOUN close/NOUN the/DET door/NOUN and/CONJ turn/NOUN off/PRT the/DET lights/NOUN ./."
+    },
+    {
+      "sentence_id": 17,
+      "sentence": "The museum displays ancient artifacts from South India.",
+      "tokens": [
+        "The",
+        "museum",
+        "displays",
+        "ancient",
+        "artifacts",
+        "from",
+        "South",
+        "India",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "NOUN",
+        "NOUN",
+        "ADJ",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "NOUN",
+        "NOUN",
+        "ADJ",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET museum/NOUN displays/NOUN ancient/ADJ artifacts/NOUN from/ADP South/NOUN India/NOUN ./.",
+      "baseline_tagged": "The/DET museum/NOUN displays/NOUN ancient/ADJ artifacts/NOUN from/ADP South/NOUN India/NOUN ./."
+    },
+    {
+      "sentence_id": 18,
+      "sentence": "Artificial intelligence is transforming the healthcare industry.",
+      "tokens": [
+        "Artificial",
+        "intelligence",
+        "is",
+        "transforming",
+        "the",
+        "healthcare",
+        "industry",
+        "."
+      ],
+      "hmm_tags": [
+        "NOUN",
+        "NOUN",
+        "VERB",
+        "VERB",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "NOUN",
+        "NOUN",
+        "VERB",
+        "VERB",
+        "DET",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "Artificial/NOUN intelligence/NOUN is/VERB transforming/VERB the/DET healthcare/ADJ industry/NOUN ./.",
+      "baseline_tagged": "Artificial/NOUN intelligence/NOUN is/VERB transforming/VERB the/DET healthcare/NOUN industry/NOUN ./."
+    },
+    {
+      "sentence_id": 19,
+      "sentence": "They have been working on this project since January.",
+      "tokens": [
+        "They",
+        "have",
+        "been",
+        "working",
+        "on",
+        "this",
+        "project",
+        "since",
+        "January",
+        "."
+      ],
+      "hmm_tags": [
+        "PRON",
+        "VERB",
+        "VERB",
+        "VERB",
+        "ADP",
+        "DET",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "PRON",
+        "VERB",
+        "VERB",
+        "VERB",
+        "ADP",
+        "DET",
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "They/PRON have/VERB been/VERB working/VERB on/ADP this/DET project/NOUN since/ADP January/NOUN ./.",
+      "baseline_tagged": "They/PRON have/VERB been/VERB working/VERB on/ADP this/DET project/NOUN since/ADP January/NOUN ./."
+    },
+    {
+      "sentence_id": 20,
+      "sentence": "The little girl smiled at the photographer.",
+      "tokens": [
+        "The",
+        "little",
+        "girl",
+        "smiled",
+        "at",
+        "the",
+        "photographer",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "ADJ",
+        "NOUN",
+        "VERB",
+        "ADP",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "ADJ",
+        "NOUN",
+        "NOUN",
+        "ADP",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET little/ADJ girl/NOUN smiled/VERB at/ADP the/DET photographer/NOUN ./.",
+      "baseline_tagged": "The/DET little/ADJ girl/NOUN smiled/NOUN at/ADP the/DET photographer/NOUN ./."
+    },
+    {
+      "sentence_id": 21,
+      "sentence": "Researchers at IIT Bombay developed an efficient language model.",
+      "tokens": [
+        "Researchers",
+        "at",
+        "IIT",
+        "Bombay",
+        "developed",
+        "an",
+        "efficient",
+        "language",
+        "model",
+        "."
+      ],
+      "hmm_tags": [
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "NOUN",
+        "VERB",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "NOUN",
+        "ADP",
+        "NOUN",
+        "NOUN",
+        "VERB",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "Researchers/NOUN at/ADP IIT/NOUN Bombay/NOUN developed/VERB an/DET efficient/ADJ language/NOUN model/NOUN ./.",
+      "baseline_tagged": "Researchers/NOUN at/ADP IIT/NOUN Bombay/NOUN developed/VERB an/DET efficient/ADJ language/NOUN model/NOUN ./."
+    },
+    {
+      "sentence_id": 22,
+      "sentence": "Neither the manager nor the employees were satisfied with the result.",
+      "tokens": [
+        "Neither",
+        "the",
+        "manager",
+        "nor",
+        "the",
+        "employees",
+        "were",
+        "satisfied",
+        "with",
+        "the",
+        "result",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "DET",
+        "NOUN",
+        "CONJ",
+        "DET",
+        "NOUN",
+        "VERB",
+        "VERB",
+        "ADP",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "DET",
+        "NOUN",
+        "CONJ",
+        "DET",
+        "NOUN",
+        "VERB",
+        "NOUN",
+        "ADP",
+        "DET",
+        "VERB",
+        "."
+      ],
+      "hmm_tagged": "Neither/DET the/DET manager/NOUN nor/CONJ the/DET employees/NOUN were/VERB satisfied/VERB with/ADP the/DET result/NOUN ./.",
+      "baseline_tagged": "Neither/DET the/DET manager/NOUN nor/CONJ the/DET employees/NOUN were/VERB satisfied/NOUN with/ADP the/DET result/VERB ./."
+    },
+    {
+      "sentence_id": 23,
+      "sentence": "The old man walked slowly along the riverbank.",
+      "tokens": [
+        "The",
+        "old",
+        "man",
+        "walked",
+        "slowly",
+        "along",
+        "the",
+        "riverbank",
+        "."
+      ],
+      "hmm_tags": [
+        "DET",
+        "ADJ",
+        "NOUN",
+        "VERB",
+        "ADV",
+        "ADP",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "DET",
+        "ADJ",
+        "NOUN",
+        "NOUN",
+        "ADV",
+        "ADP",
+        "DET",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "The/DET old/ADJ man/NOUN walked/VERB slowly/ADV along/ADP the/DET riverbank/NOUN ./.",
+      "baseline_tagged": "The/DET old/ADJ man/NOUN walked/NOUN slowly/ADV along/ADP the/DET riverbank/NOUN ./."
+    },
+    {
+      "sentence_id": 24,
+      "sentence": "Wow, that was an amazing performance!",
+      "tokens": [
+        "Wow",
+        ",",
+        "that",
+        "was",
+        "an",
+        "amazing",
+        "performance",
+        "!"
+      ],
+      "hmm_tags": [
+        "NOUN",
+        ".",
+        "DET",
+        "VERB",
+        "DET",
+        "ADJ",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        "NOUN",
+        ".",
+        "ADP",
+        "VERB",
+        "DET",
+        "NOUN",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "Wow/NOUN ,/. that/DET was/VERB an/DET amazing/ADJ performance/NOUN !/.",
+      "baseline_tagged": "Wow/NOUN ,/. that/ADP was/VERB an/DET amazing/NOUN performance/NOUN !/."
+    },
+    {
+      "sentence_id": 25,
+      "sentence": "\"Stop!\" shouted the officer near the crowded station.",
+      "tokens": [
+        "``",
+        "Stop",
+        "!",
+        "''",
+        "shouted",
+        "the",
+        "officer",
+        "near",
+        "the",
+        "crowded",
+        "station",
+        "."
+      ],
+      "hmm_tags": [
+        ".",
+        "NOUN",
+        ".",
+        ".",
+        "VERB",
+        "DET",
+        "NOUN",
+        "ADP",
+        "DET",
+        "VERB",
+        "NOUN",
+        "."
+      ],
+      "baseline_tags": [
+        ".",
+        "NOUN",
+        ".",
+        ".",
+        "NOUN",
+        "DET",
+        "NOUN",
+        "ADP",
+        "DET",
+        "VERB",
+        "NOUN",
+        "."
+      ],
+      "hmm_tagged": "``/. Stop/NOUN !/. ''/. shouted/VERB the/DET officer/NOUN near/ADP the/DET crowded/VERB station/NOUN ./.",
+      "baseline_tagged": "``/. Stop/NOUN !/. ''/. shouted/NOUN the/DET officer/NOUN near/ADP the/DET crowded/VERB station/NOUN ./."
+    }
+  ],
+  "sample_tagged_sentences": [
+    {
+      "sentence_id": 1,
+      "token_index": 0,
+      "token": "Mr.",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 1,
+      "token": "Vinken",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 2,
+      "token": "is",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 3,
+      "token": "chairman",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 4,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 5,
+      "token": "Elsevier",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 6,
+      "token": "N.V.",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 7,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 8,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 9,
+      "token": "Dutch",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 10,
+      "token": "publishing",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 11,
+      "token": "group",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 1,
+      "token_index": 12,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 0,
+      "token": "Rudolph",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 1,
+      "token": "Agnew",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 2,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 3,
+      "token": "55",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NUM",
+      "baseline_predicted_tag": "NUM",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 4,
+      "token": "years",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 5,
+      "token": "old",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 6,
+      "token": "and",
+      "gold_tag": "CONJ",
+      "hmm_predicted_tag": "CONJ",
+      "baseline_predicted_tag": "CONJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 7,
+      "token": "former",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 8,
+      "token": "chairman",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 9,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 10,
+      "token": "Consolidated",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 11,
+      "token": "Gold",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 12,
+      "token": "Fields",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 13,
+      "token": "PLC",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 14,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 15,
+      "token": "was",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 16,
+      "token": "named",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 17,
+      "token": "a",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 18,
+      "token": "nonexecutive",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 19,
+      "token": "director",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 20,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 21,
+      "token": "this",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 22,
+      "token": "British",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 23,
+      "token": "industrial",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 24,
+      "token": "conglomerate",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 2,
+      "token_index": 25,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 0,
+      "token": "Although",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 1,
+      "token": "preliminary",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 2,
+      "token": "findings",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 3,
+      "token": "were",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 4,
+      "token": "reported",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 5,
+      "token": "more",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 6,
+      "token": "than",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 7,
+      "token": "a",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 8,
+      "token": "year",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 9,
+      "token": "ago",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 10,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 11,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 12,
+      "token": "latest",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 13,
+      "token": "results",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 14,
+      "token": "appear",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 15,
+      "token": "in",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 16,
+      "token": "today",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 17,
+      "token": "'s",
+      "gold_tag": "PRT",
+      "hmm_predicted_tag": "PRT",
+      "baseline_predicted_tag": "PRT",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 18,
+      "token": "New",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 19,
+      "token": "England",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 20,
+      "token": "Journal",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 21,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 22,
+      "token": "Medicine",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 23,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 24,
+      "token": "a",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 25,
+      "token": "forum",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 26,
+      "token": "likely",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 27,
+      "token": "to",
+      "gold_tag": "PRT",
+      "hmm_predicted_tag": "PRT",
+      "baseline_predicted_tag": "PRT",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 28,
+      "token": "bring",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 29,
+      "token": "new",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 30,
+      "token": "attention",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 31,
+      "token": "to",
+      "gold_tag": "PRT",
+      "hmm_predicted_tag": "PRT",
+      "baseline_predicted_tag": "PRT",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 32,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 33,
+      "token": "problem",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 3,
+      "token_index": 34,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 0,
+      "token": "We",
+      "gold_tag": "PRON",
+      "hmm_predicted_tag": "PRON",
+      "baseline_predicted_tag": "PRON",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 1,
+      "token": "'re",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 2,
+      "token": "talking",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 3,
+      "token": "about",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 4,
+      "token": "years",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 5,
+      "token": "ago",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 6,
+      "token": "before",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 7,
+      "token": "anyone",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 8,
+      "token": "heard",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 9,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 10,
+      "token": "asbestos",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 11,
+      "token": "having",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 12,
+      "token": "any",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 13,
+      "token": "questionable",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 14,
+      "token": "properties",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 4,
+      "token_index": 15,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 0,
+      "token": "The",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 1,
+      "token": "Lorillard",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 2,
+      "token": "spokeswoman",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 3,
+      "token": "said",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 4,
+      "token": "asbestos",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 5,
+      "token": "was",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 6,
+      "token": "used",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 7,
+      "token": "in",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 8,
+      "token": "``",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 9,
+      "token": "very",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADV",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 10,
+      "token": "modest",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 11,
+      "token": "amounts",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 12,
+      "token": "''",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 13,
+      "token": "in",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 14,
+      "token": "making",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 15,
+      "token": "paper",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 16,
+      "token": "for",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 17,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 18,
+      "token": "filters",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 19,
+      "token": "in",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 20,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 21,
+      "token": "early",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 22,
+      "token": "1950s",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 23,
+      "token": "and",
+      "gold_tag": "CONJ",
+      "hmm_predicted_tag": "CONJ",
+      "baseline_predicted_tag": "CONJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 24,
+      "token": "replaced",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 25,
+      "token": "with",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 26,
+      "token": "a",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 27,
+      "token": "different",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 28,
+      "token": "type",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 29,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 30,
+      "token": "filter",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 31,
+      "token": "in",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 32,
+      "token": "1956",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NUM",
+      "baseline_predicted_tag": "NUM",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 5,
+      "token_index": 33,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 0,
+      "token": "From",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 1,
+      "token": "1953",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NUM",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 2,
+      "token": "to",
+      "gold_tag": "PRT",
+      "hmm_predicted_tag": "PRT",
+      "baseline_predicted_tag": "PRT",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 3,
+      "token": "1955",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NUM",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 4,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 5,
+      "token": "9.8",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NUM",
+      "baseline_predicted_tag": "NUM",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 6,
+      "token": "billion",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NUM",
+      "baseline_predicted_tag": "NUM",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 7,
+      "token": "Kent",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 8,
+      "token": "cigarettes",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 9,
+      "token": "with",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 10,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 11,
+      "token": "filters",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 12,
+      "token": "were",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 13,
+      "token": "sold",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 14,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 15,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 16,
+      "token": "company",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 17,
+      "token": "said",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 6,
+      "token_index": 18,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 0,
+      "token": "The",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 1,
+      "token": "U.S.",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 2,
+      "token": "is",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 3,
+      "token": "one",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NUM",
+      "baseline_predicted_tag": "NUM",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 4,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 5,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 6,
+      "token": "few",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 7,
+      "token": "industrialized",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 8,
+      "token": "nations",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 9,
+      "token": "that",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 10,
+      "token": "does",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 11,
+      "token": "n't",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADV",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 12,
+      "token": "have",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 13,
+      "token": "a",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 14,
+      "token": "higher",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 15,
+      "token": "standard",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 16,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 17,
+      "token": "regulation",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 18,
+      "token": "for",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 19,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 20,
+      "token": "smooth",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 21,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 22,
+      "token": "needle-like",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 23,
+      "token": "fibers",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 24,
+      "token": "such",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 25,
+      "token": "as",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 26,
+      "token": "crocidolite",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 27,
+      "token": "that",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 28,
+      "token": "are",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 29,
+      "token": "classified",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 30,
+      "token": "as",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 31,
+      "token": "amphobiles",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 32,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 33,
+      "token": "according",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 34,
+      "token": "to",
+      "gold_tag": "PRT",
+      "hmm_predicted_tag": "PRT",
+      "baseline_predicted_tag": "PRT",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 35,
+      "token": "Brooke",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 36,
+      "token": "T.",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 37,
+      "token": "Mossman",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 38,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 39,
+      "token": "a",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 40,
+      "token": "professor",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 41,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 42,
+      "token": "pathlogy",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 43,
+      "token": "at",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 44,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 45,
+      "token": "University",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 46,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 47,
+      "token": "Vermont",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 48,
+      "token": "College",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 49,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 50,
+      "token": "Medicine",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 7,
+      "token_index": 51,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 0,
+      "token": "About",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 1,
+      "token": "160",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NUM",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 2,
+      "token": "workers",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 3,
+      "token": "at",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 4,
+      "token": "a",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 5,
+      "token": "factory",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 6,
+      "token": "that",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 7,
+      "token": "made",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 8,
+      "token": "paper",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 9,
+      "token": "for",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 10,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 11,
+      "token": "Kent",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 12,
+      "token": "filters",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 13,
+      "token": "were",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 14,
+      "token": "exposed",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 15,
+      "token": "to",
+      "gold_tag": "PRT",
+      "hmm_predicted_tag": "PRT",
+      "baseline_predicted_tag": "PRT",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 16,
+      "token": "asbestos",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 17,
+      "token": "in",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 18,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 19,
+      "token": "1950s",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 8,
+      "token_index": 20,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 0,
+      "token": "Workers",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 1,
+      "token": "described",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 2,
+      "token": "``",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 3,
+      "token": "clouds",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 4,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 5,
+      "token": "blue",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 6,
+      "token": "dust",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 7,
+      "token": "''",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 8,
+      "token": "that",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 9,
+      "token": "hung",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 10,
+      "token": "over",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 11,
+      "token": "parts",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 12,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 13,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 14,
+      "token": "factory",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 15,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 16,
+      "token": "even",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADV",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 17,
+      "token": "though",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 18,
+      "token": "exhaust",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 19,
+      "token": "fans",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 20,
+      "token": "ventilated",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 21,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 22,
+      "token": "area",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 9,
+      "token_index": 23,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 10,
+      "token_index": 0,
+      "token": "It",
+      "gold_tag": "PRON",
+      "hmm_predicted_tag": "PRON",
+      "baseline_predicted_tag": "PRON",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 10,
+      "token_index": 1,
+      "token": "has",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 10,
+      "token_index": 2,
+      "token": "no",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 10,
+      "token_index": 3,
+      "token": "bearing",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 10,
+      "token_index": 4,
+      "token": "on",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 10,
+      "token_index": 5,
+      "token": "our",
+      "gold_tag": "PRON",
+      "hmm_predicted_tag": "PRON",
+      "baseline_predicted_tag": "PRON",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 10,
+      "token_index": 6,
+      "token": "work",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 10,
+      "token_index": 7,
+      "token": "force",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 10,
+      "token_index": 8,
+      "token": "today",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 10,
+      "token_index": 9,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 0,
+      "token": "Shorter",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 1,
+      "token": "maturities",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 2,
+      "token": "are",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 3,
+      "token": "considered",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 4,
+      "token": "a",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 5,
+      "token": "sign",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 6,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 7,
+      "token": "rising",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 8,
+      "token": "rates",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 9,
+      "token": "because",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 10,
+      "token": "portfolio",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 11,
+      "token": "managers",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 12,
+      "token": "can",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 13,
+      "token": "capture",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 14,
+      "token": "higher",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 15,
+      "token": "rates",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 16,
+      "token": "sooner",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADV",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 11,
+      "token_index": 17,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 0,
+      "token": "The",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 1,
+      "token": "average",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 2,
+      "token": "maturity",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 3,
+      "token": "for",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 4,
+      "token": "funds",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 5,
+      "token": "open",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 6,
+      "token": "only",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADV",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 7,
+      "token": "to",
+      "gold_tag": "PRT",
+      "hmm_predicted_tag": "PRT",
+      "baseline_predicted_tag": "PRT",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 8,
+      "token": "institutions",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 9,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 10,
+      "token": "considered",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 11,
+      "token": "by",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 12,
+      "token": "some",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 13,
+      "token": "to",
+      "gold_tag": "PRT",
+      "hmm_predicted_tag": "PRT",
+      "baseline_predicted_tag": "PRT",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 14,
+      "token": "be",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 15,
+      "token": "a",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 16,
+      "token": "stronger",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 17,
+      "token": "indicator",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 18,
+      "token": "because",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 19,
+      "token": "those",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 20,
+      "token": "managers",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 21,
+      "token": "watch",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 22,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 23,
+      "token": "market",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 24,
+      "token": "closely",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADV",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 25,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 26,
+      "token": "reached",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 27,
+      "token": "a",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 28,
+      "token": "high",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 29,
+      "token": "point",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 30,
+      "token": "for",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 31,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 32,
+      "token": "year",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 33,
+      "token": "--",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 34,
+      "token": "33",
+      "gold_tag": "NUM",
+      "hmm_predicted_tag": "NUM",
+      "baseline_predicted_tag": "NUM",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 35,
+      "token": "days",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 12,
+      "token_index": 36,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 0,
+      "token": "It",
+      "gold_tag": "PRON",
+      "hmm_predicted_tag": "PRON",
+      "baseline_predicted_tag": "PRON",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 1,
+      "token": "invests",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 2,
+      "token": "heavily",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADV",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 3,
+      "token": "in",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 4,
+      "token": "dollar-denominated",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 5,
+      "token": "securities",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 6,
+      "token": "overseas",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 7,
+      "token": "and",
+      "gold_tag": "CONJ",
+      "hmm_predicted_tag": "CONJ",
+      "baseline_predicted_tag": "CONJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 8,
+      "token": "is",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 9,
+      "token": "currently",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADV",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 10,
+      "token": "waiving",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 11,
+      "token": "management",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 12,
+      "token": "fees",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 13,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 14,
+      "token": "which",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 15,
+      "token": "boosts",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 16,
+      "token": "its",
+      "gold_tag": "PRON",
+      "hmm_predicted_tag": "PRON",
+      "baseline_predicted_tag": "PRON",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 17,
+      "token": "yield",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 13,
+      "token_index": 18,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 0,
+      "token": "Until",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 1,
+      "token": "Congress",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 2,
+      "token": "acts",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 3,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 4,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 5,
+      "token": "government",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 6,
+      "token": "has",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 7,
+      "token": "n't",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADV",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 8,
+      "token": "any",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 9,
+      "token": "authority",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 10,
+      "token": "to",
+      "gold_tag": "PRT",
+      "hmm_predicted_tag": "PRT",
+      "baseline_predicted_tag": "PRT",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 11,
+      "token": "issue",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 12,
+      "token": "new",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "ADJ",
+      "baseline_predicted_tag": "ADJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 13,
+      "token": "debt",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 14,
+      "token": "obligations",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 15,
+      "token": "of",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 16,
+      "token": "any",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 17,
+      "token": "kind",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 18,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 19,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 20,
+      "token": "Treasury",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 21,
+      "token": "said",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 14,
+      "token_index": 22,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 0,
+      "token": "A",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 1,
+      "token": "buffet",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 2,
+      "token": "breakfast",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 3,
+      "token": "was",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 4,
+      "token": "held",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 5,
+      "token": "in",
+      "gold_tag": "ADP",
+      "hmm_predicted_tag": "ADP",
+      "baseline_predicted_tag": "ADP",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 6,
+      "token": "the",
+      "gold_tag": "DET",
+      "hmm_predicted_tag": "DET",
+      "baseline_predicted_tag": "DET",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 7,
+      "token": "museum",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 8,
+      "token": ",",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 9,
+      "token": "where",
+      "gold_tag": "ADV",
+      "hmm_predicted_tag": "ADV",
+      "baseline_predicted_tag": "ADV",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 10,
+      "token": "food",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 11,
+      "token": "and",
+      "gold_tag": "CONJ",
+      "hmm_predicted_tag": "CONJ",
+      "baseline_predicted_tag": "CONJ",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 12,
+      "token": "drinks",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 13,
+      "token": "are",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 14,
+      "token": "banned",
+      "gold_tag": "VERB",
+      "hmm_predicted_tag": "VERB",
+      "baseline_predicted_tag": "VERB",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 15,
+      "token": "to",
+      "gold_tag": "PRT",
+      "hmm_predicted_tag": "PRT",
+      "baseline_predicted_tag": "PRT",
+      "is_oov": 0
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 16,
+      "token": "everyday",
+      "gold_tag": "ADJ",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 17,
+      "token": "visitors",
+      "gold_tag": "NOUN",
+      "hmm_predicted_tag": "NOUN",
+      "baseline_predicted_tag": "NOUN",
+      "is_oov": 1
+    },
+    {
+      "sentence_id": 15,
+      "token_index": 18,
+      "token": ".",
+      "gold_tag": ".",
+      "hmm_predicted_tag": ".",
+      "baseline_predicted_tag": ".",
+      "is_oov": 0
+    }
+  ],
+  "summary": [
+    {
+      "metric": "Corpus",
+      "value": "NLTK Penn Treebank (treebank.tagged_sents())"
+    },
+    {
+      "metric": "Universal tagset size",
+      "value": 12
+    },
+    {
+      "metric": "Prepared sentences",
+      "value": 3903
+    },
+    {
+      "metric": "Training sentences",
+      "value": 3122
+    },
+    {
+      "metric": "Test sentences",
+      "value": 781
+    },
+    {
+      "metric": "Training tokens",
+      "value": 75349
+    },
+    {
+      "metric": "Test tokens",
+      "value": 18678
+    },
+    {
+      "metric": "Test OOV tokens",
+      "value": 1467
+    },
+    {
+      "metric": "Baseline accuracy",
+      "value": 0.932594
+    },
+    {
+      "metric": "HMM accuracy",
+      "value": 0.953475
+    },
+    {
+      "metric": "HMM macro F1",
+      "value": 0.916128
+    },
+    {
+      "metric": "HMM weighted F1",
+      "value": 0.953004
+    },
+    {
+      "metric": "HMM OOV accuracy",
+      "value": 0.755965
+    },
+    {
+      "metric": "HMM known-token accuracy",
+      "value": 0.97031
+    }
+  ],
+  "artifacts": {
+    "files": [
+      "train_sentences.txt",
+      "test_sentences.txt",
+      "custom_test_sentences.txt",
+      "evaluation_results.csv",
+      "sample_tagged_output.csv",
+      "error_analysis.csv",
+      "custom_predictions.csv",
+      "results.json",
+      "visualizations/confusion_matrix.png",
+      "visualizations/per_tag_scores.png",
+      "visualizations/model_comparison.png",
+      "visualizations/oov_analysis.png",
+      "visualizations/tag_distribution.png"
+    ],
+    "visualizations": [
+      "visualizations/confusion_matrix.png",
+      "visualizations/per_tag_scores.png",
+      "visualizations/model_comparison.png",
+      "visualizations/oov_analysis.png",
+      "visualizations/tag_distribution.png"
+    ]
+  },
+  "runtime_seconds": 2.364
+}
