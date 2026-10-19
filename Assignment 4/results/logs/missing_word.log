@@ -1,0 +1,6 @@
+[model] Loading word embeddings ...
+[model] Source: gensim-data cache (~/gensim-data, 128 MB download on first use)
+[model] glove-wiki-gigaword-100: 400,000 words, 100 dimensions, loaded in 21.0s
+[data] 131 candidate countries loaded from datasets/candidate_countries.csv
+
+Error: not found in the embedding vocabulary: zzznotaword (GloVe is case-insensitive; check spelling or use a word that appears in the 400k-word vocabulary)

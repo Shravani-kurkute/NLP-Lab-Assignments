@@ -1,0 +1,135 @@
+{
+  "experiment": "Country Prediction using Word Embeddings",
+  "model": {
+    "name": "glove-wiki-gigaword-100",
+    "source": "gensim-data cache (~/gensim-data, 128 MB download on first use)",
+    "vocabulary_size": 400000,
+    "dimension": 100
+  },
+  "candidate_countries": 131,
+  "environment": {
+    "python": "3.13.9",
+    "platform": "Linux-7.2.8-100.fc43.x86_64-x86_64-with-glibc2.42"
+  },
+  "generated_at": "2026-10-19T23:43:21",
+  "datasets": {
+    "test15": {
+      "file": "datasets/test_analogies.csv",
+      "size": 15
+    },
+    "large1000": {
+      "file": "datasets/eval_analogies_large.csv",
+      "size": 1000
+    }
+  },
+  "results": {
+    "test15": {
+      "country_filtered": {
+        "total": 15,
+        "correct_top1": 14,
+        "incorrect_top1": 1,
+        "top1_accuracy_pct": 93.33,
+        "correct_top5": 15,
+        "top5_accuracy_pct": 100.0,
+        "mean_predicted_score": 0.7651,
+        "mean_actual_score": 0.7646,
+        "mean_top1_margin": 0.1054,
+        "median_top1_margin": 0.1231,
+        "runtime_seconds": 0.0
+      },
+      "full_vocabulary": {
+        "total": 15,
+        "correct_top1": 13,
+        "incorrect_top1": 2,
+        "top1_accuracy_pct": 86.67,
+        "correct_top5": 15,
+        "top5_accuracy_pct": 100.0,
+        "mean_predicted_score": 0.7721,
+        "mean_actual_score": 0.7646,
+        "mean_top1_margin": 0.0941,
+        "median_top1_margin": 0.0986,
+        "runtime_seconds": 0.06
+      }
+    },
+    "large1000": {
+      "country_filtered": {
+        "total": 1000,
+        "correct_top1": 944,
+        "incorrect_top1": 56,
+        "top1_accuracy_pct": 94.4,
+        "correct_top5": 989,
+        "top5_accuracy_pct": 98.9,
+        "mean_predicted_score": 0.7751,
+        "mean_actual_score": 0.7729,
+        "mean_top1_margin": 0.0978,
+        "median_top1_margin": 0.0972,
+        "runtime_seconds": 0.03
+      },
+      "full_vocabulary": {
+        "total": 1000,
+        "correct_top1": 922,
+        "incorrect_top1": 78,
+        "top1_accuracy_pct": 92.2,
+        "correct_top5": 977,
+        "top5_accuracy_pct": 97.7,
+        "mean_predicted_score": 0.7774,
+        "mean_actual_score": 0.7729,
+        "mean_top1_margin": 0.088,
+        "median_top1_margin": 0.0908,
+        "runtime_seconds": 3.04
+      }
+    }
+  },
+  "comparison": {
+    "test15": {
+      "top1_gain_country_filtered_pct_points": 6.66,
+      "top5_gain_country_filtered_pct_points": 0.0
+    },
+    "large1000": {
+      "top1_gain_country_filtered_pct_points": 2.2,
+      "top5_gain_country_filtered_pct_points": 1.2
+    }
+  },
+  "error_breakdown": [
+    {
+      "country": "georgia",
+      "errors": 14
+    },
+    {
+      "country": "jordan",
+      "errors": 9
+    },
+    {
+      "country": "england",
+      "errors": 8
+    },
+    {
+      "country": "austria",
+      "errors": 5
+    },
+    {
+      "country": "belgium",
+      "errors": 5
+    },
+    {
+      "country": "chile",
+      "errors": 3
+    },
+    {
+      "country": "peru",
+      "errors": 2
+    },
+    {
+      "country": "australia",
+      "errors": 1
+    },
+    {
+      "country": "belarus",
+      "errors": 1
+    },
+    {
+      "country": "canada",
+      "errors": 1
+    }
+  ]
+}

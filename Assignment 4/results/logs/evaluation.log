@@ -1,0 +1,92 @@
+[model] Loading word embeddings ...
+[model] Source: gensim-data cache (~/gensim-data, 128 MB download on first use)
+[model] glove-wiki-gigaword-100: 400,000 words, 100 dimensions, loaded in 21.6s
+[data] 131 candidate countries loaded from datasets/candidate_countries.csv
+
+==============================================================================
+EXAMPLE FROM THE ASSIGNMENT SHEET
+==============================================================================
+  Input: Athens : Greece :: Baghdad : ?
+  country-filtered: iraq (0.790), afghanistan (0.708), lebanon (0.678), syria (0.655), kuwait (0.622)
+  full vocabulary : iraq (0.790), afghanistan (0.708), lebanon (0.678), arabia (0.666), syria (0.655)
+  Predicted Country 2 = IRAQ  -> CORRECT
+
+==============================================================================
+TEST SET (15 analogies) - country-filtered ranking
+==============================================================================
+ 1. Athens : Greece :: Baghdad : ?
+    -> IRAQ (0.790)  CORRECT
+    top-5: iraq (0.790), afghanistan (0.708), lebanon (0.678), syria (0.655), kuwait (0.622)
+ 2. Kabul : Afghanistan :: Beijing : ?
+    -> CHINA (0.843)  CORRECT
+    top-5: china (0.843), vietnam (0.693), japan (0.679), russia (0.653), iran (0.643)
+ 3. Beirut : Lebanon :: Budapest : ?
+    -> HUNGARY (0.795)  CORRECT
+    top-5: hungary (0.795), lithuania (0.709), poland (0.693), latvia (0.683), romania (0.681)
+ 4. Vienna : Austria :: Madrid : ?
+    -> SPAIN (0.769)  CORRECT
+    top-5: spain (0.769), portugal (0.659), italy (0.644), argentina (0.626), monaco (0.613)
+ 5. Jakarta : Indonesia :: Bratislava : ?
+    -> SLOVAKIA (0.811)  CORRECT
+    top-5: slovakia (0.811), hungary (0.706), bulgaria (0.689), latvia (0.689), romania (0.673)
+ 6. Helsinki : Finland :: Vientiane : ?
+    -> LAOS (0.660)  CORRECT
+    top-5: laos (0.660), mozambique (0.533), namibia (0.525), romania (0.521), botswana (0.520)
+ 7. Kathmandu : Nepal :: Berlin : ?
+    -> GERMANY (0.816)  CORRECT
+    top-5: germany (0.816), poland (0.680), austria (0.670), hungary (0.652), denmark (0.646)
+ 8. Beijing : China :: Helsinki : ?
+    -> FINLAND (0.693)  CORRECT
+    top-5: finland (0.693), norway (0.617), sweden (0.608), estonia (0.555), bulgaria (0.550)
+ 9. Tokyo : Japan :: Warsaw : ?
+    -> POLAND (0.845)  CORRECT
+    top-5: poland (0.845), hungary (0.711), slovakia (0.686), romania (0.683), germany (0.678)
+10. Sofia : Bulgaria :: London : ?
+    -> ENGLAND (0.690)  CORRECT
+    top-5: england (0.690), australia (0.671), ireland (0.656), france (0.632), germany (0.625)
+11. Beijing : China :: Valletta : ?
+    -> MALTA (0.681)  CORRECT
+    top-5: malta (0.681), liechtenstein (0.558), estonia (0.454), latvia (0.434), iceland (0.415)
+12. Stockholm : Sweden :: Bratislava : ?
+    -> SLOVAKIA (0.837)  CORRECT
+    top-5: slovakia (0.837), slovenia (0.698), latvia (0.690), hungary (0.686), romania (0.656)
+13. Mogadishu : Somalia :: Vienna : ?
+    -> GERMANY (0.645)  WRONG (expected austria)
+    top-5: germany (0.645), austria (0.637), switzerland (0.637), italy (0.622), france (0.606)
+14. Baku : Azerbaijan :: Vientiane : ?
+    -> LAOS (0.749)  CORRECT
+    top-5: laos (0.749), cambodia (0.621), nepal (0.618), botswana (0.611), bhutan (0.602)
+15. Nairobi : Kenya :: Kathmandu : ?
+    -> NEPAL (0.853)  CORRECT
+    top-5: nepal (0.853), bangladesh (0.695), zambia (0.689), bhutan (0.677), mozambique (0.673)
+
+Demo accuracy: 14/15 (93.33%)
+
+[evaluate] test15/country_filtered (15 analogies)
+  top-1 14/15 (93.33%), top-5 100.00%, errors 1, 0.0s
+
+[evaluate] test15/full_vocabulary (15 analogies)
+  top-1 13/15 (86.67%), top-5 100.00%, errors 2, 0.1s
+
+[evaluate] large1000/country_filtered (1000 analogies)
+[ranking] 1000/1000 analogies
+  top-1 944/1000 (94.40%), top-5 98.90%, errors 56, 0.0s
+
+[evaluate] large1000/full_vocabulary (1000 analogies)
+[ranking] 1000/1000 analogies
+  top-1 922/1000 (92.20%), top-5 97.70%, errors 78, 2.8s
+
+==============================================================================
+ACCURACY SUMMARY
+==============================================================================
+dataset/mode                         n     top-1   top-1 %   top-5 %
+------------------------------------------------------------------------------
+test15/country_filtered             15        14     93.33    100.00
+test15/full_vocabulary              15        13     86.67    100.00
+large1000/country_filtered        1000       944     94.40     98.90
+large1000/full_vocabulary         1000       922     92.20     97.70
+------------------------------------------------------------------------------
+test15: country filtering changes top-1 accuracy by +6.66 percentage points.
+large1000: country filtering changes top-1 accuracy by +2.20 percentage points.
+
+Results written to: /home/shravanikurkute/BTech/4th Year/NLP/Assignment 4/results

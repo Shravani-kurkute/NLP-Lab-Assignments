@@ -1,0 +1,13 @@
+{
+  "source_pairs": 78,
+  "valid_pairs": 78,
+  "candidate_countries": 131,
+  "skipped_pairs": [],
+  "additional_countries_out_of_vocabulary": [],
+  "test_size": 15,
+  "large_size": 1000,
+  "test_seed": 42,
+  "large_seed": 2026,
+  "embedding_vocabulary": 400000,
+  "embedding_dimension": 100
+}

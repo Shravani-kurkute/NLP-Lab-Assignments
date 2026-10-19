@@ -1,0 +1,2 @@
+capital1,country1,capital2,actual_country2,predicted_country,predicted_score,actual_score,actual_rank,error_category,explanation
+mogadishu,somalia,vienna,austria,germany,0.6447,0.6368,2,neighbouring / culturally close country,"Austria and Germany share regional and cultural contexts in the training corpus, so their vectors are close."

@@ -1,0 +1,11 @@
+[1/4] Loading GloVe embeddings ...
+      source: gensim-data cache (downloads once, ~128 MB)
+      loaded 400,000 words of dimension 100 in 21.3s
+[2/4] Validating capital-country pairs ...
+      valid pairs: 78 of 78
+      candidate countries: 131
+[3/4] Generating test and evaluation analogies ...
+[4/4] Dataset generation complete.
+      test analogies:       15
+      evaluation analogies: 1000
+      output directory:     /home/shravanikurkute/BTech/4th Year/NLP/Assignment 4/datasets

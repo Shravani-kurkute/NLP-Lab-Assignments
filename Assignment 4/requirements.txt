@@ -1,0 +1,18 @@
+# Assignment 4 - Country Prediction using Word Embeddings
+# Tested on Fedora Linux with Python 3.13.9.
+# Install with: python3 -m pip install -r requirements.txt
+
+gensim==4.4.0
+numpy==2.2.0
+scipy==1.16.3
+pandas==2.2.3
+matplotlib==3.10.6
+scikit-learn==1.6.0
+openpyxl==3.1.5
+python-docx==1.2.0
+jupyter==1.1.1
+nbformat==5.10.4
+nbconvert==7.16.6
+ipykernel==6.31.0
+pytest==8.3.4
+threadpoolctl==3.5.0

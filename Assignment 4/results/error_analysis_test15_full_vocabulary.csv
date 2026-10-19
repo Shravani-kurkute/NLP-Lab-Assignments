@@ -1,0 +1,3 @@
+capital1,country1,capital2,actual_country2,predicted_country,predicted_score,actual_score,actual_rank,error_category,explanation
+sofia,bulgaria,london,england,britain,0.795,0.6899,3,ambiguous word,"England appears mostly in sports, history and UK-related contexts, which overlap with Britain, the UK and Australia."
+mogadishu,somalia,vienna,austria,germany,0.6447,0.6368,3,neighbouring / culturally close country,"Austria and Germany share regional and cultural contexts in the training corpus, so their vectors are close."

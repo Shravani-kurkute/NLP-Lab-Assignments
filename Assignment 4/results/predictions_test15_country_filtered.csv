@@ -1,0 +1,16 @@
+capital1,country1,capital2,actual_country2,predicted_country,correct,predicted_score,actual_score,actual_rank,margin,rank1_word,rank1_score,rank2_word,rank2_score,rank3_word,rank3_score,rank4_word,rank4_score,rank5_word,rank5_score
+athens,greece,baghdad,iraq,iraq,Correct,0.7903,0.7903,1,0.0823,iraq,0.7903,afghanistan,0.7081,lebanon,0.6783,syria,0.6550,kuwait,0.6217
+kabul,afghanistan,beijing,china,china,Correct,0.8435,0.8435,1,0.1505,china,0.8435,vietnam,0.6929,japan,0.6788,russia,0.6532,iran,0.6431
+beirut,lebanon,budapest,hungary,hungary,Correct,0.7951,0.7951,1,0.0859,hungary,0.7951,lithuania,0.7091,poland,0.6925,latvia,0.6827,romania,0.6811
+vienna,austria,madrid,spain,spain,Correct,0.7689,0.7689,1,0.1098,spain,0.7689,portugal,0.6591,italy,0.6440,argentina,0.6255,monaco,0.6134
+jakarta,indonesia,bratislava,slovakia,slovakia,Correct,0.8106,0.8106,1,0.1050,slovakia,0.8106,hungary,0.7056,bulgaria,0.6892,latvia,0.6891,romania,0.6726
+helsinki,finland,vientiane,laos,laos,Correct,0.6599,0.6599,1,0.1273,laos,0.6599,mozambique,0.5326,namibia,0.5248,romania,0.5210,botswana,0.5201
+kathmandu,nepal,berlin,germany,germany,Correct,0.8164,0.8164,1,0.1360,germany,0.8164,poland,0.6805,austria,0.6698,hungary,0.6523,denmark,0.6457
+beijing,china,helsinki,finland,finland,Correct,0.6930,0.6930,1,0.0756,finland,0.6930,norway,0.6174,sweden,0.6077,estonia,0.5547,bulgaria,0.5495
+tokyo,japan,warsaw,poland,poland,Correct,0.8448,0.8448,1,0.1341,poland,0.8448,hungary,0.7107,slovakia,0.6863,romania,0.6825,germany,0.6777
+sofia,bulgaria,london,england,england,Correct,0.6899,0.6899,1,0.0187,england,0.6899,australia,0.6712,ireland,0.6559,france,0.6322,germany,0.6248
+beijing,china,valletta,malta,malta,Correct,0.6807,0.6807,1,0.1231,malta,0.6807,liechtenstein,0.5575,estonia,0.4539,latvia,0.4344,iceland,0.4153
+stockholm,sweden,bratislava,slovakia,slovakia,Correct,0.8366,0.8366,1,0.1385,slovakia,0.8366,slovenia,0.6981,latvia,0.6903,hungary,0.6858,romania,0.6559
+mogadishu,somalia,vienna,austria,germany,Incorrect,0.6447,0.6368,2,0.0080,germany,0.6447,austria,0.6368,switzerland,0.6367,italy,0.6220,france,0.6058
+baku,azerbaijan,vientiane,laos,laos,Correct,0.7495,0.7495,1,0.1281,laos,0.7495,cambodia,0.6214,nepal,0.6181,botswana,0.6110,bhutan,0.6022
+nairobi,kenya,kathmandu,nepal,nepal,Correct,0.8532,0.8532,1,0.1583,nepal,0.8532,bangladesh,0.6950,zambia,0.6893,bhutan,0.6773,mozambique,0.6726
