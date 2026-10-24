@@ -1,0 +1,103 @@
+{
+    "overall_metrics": {
+        "accuracy": 0.9713603818615751,
+        "macro_precision": 0.9717443286964839,
+        "macro_recall": 0.9698671693320149,
+        "macro_f1": 0.9704613307156196,
+        "weighted_precision": 0.9720473960381157,
+        "weighted_recall": 0.9713603818615751,
+        "weighted_f1": 0.9713919938739253,
+        "correct_count": 407,
+        "incorrect_count": 12,
+        "total_samples": 419
+    },
+    "classification_report": {
+        "business": {
+            "precision": 0.9509803921568627,
+            "recall": 0.97,
+            "f1-score": 0.9603960396039604,
+            "support": 100.0
+        },
+        "entertainment": {
+            "precision": 1.0,
+            "recall": 0.9315068493150684,
+            "f1-score": 0.9645390070921985,
+            "support": 73.0
+        },
+        "politics": {
+            "precision": 0.9512195121951219,
+            "recall": 0.9873417721518988,
+            "f1-score": 0.968944099378882,
+            "support": 79.0
+        },
+        "sport": {
+            "precision": 1.0,
+            "recall": 0.98989898989899,
+            "f1-score": 0.9949238578680203,
+            "support": 99.0
+        },
+        "tech": {
+            "precision": 0.9565217391304348,
+            "recall": 0.9705882352941176,
+            "f1-score": 0.9635036496350365,
+            "support": 68.0
+        },
+        "accuracy": 0.9713603818615751,
+        "macro avg": {
+            "precision": 0.9717443286964839,
+            "recall": 0.9698671693320149,
+            "f1-score": 0.9704613307156196,
+            "support": 419.0
+        },
+        "weighted avg": {
+            "precision": 0.9720473960381157,
+            "recall": 0.9713603818615751,
+            "f1-score": 0.9713919938739253,
+            "support": 419.0
+        }
+    },
+    "confusion_matrix": [
+        [
+            97,
+            0,
+            2,
+            0,
+            1
+        ],
+        [
+            3,
+            68,
+            1,
+            0,
+            1
+        ],
+        [
+            0,
+            0,
+            78,
+            0,
+            1
+        ],
+        [
+            1,
+            0,
+            0,
+            98,
+            0
+        ],
+        [
+            1,
+            0,
+            1,
+            0,
+            66
+        ]
+    ],
+    "classes": [
+        "business",
+        "entertainment",
+        "politics",
+        "sport",
+        "tech"
+    ]
+}

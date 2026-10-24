@@ -1,0 +1,36 @@
+{
+    "dataset_path": "/home/shravanikurkute/BTech/4th Year/NLP/Assignment 6/dataset/bbc-text.csv",
+    "test_size": 0.2,
+    "random_state": 42,
+    "cleaning_stats": {
+        "original_rows": 2225,
+        "rows_after_missing_or_empty_cleanup": 2225,
+        "ambiguous_text_rows_removed": 0,
+        "duplicate_text_rows_removed": 133,
+        "cleaned_rows": 2092
+    },
+    "category_distribution_cleaned": {
+        "business": 500,
+        "sport": 494,
+        "politics": 395,
+        "entertainment": 366,
+        "tech": 337
+    },
+    "train_size": 1673,
+    "test_size_actual": 419,
+    "pipeline": {
+        "tfidf": {
+            "stop_words": "english",
+            "max_features": 20000,
+            "ngram_range": [
+                1,
+                2
+            ],
+            "sublinear_tf": true
+        },
+        "classifier": {
+            "name": "MultinomialNB",
+            "alpha": 0.5
+        }
+    }
+}
