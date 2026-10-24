@@ -1,0 +1,120 @@
+==========================================================================
+NLP ASSIGNMENT 05 - PART A : AMAZON REVIEW SENTIMENT ANALYSIS
+Student: Shravani Kurkute | Roll No: 421129 | PRN: 22311926
+==========================================================================
+
+==========================================================================
+1. DATASET INSPECTION
+==========================================================================
+Dataset file       : data/Datafiniti_Amazon_Consumer_Reviews_of_Amazon_Products.csv
+Dataset source     : Datafiniti Amazon Consumer Reviews (schema-compatible fallback)
+Raw shape          : (5000, 24)
+Products (unique)  : 23
+Rating counts      :
+ reviews.rating
+1      63
+2      54
+3     197
+4    1208
+5    3478
+Missing review text: 0
+Missing rating     : 0
+Duplicate review text: 615
+
+Removed 0 rows with missing text/rating, 197 neutral rows, 593 duplicate reviews -> 4210 records remain
+Class distribution :
+ sentiment
+positive    4115
+negative      95
+Imbalance: 97.7% positive
+
+==========================================================================
+2. PREPROCESSING
+==========================================================================
+
+RAW   : Great light reader. Easy to use at the beach . This kindle is light and easy to use especially at the beach!!!
+CLEAN : great light reader easi use beach kindl light easi use especi beach
+
+RAW   : Great for the price . Didnt know how much i'd use a kindle so went for the lower end. im happy with it, even if its a little dark
+CLEAN : great price not neg_know neg_use neg_kindl neg_went neg_lower neg_end im happi littl dark
+
+RAW   : A Great Buy . I am 100 happy with my purchase. I caught it on sale at a really good price. I am normally a real book person, but I have a 1 year old who loves ripping up pages. The Kindle prevents that, it's extremely portable (it fits better in my purse than a giant book), and I
+CLEAN : great buy happi purchas caught sale realli good price normal real book person but year old love rip page kindl prevent extrem portabl fit better purs giant book load lot book finish start have store serv need pick paperwhit price unbeat differ not neg_backlit simpl book light dol
+
+Avg tokens/review after cleaning: 16.65
+
+Train = 3368   Test = 842
+
+==========================================================================
+3. MODEL COMPARISON (5-fold stratified CV, TF-IDF unigrams)
+==========================================================================
+Naive Bayes            macro-F1 = 0.6694 +/- 0.0240
+Logistic Regression    macro-F1 = 0.7487 +/- 0.0348
+Linear SVM             macro-F1 = 0.7498 +/- 0.0523
+Random Forest          macro-F1 = 0.5305 +/- 0.0478
+
+Grid-search tuning Logistic Regression ...
+Best params : {'clf__C': 50, 'tfidf__min_df': 2, 'tfidf__ngram_range': (1, 2)}
+CV macro-F1 : 0.7868
+
+==========================================================================
+4. TEST-SET EVALUATION (tuned Logistic Regression)
+==========================================================================
+accuracy        : 0.9869
+precision_pos   : 0.9903
+recall_pos      : 0.9964
+f1_pos          : 0.9933
+precision_macro : 0.8880
+recall_macro    : 0.7877
+f1_macro        : 0.8300
+precision_neg   : 0.7857
+recall_neg      : 0.5789
+f1_neg          : 0.6667
+roc_auc         : 0.9861
+mcc             : 0.6682
+
+Confusion matrix [rows=true, cols=pred] (neg, pos):
+ [[ 11   8]
+ [  3 820]]
+
+              precision    recall  f1-score   support
+
+    negative     0.7857    0.5789    0.6667        19
+    positive     0.9903    0.9964    0.9933       823
+
+    accuracy                         0.9869       842
+   macro avg     0.8880    0.7877    0.8300       842
+weighted avg     0.9857    0.9869    0.9860       842
+
+
+Repeated 5-fold stratified CV on all 4210 reviews (3 repeats):
+  accuracy      : 0.9826
+  f1_macro      : 0.7702
+  recall_neg    : 0.4702
+  precision_neg : 0.6602
+
+Top positive features: ['great', 'love', 'easi', 'great tablet', 'alexa', 'read', 'price', 'easi use', 'perfect', 'nice']
+Top negative features: ['not', 'return', 'poor', 'terribl', 'buy', 'slow', 'bad', 'neg_return', 'veri power', 'devic tablet']
+
+==========================================================================
+5. ERROR ANALYSIS
+==========================================================================
+Total errors : 11 (1.31% of test set)
+error_type
+False Positive    8
+False Negative    3
+Errors containing negation : 9
+Errors in mixed reviews    : 4
+High-confidence errors (p<0.15 or >0.85): 5
+Avg tokens of errors: 27.5 vs all reviews: 16.6
+
+==========================================================================
+6. DEMO PREDICTIONS
+==========================================================================
+[positive p=0.999] Love this tablet, the screen is gorgeous and the battery lasts all day!
+[positive p=0.668] Terrible product. Stopped working after two weeks, total waste of money.
+[positive p=0.994] The sound is not bad at all, quite good for the price.
+[negative p=0.167] The speaker is not good and the Bluetooth keeps disconnecting.
+[positive p=0.981] The design is nice but overall the remote is awful and I regret buying it.
+
+Saved results/part_a_*.json/.csv, model and visualizations.

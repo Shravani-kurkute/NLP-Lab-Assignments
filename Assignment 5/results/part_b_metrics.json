@@ -1,0 +1,213 @@
+{
+  "student": {
+    "name": "Shravani Balasaheb Kurkute",
+    "roll_no": "421129",
+    "prn": "22311926"
+  },
+  "corpus": {
+    "name": "NLTK movie_reviews",
+    "n_docs": 2000,
+    "n_pos": 1000,
+    "n_neg": 1000
+  },
+  "protocol": {
+    "n_per_class": 700,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "folds": 3
+  },
+  "ours_mean": [
+    {
+      "features": "(1) unigrams, frequency",
+      "n_features": 16259,
+      "Max Entropy": 81.9,
+      "Naive Bayes": 80.3,
+      "SVM": 81.1
+    },
+    {
+      "features": "(2) unigrams, presence",
+      "n_features": 16259,
+      "Max Entropy": 83.4,
+      "Naive Bayes": 81.4,
+      "SVM": 82.6
+    },
+    {
+      "features": "(3) unigrams+bigrams, presence",
+      "n_features": 32424,
+      "Max Entropy": 84.2,
+      "Naive Bayes": 83.8,
+      "SVM": 83.6
+    },
+    {
+      "features": "(4) bigrams, presence",
+      "n_features": 16165,
+      "Max Entropy": 79.3,
+      "Naive Bayes": 82.2,
+      "SVM": 78.4
+    },
+    {
+      "features": "(7) top 2633 unigrams, presence",
+      "n_features": 2633,
+      "Max Entropy": 81.3,
+      "Naive Bayes": 81.6,
+      "SVM": 79.4
+    }
+  ],
+  "ours_std": [
+    {
+      "features": "(1) unigrams, frequency",
+      "Max Entropy": 0.3,
+      "Naive Bayes": 0.3,
+      "SVM": 0.6
+    },
+    {
+      "features": "(2) unigrams, presence",
+      "Max Entropy": 0.3,
+      "Naive Bayes": 1.1,
+      "SVM": 0.3
+    },
+    {
+      "features": "(3) unigrams+bigrams, presence",
+      "Max Entropy": 0.4,
+      "Naive Bayes": 0.6,
+      "SVM": 0.7
+    },
+    {
+      "features": "(4) bigrams, presence",
+      "Max Entropy": 1.1,
+      "Naive Bayes": 0.9,
+      "SVM": 1.2
+    },
+    {
+      "features": "(7) top 2633 unigrams, presence",
+      "Max Entropy": 0.3,
+      "Naive Bayes": 0.5,
+      "SVM": 0.6
+    }
+  ],
+  "paper": [
+    {
+      "index": "(1) unigrams, frequency",
+      "Naive Bayes": 78.7,
+      "Max Entropy": NaN,
+      "SVM": 72.8
+    },
+    {
+      "index": "(2) unigrams, presence",
+      "Naive Bayes": 81.0,
+      "Max Entropy": 80.4,
+      "SVM": 82.9
+    },
+    {
+      "index": "(3) unigrams+bigrams, presence",
+      "Naive Bayes": 80.6,
+      "Max Entropy": 80.8,
+      "SVM": 82.7
+    },
+    {
+      "index": "(4) bigrams, presence",
+      "Naive Bayes": 77.3,
+      "Max Entropy": 77.4,
+      "SVM": 77.1
+    },
+    {
+      "index": "(7) top 2633 unigrams, presence",
+      "Naive Bayes": 80.3,
+      "Max Entropy": 81.0,
+      "SVM": 81.4
+    }
+  ],
+  "paper_values_source": "Pang et al. (2002), Table 3 - published values, not our output",
+  "difference": [
+    {
+      "features": "(1) unigrams, frequency",
+      "Naive Bayes": 1.6,
+      "Max Entropy": NaN,
+      "SVM": 8.3
+    },
+    {
+      "features": "(2) unigrams, presence",
+      "Naive Bayes": 0.4,
+      "Max Entropy": 3.0,
+      "SVM": -0.3
+    },
+    {
+      "features": "(3) unigrams+bigrams, presence",
+      "Naive Bayes": 3.2,
+      "Max Entropy": 3.4,
+      "SVM": 0.9
+    },
+    {
+      "features": "(4) bigrams, presence",
+      "Naive Bayes": 4.9,
+      "Max Entropy": 1.9,
+      "SVM": 1.3
+    },
+    {
+      "features": "(7) top 2633 unigrams, presence",
+      "Naive Bayes": 1.3,
+      "Max Entropy": 0.3,
+      "SVM": -2.0
+    }
+  ],
+  "human_baseline": {
+    "acc": 58.271428571428565,
+    "ties": 72.2,
+    "paper": {
+      "acc": 58.0,
+      "ties": 75.0
+    }
+  },
+  "full_corpus_10fold": {
+    "Naive Bayes": 82.8,
+    "Max Entropy": 86.0,
+    "SVM": 85.1
+  },
+  "ablation": {
+    "without negation tagging": 82.7866667892033,
+    "with NOT_ negation tagging": 82.85835071821782
+  },
+  "top_pos": [
+    "fun",
+    "enjoyable",
+    "several",
+    "memorable",
+    "best",
+    "frank",
+    "loved",
+    "well",
+    "great",
+    "hilarious",
+    "finds",
+    "them"
+  ],
+  "top_neg": [
+    "bad",
+    "unfortunately",
+    "worst",
+    "poor",
+    "plot",
+    "should",
+    "nothing",
+    "NOT_funny",
+    "script",
+    "wasted",
+    "NOT_waste",
+    "ridiculous"
+  ],
+  "svm_full_cm": [
+    [
+      855,
+      145
+    ],
+    [
+      153,
+      847
+    ]
+  ]
+}

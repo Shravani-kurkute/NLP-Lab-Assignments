@@ -1,0 +1,24 @@
+# Large raw datasets (downloadable; see README section 3)
+data/*.csv
+data/*.part
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+.benchmarks/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# LibreOffice lock files
+.~lock.*#
+
+# OS files
+.DS_Store
+Thumbs.db

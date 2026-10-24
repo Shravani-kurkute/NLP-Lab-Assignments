@@ -1,0 +1,6 @@
+features,n_features,Max Entropy,Naive Bayes,SVM
+"(1) unigrams, frequency",16259,81.9,80.3,81.1
+"(2) unigrams, presence",16259,83.4,81.4,82.6
+"(3) unigrams+bigrams, presence",32424,84.2,83.8,83.6
+"(4) bigrams, presence",16165,79.3,82.2,78.4
+"(7) top 2633 unigrams, presence",2633,81.3,81.6,79.4

@@ -1,0 +1,62 @@
+==========================================================================
+NLP ASSIGNMENT 05 - PART B : PANG, LEE & VAITHYANATHAN (2002) REPLICATION
+Student: Shravani Kurkute | Roll No: 421129 | PRN: 22311926
+==========================================================================
+Loaded 2000 reviews (1000 pos / 1000 neg)
+seed 0 done
+seed 1 done
+seed 2 done
+seed 3 done
+seed 4 done
+
+=== OUR RESULTS: mean 3-fold CV accuracy (%) over 5 random 700/700 subsamples ===
+classifier                       n_features  Max Entropy  Naive Bayes   SVM
+features                                                                   
+(1) unigrams, frequency               16259         81.9         80.3  81.1
+(2) unigrams, presence                16259         83.4         81.4  82.6
+(3) unigrams+bigrams, presence        32424         84.2         83.8  83.6
+(4) bigrams, presence                 16165         79.3         82.2  78.4
+(7) top 2633 unigrams, presence        2633         81.3         81.6  79.4
+
+=== std-dev across subsamples (percentage points) ===
+classifier                       Max Entropy  Naive Bayes  SVM
+features                                                      
+(1) unigrams, frequency                  0.3          0.3  0.6
+(2) unigrams, presence                   0.3          1.1  0.3
+(3) unigrams+bigrams, presence           0.4          0.6  0.7
+(4) bigrams, presence                    1.1          0.9  1.2
+(7) top 2633 unigrams, presence          0.3          0.5  0.6
+
+=== PUBLISHED: Pang et al. (2002), Table 3 (NOT our output) ===
+                                 Naive Bayes  Max Entropy   SVM
+(1) unigrams, frequency                 78.7          NaN  72.8
+(2) unigrams, presence                  81.0         80.4  82.9
+(3) unigrams+bigrams, presence          80.6         80.8  82.7
+(4) bigrams, presence                   77.3         77.4  77.1
+(7) top 2633 unigrams, presence         80.3         81.0  81.4
+
+=== DIFFERENCE (ours - paper), percentage points ===
+classifier                       Naive Bayes  Max Entropy  SVM
+features                                                      
+(1) unigrams, frequency                  1.6          NaN  8.3
+(2) unigrams, presence                   0.4          3.0 -0.3
+(3) unigrams+bigrams, presence           3.2          3.4  0.9
+(4) bigrams, presence                    4.9          1.9  1.3
+(7) top 2633 unigrams, presence          1.3          0.3 -2.0
+
+Human-1 word-list baseline: accuracy=58.3%  ties=72.2%  (paper: 58% acc / 75% ties)
+
+=== Extra: full 2,000 reviews, unigram presence, 10-fold CV accuracy (%) ===
+{'Naive Bayes': 82.8, 'Max Entropy': 86.0, 'SVM': 85.1}
+SVM confusion matrix [neg,pos]:
+ [[855 145]
+ [153 847]]
+
+=== Ablation (unigram presence, SVM, seed 0) ===
+  without negation tagging      : 82.8%
+  with NOT_ negation tagging    : 82.9%
+
+Top positive: ['fun', 'enjoyable', 'several', 'memorable', 'best', 'frank', 'loved', 'well', 'great', 'hilarious', 'finds', 'them']
+Top negative: ['bad', 'unfortunately', 'worst', 'poor', 'plot', 'should', 'nothing', 'NOT_funny', 'script', 'wasted', 'NOT_waste', 'ridiculous']
+
+Saved results/part_b_*.csv/.json and visualizations.

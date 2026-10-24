@@ -1,0 +1,6 @@
+sentence,prediction,p_positive
+"Love this tablet, the screen is gorgeous and the battery lasts all day!",positive,0.999
+"Terrible product. Stopped working after two weeks, total waste of money.",positive,0.668
+"The sound is not bad at all, quite good for the price.",positive,0.994
+The speaker is not good and the Bluetooth keeps disconnecting.,negative,0.167
+The design is nice but overall the remote is awful and I regret buying it.,positive,0.981
